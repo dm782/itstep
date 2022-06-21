@@ -1,9 +1,11 @@
 h1 {
     font-size: 32px;
+    text-align: center;
 }
 
 h4 {
     font-size: 24px;
+    text-align: center;
 }
 
 p {
@@ -20,4 +22,26 @@ body {
 
 pre {
     color: blue;
+}
+.clblue{
+    color: blue;
+}
+.clgreen{
+    color: green;
+}
+.niz{
+    text-align: center;
+}
+ol.spisok li{
+    display: inline;
+    padding: 25px;
+    border: 10px;
+}
+.zagolovok{
+    background-color: aqua;
+    height: 50px;
+}
+.down{
+    background-color: aqua;
+    height: 25px;
 }
