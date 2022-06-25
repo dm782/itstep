@@ -1,0 +1,36 @@
+pre{
+    font-size: 30px;
+    color: rgb(165, 151, 151);
+    letter-spacing: 25px;
+    line-height: 100px;
+}
+.ncount+.count{
+    text-decoration: overline;
+}
+.count.fivecrat{
+    text-decoration: line-through;
+}
+.ncount.fivecrat{
+    text-decoration: line-through;
+}
+.count.sevencrat{
+    font-weight: bold;
+}
+.ncount.sevencrat{
+    font-weight: bold;
+}
+    .ncount.shadow{
+    text-shadow: 2px 2px 4px orange;
+}
+.shadow.bigcount{
+    font-size: 35px;
+}
+.count.rgba{
+    color: rgba(165, 21, 105, 0.5);
+}
+.kwadr{
+    opacity: 0;
+}
+.kwadr:hover{
+    opacity: 1;
+}

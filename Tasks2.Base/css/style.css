@@ -1,0 +1,17 @@
+h1{
+    color: brown;
+    margin-top: 30px;
+    text-align: center;
+}
+#sec1{
+    background-color: aqua;
+    margin-top: -20px;
+    height: 100px;
+}
+#sec2{
+    background-color: blueviolet;
+    height: 50px;
+}
+body{
+    margin: 0;
+}
