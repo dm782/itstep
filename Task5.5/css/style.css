@@ -1,0 +1,21 @@
+table{
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: 30px #000;
+    border-radius: 3px;
+}
+td{
+width: 200px;
+height: 120px;
+text-align: center;
+vertical-align: middle;
+font-size: 25px;
+border: 7px solid #000;
+color: rgb(0, 0, 0);
+}
+.verh td{
+    width: 500px;
+}
+.vmar{
+background-image: url(.img/eigm.jpg);
+}
