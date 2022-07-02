@@ -1,0 +1,100 @@
+body{
+    background-color: rgb(105, 90, 90);
+}
+h1{
+    font-family: 'Caveat', cursive;
+    background-color: chartreuse;
+    font-size: 24px;
+}
+p{
+    font-family: 'Amatic SC', cursive;
+    font-size: 14px;
+    color: aliceblue;
+    margin-top: 40px;
+}
+h3{
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    margin-top: 50px;
+}
+.no{
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    color: aliceblue;
+    list-style-type: none;
+}
+a{
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    color: aliceblue;
+}
+ol.spisok li{
+    display: inline;
+    padding: 25px;
+    border: 10px;
+}
+.img1{
+    margin-top: 20px;
+    float: right;
+}
+.img2{
+    text-align: left;
+}
+.img3{
+    text-align: right;
+}
+.pre{
+    font-size: 40px;
+
+}
+
+.clblue{
+    font-family: 'The Nautigal', cursive;
+    color: aqua;
+    font-size: 40px;
+}
+.texto{
+    font-family: 'The Nautigal', cursive;
+    color: white;
+    font-size: 40px;
+}
+.yellow{
+    font-family: 'The Nautigal', cursive;
+    color: yellow;
+    font-size: 40px;
+}
+table{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+th{
+    color: #fff;
+    background: #1a39a1;
+    height: 50px;
+    width: 350px;
+    vertical-align: middle;
+    border: 2px solid #fff;
+    border-bottom-width: 6px;
+}
+td{
+    color: #000;
+    height: 50px;
+    width: 350px;
+    vertical-align: middle;
+    border: 2px solid #fff;
+}
+.ender{
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    color: aliceblue;
+    list-style-type: none;
+    text-align: center;
+}
+.clred{
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    color: red;
+    list-style-type: none;
+    text-align: center;
+}

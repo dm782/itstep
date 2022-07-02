@@ -13,9 +13,23 @@ font-size: 25px;
 border: 7px solid #000;
 color: rgb(0, 0, 0);
 }
-.verh td{
-    width: 500px;
+.weekend{
+    background-color: red;
 }
-.vmar{
-background-image: url(.img/eigm.jpg);
+.end{
+    color: gray;
 }
+.eigm{
+    background-image: url(../img/eigm.jpg);
+    background-size: cover;
+    color: aliceblue;
+}
+.dr{
+    background-image: url(../img/dr.png);
+    background-size: cover;
+}
+.stp{
+    background-image: url(../img/stp.jpeg);
+    background-size: cover;
+}
+

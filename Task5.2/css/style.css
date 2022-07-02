@@ -2,18 +2,38 @@ table{
     border-spacing: 0;
     border-collapse: collapse;
 }
-td{
-    width: 150px;
-    height: 35px;
-    text-align: center;
+
+th{
+    color: #fff;
+    background: #1a39a1;
+    height: 50px;
     vertical-align: middle;
-    font-size: 20px;
-    border: 1px solid #000;
+    border: 2px solid #fff;
+    border-bottom-width: 6px;
 }
-.verh{
-background-color: rgb(82, 82, 243);
-color: aliceblue;
+td{
+    color: #000;
+    height: 50px;
+    vertical-align: middle;
+    border: 2px solid #fff;
 }
-.number{
-    width: 30px;
+
+tr:nth-child(2n+2) td{
+    background: #8b9edd;
+}
+tr:nth-child(2n+3) td{
+    background: #98a2c4;
+}
+
+tr td:nth-child(1){
+    width: 80px;
+    text-align: center;
+}
+tr td:nth-child(2){
+    width: 300px;
+    text-align: left;
+}
+tr td:nth-child(n+3){
+    width: 150px;
+    text-align: center;
 }

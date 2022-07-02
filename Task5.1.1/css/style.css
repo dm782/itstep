@@ -1,0 +1,13 @@
+table{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+td{
+    width: 150px;
+    height: 150px;
+    background: rgb(235, 10, 10);
+    font-size: 50px;
+    color: #fff;
+    border: 5px solid #000;
+}
