@@ -5,6 +5,7 @@ h1{
     font-family: 'Caveat', cursive;
     background-color: chartreuse;
     font-size: 24px;
+    text-align: center;
 }
 p{
     font-family: 'Amatic SC', cursive;
@@ -16,22 +17,26 @@ h3{
     font-family: 'Caveat', cursive;
     font-size: 18px;
     margin-top: 50px;
+    text-align: center;
 }
 .no{
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
     color: aliceblue;
     list-style-type: none;
+    text-align: center;
 }
 a{
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
     color: aliceblue;
+    text-align: center;
 }
 ol.spisok li{
     display: inline;
     padding: 25px;
     border: 10px;
+    text-align: center;
 }
 .img1{
     margin-top: 20px;
@@ -96,5 +101,8 @@ td{
     font-size: 30px;
     color: red;
     list-style-type: none;
+    text-align: center;
+}
+#menu4{
     text-align: center;
 }
