@@ -1,0 +1,40 @@
+div{
+    position: relative;
+    float: left;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    font-size: 30px;
+}
+.main{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    background: #000;
+}
+.info{
+    width: 300px;
+    height: 100px;
+    background: rgb(226, 56, 56);
+}
+.menu1-head{
+    width: 90px;
+    height: 200px;
+    background: rgb(155, 179, 51);
+}
+.action{
+ width: 100px;
+ height: 100px;
+ background: rgb(136, 18, 18);
+}
+.tovar{
+    height: 70px;
+    width: 70px;
+    background: rgb(226, 146, 146);
+}

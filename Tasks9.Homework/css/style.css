@@ -1,0 +1,35 @@
+div{
+    position: relative;
+    float: left;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    font-size: 30px;
+}
+.main{
+    width: 2000px;
+    height: 800px;
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+}
+.leviiheader{
+    width: 200px;
+    height: 200px;
+    background: rgb(0, 0, 0);
+}
+.pravverhhead{
+    width: 600px;
+    height: 100px;
+    background: rgb(199, 50, 50);
+}
+.pravnizhhead{
+    width: 600px;
+    height: 100px;
+    background: rgb(134, 199, 50);
+}
+.contentlev{
+    width: 200px;
+    height: 200px;
+    background: rgb(41, 15, 155);
+}
