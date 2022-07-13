@@ -12,6 +12,8 @@ div{
     position: absolute;
     top: calc(50% - 200px);
     left: calc(50% - 200px);
+    margin: 0;
+    padding: 0;
 }
 .logo{
     width: 100px;

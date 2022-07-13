@@ -7,11 +7,11 @@ div{
     font-size: 30px;
 }
 .main{
-    width: 2000px;
-    height: 800px;
+    width: 1250px;
+    height: 400px;
     position: absolute;
-    top: calc(50% - 200px);
-    left: calc(50% - 200px);
+    top: auto;
+    left: auto;
 }
 .leviiheader{
     width: 200px;
@@ -19,12 +19,12 @@ div{
     background: rgb(0, 0, 0);
 }
 .pravverhhead{
-    width: 600px;
+    width: 300px;
     height: 100px;
     background: rgb(199, 50, 50);
 }
 .pravnizhhead{
-    width: 600px;
+    width: 300px;
     height: 100px;
     background: rgb(134, 199, 50);
 }
@@ -32,4 +32,9 @@ div{
     width: 200px;
     height: 200px;
     background: rgb(41, 15, 155);
+}
+.contentcentverh{
+    width: 600px;
+    height: 400px;
+    background: rgb(238, 96, 96);
 }
