@@ -29,12 +29,52 @@ div{
     background: rgb(134, 199, 50);
 }
 .contentlev{
-    width: 200px;
-    height: 200px;
+    width: 66.666px;
+    height: 598px;
     background: rgb(41, 15, 155);
 }
 .contentcentverh{
     width: 600px;
     height: 400px;
     background: rgb(238, 96, 96);
+}
+.contentprav{
+    width: 300px;
+    height: 199px;
+    background: rgb(8, 30, 126);
+}
+.contentcentniz{
+    width: 300px;
+    height: 201px;
+    background: rgb(199, 50, 50);
+    margin-top: -200px;
+}
+.footerlev{
+    width: 200px;
+    height: 200px;
+    background: rgb(0, 0, 0);
+}
+.footcent-verh{
+    width: 600px;
+    height: 100px;
+    background: rgb(224, 185, 10);
+}
+.footprav{
+    width: 300px;
+    height: 200px;
+    background: rgb(110, 24, 24);
+}
+.footnizlef{
+    width: 300px;
+    height: 100px;
+    background: rgb(158, 46, 46);
+    margin-left: 200px;
+    margin-top: -100px;
+}
+.footnizrig{
+    width: 300px;
+    height: 100px;
+    background: rgb(158, 46, 46);
+    margin-left: 500px;
+    margin-top: -100px;
 }
