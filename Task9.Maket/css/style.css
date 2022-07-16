@@ -10,8 +10,8 @@ div{
     width: 400px;
     height: 400px;
     position: absolute;
-    top: auto;
-    left: auto;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
 }
 .logo{
     width: 100px;
@@ -29,9 +29,11 @@ div{
     background: green;
 }
 .tovar{
-    width: 101px;
+    width: 100.1px;
     height: 100px;
     background: yellow;
+    left: 100px;
+    top: -300px;
 }
 .razdact{
     width: 100px;
