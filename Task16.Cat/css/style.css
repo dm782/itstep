@@ -1,0 +1,118 @@
+.circle {
+    width: 0;
+    height: 0;
+    border-left: 140px solid rgb(0, 0, 0);
+    border-bottom: 100px solid #f00;
+    border-right: 140px solid rgb(0, 0, 0);
+    border-top: 100px solid transparent;
+    transform:scale(1,2);
+    margin-top: 150px;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  #rss {
+    width: 20em;
+    height: 20em;
+    border-radius: 3em;
+    background-color: #ff0000;
+    font-size: 14px;
+  }
+  
+  #rss:before {
+    content: '';
+    z-index: 1;
+    display: block;
+    height: 5em;
+    width: 5em;
+    background: #ff0000;
+    border-radius: 50%;
+    position: relative;
+    top: 11.5em;
+    left: 3.5em;
+  }
+  
+  #rss:after {
+    content: '';
+    display: block;
+    background: #ff0000;
+    width: 13em;
+    height: 13em;
+    top: -2em;
+    left: 3.8em;
+    border-radius: 2.5em;
+    position: relative;
+    box-shadow: 
+      -2em 2em 0 0 #ff0000 inset, 
+      -4em 4em 0 0 #ff0000 inset,
+      -6em 6em 0 0 #ff0000 inset
+  }
+  .eyeone {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 60px;
+    height: 110px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    top: 430px;
+    left: 645px;
+  }
+.eyetwo{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: rgb(0, 0, 0);
+  border-radius: 50%;
+  top: 400px;
+  left: 585px;
+}
+.eyethree{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: rgb(0, 0, 0);
+  border-radius: 50%;
+  top: 400px;
+  left: 725px;
+}
+.rot{
+  position: absolute;
+  content: "";
+  display: block;
+    width: 100px;
+    height: 30px;
+    background: rgb(0, 0, 0);
+    top: 590px;
+    left: 625px;
+}
+.toothup{
+  position: absolute;
+  content: "";
+  display: block;
+    width: 70px;
+    height: 10px;
+    background: rgb(255, 255, 255);
+    top: 590px;
+    left: 640px;
+}
+.toothdown{
+  position: absolute;
+  content: "";
+  display: block;
+    width: 70px;
+    height: 10px;
+    background: rgb(255, 255, 255);
+    top: 610px;
+    left: 640px;
+}
+

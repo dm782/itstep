@@ -1,0 +1,16 @@
+.col-6{
+    color: black;
+}
+fieldset{
+    width: 50%;
+}
+body{
+    width: 27%;
+}
+fieldset{
+    border: none;
+    width: 50%;
+}
+input{
+    margin-top: 5px;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../normalize.css">
+    <link rel="stylesheet" href="../Tasks15/grid.css">
+    <link rel="stylesheet" href="../Tasks15/style.css">
+</head>
+<body>
+    <div class="container">
+        <form action="" method="post" name="user_form">
+            <div class="row">
+                <div class="col-6">
+                        <div class="form-label">
+                            <label for="FIO">ФИО:</label>
+                        </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-control">
+                        <input type="text" name="FIO" id="FIO" value="" placeholder="Введите ФИО">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-label">
+                        <label for="email">Email:</label>
+                    </div>
+            </div>
+            <div class="col-6">
+                <div class="form-control">
+                    <input type="email" name="email" id="email" value="" placeholder="Введите email">
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-label">
+                        <label for="phone">Телефон:</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-control">
+                    <input type="phone" name="phone" id="phone" value="" placeholder="Введите телефон">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-label">
+                        <label for="password">Пароль:</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-control">
+                    <input type="password" name="password" id="password" class="error" value="" placeholder="Введите пароль"><br>
+                    <div class="error">Короткий пароль</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-label">
+                        <label for="dob">Дата рождения:</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-control">
+                    <input type="datetime-local" name="dob" id="dob" value="" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <span>Хобби:</span>
+                </div>
+                <div class="col-6">
+                    <div class="form-control">
+                        <input type="checkbox" name="hobby[]" id="hobby1" value="1"><label for="hobby1">Спорт</label> <br>
+                        <input type="checkbox" name="hobby[]" id="hobby2" value="2"><label for="hobby2">Программирование</label> <br>
+                        <input type="checkbox" name="hobby[]" id="hobby3" value="3"><label for="hobby3">Рисование</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <span>Образование:</span>
+                </div>
+                <div class="col-6">
+                    <div class="form-control">
+                        <input type="radio" name="education" id="education1" value="1"><label for="education1">Базовое</label> <br>
+                        <input type="radio" name="education" id="education2" value="2"><label for="education2">Средне-специальное</label> <br>
+                        <input type="radio" name="education" id="education3" value="3"><label for="education3">Высшее</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-label">
+                        <label for="sex">Пол:</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-control">
+                        <select name="sex" id="sex">
+                            <option value="1">Мужской</option> 
+                            <option value="2" selected>Женский</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-label">
+                        <label for="file">Аватар:</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-control">
+                    <input type="file" name="file">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <input type="submit" name="submit" id="submit" value="Отправить">
+                </div>
+            </div>
+        </form>
+    </div>   
+</body>
+</html>

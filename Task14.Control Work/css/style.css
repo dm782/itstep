@@ -208,11 +208,30 @@
     font-size: 20px;
 }
 .team-text-bottom{
-    display: flex;
-    justify-content: center;
-    border: 5px;
+    position: relative;
+    display: block;
+    background: #fff;
+    color: rgb(33, 29, 29);
+    padding: 12px  ;
+    border: 1px solid black;
+    border-radius: 0px;
     text-decoration: none;
+    font-family:'Open Sans',sans-serif;
+    font-size: 18px;
+    line-height: 1;
+    margin: 25px 160px 60px 160px;
+    text-align: center;
 }
+
+@media (max-width: 600px){
+    .team-text-bottom{
+        display:flex;
+        justify-content: center;
+        padding: 45px  ;
+    
+    }
+}
+        
 
 /*@media (min-width: 768px){
     .contact-3{

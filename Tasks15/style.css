@@ -1,0 +1,32 @@
+.container {
+    width: 800px;
+    height: 575px;
+    background: rgb(224, 219, 219);
+    position: relative;
+    margin: 0 auto;
+    border-radius: 1px;
+    box-shadow: 0 2px 5px #ccc;
+}
+.form-label, .form-control{
+    margin-top: 5px;
+}
+
+.form-control{
+    border-radius: 20px;
+}
+input, .option{
+    border-radius: 5px;
+}
+input[type="submit"]{
+    width: 150px;
+    background: rgb(203, 226, 190);
+    margin-left: 600px;
+    margin-top: 20px;
+}
+.error{
+    color: red;
+}
+.input [type="password"]{
+    border: 2px solid red;
+}
+
