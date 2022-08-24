@@ -1,0 +1,22 @@
+{
+    "liveSassCompile.settings.formats" :[
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "~/../css/"
+        }
+    ],
+    "workbench.iconTheme": "vscode-icons",
+    "grunt.autoDetect": "on",
+    "json.maxItemsComputed": 50000,
+    "window.zoomLevel": 2,
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.formatOnPaste": true,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "liveSassCompile.settings.includeItems": [
+    
+    ],
+    "liveSassCompile.settings.rootIsWorkspace": null
+}

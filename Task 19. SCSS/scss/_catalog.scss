@@ -1,0 +1,129 @@
+.catalog-item{
+    padding: 0 15px 35px;
+    height: 360px;
+
+    @media (min-width: 1200px){
+        height: 340px;
+        
+        &:hover{
+            background-color: $bgcolor;
+
+            .catalog-item_image img{
+                width: 80%;
+            }
+
+            .catalog-item_basket{
+                opacity: 1;
+            }
+        }
+    }
+
+    &_image{
+        @include flex-center; 
+        align-items: center;
+
+        img{
+            max-width: 300px;
+            width: 100%;
+
+            @media (min-width: 1200px){
+                transition-property: width;
+                transition-duration: 0.5s;
+            }
+        }
+    }
+
+    &_title{
+        text-align: center;
+        margin-bottom: 40px;
+
+        h4{
+            margin-bottom: 0;
+
+            a{
+                text-transform: uppercase;
+                text-decoration: none;
+                color: $orange;
+                font-family: $baseFont;
+                font-weight: 900;
+                font-size: 20px;
+
+                &:hover{
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+
+    &_price{
+        color: $brown;
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &_basket{
+        @include flex-center;
+        
+        @media (min-width: 1200px){
+            opacity: 0;
+            transition-property: opacity;
+            transition-duration: 0.5s;
+        }
+    }
+
+    &_basket-field{
+        display: flex;
+        margin-right: 10px;
+
+        &_minus{
+            background-color: $lightbrown;
+            height: 42px;
+            width: 36px;
+            border: 0;
+            color: $white;
+            font-weight: 900;
+            border-bottom-left-radius: 30px;
+            border-top-left-radius: 30px;   
+        }
+
+        &_plus{
+            background-color: $lightbrown;
+            height: 42px;
+            width: 36px;
+            border: 0;
+            color: $white;
+            font-weight: 900;
+            border-bottom-right-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+
+        &_input{
+            background-color: $earth;
+            border: 0;
+            border-radius: 0;
+            width: 48px;
+            height: 40px;
+            text-align: center;
+            color: $white;
+            font-weight: 600;
+            font-size: 20px;
+        }
+    }
+
+    &_basket-button{
+        margin-left: 10px;
+        
+        button{
+            background-color: $red;
+            border: 0;
+            color: $white;
+            font-weight: 900;
+            text-transform: uppercase;
+            height: 42px;
+            padding: 0 15px;
+            border-radius: 30px;
+        }
+    }
+}
