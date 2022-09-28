@@ -1,0 +1,623 @@
+@media (min-width: 1281px) {
+    .footer_company__carrera{
+        display: none;
+    }
+                .footer_company__blog {
+                    display: block;
+                    margin-top: -30px;
+                }
+        
+                .footer__company .footer_company__contact {
+                    display: block;
+                }
+}
+@media (max-width: 1280px){
+    .body{
+        width: 1280px;
+    }
+    .container{
+        width: 1280px;
+    }
+    .article-white__big-img{
+        display: none;
+    }
+    .article-white__zagolovok{
+        height: 192px;
+        width: 1132px;
+        margin-left: 50px;       
+}
+.article-white__text{
+height: 96px;
+width: 820px;
+margin-left: 50px;
+}
+.article-white__menu-item{
+    margin-left: -27px;
+}
+.site-menu{
+    margin-left: 50px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.block-ourplus__text{
+    margin-left: 50px;
+    height: 192px;
+        width: 1180px;
+        font-family: Mulish;
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 64px;
+            letter-spacing: 0em;
+}
+.block-ourplus__communication{
+    margin-left: -17px;
+}
+.block-ourplus__communication p{
+height: 120px;
+width: 360px;
+}
+.block-ourplus__individual {
+    margin-left: 526px;
+    margin-top: -265px;
+}
+.block-ourplus__individual p{
+    height: 90px;
+        width: 360px;
+}
+.block-ourplus__speed {
+    margin-left: 936px;
+}
+.block-ourplus__speed p{
+height: 120px;
+width: 360px;
+}
+.container{
+    width: 1280px;
+}
+.block-ourplus__background{
+    width: 1280px;
+}
+.our-works__background{
+    width: 1280px;
+}
+.our-works__zagalovok{
+    margin-left: 50px;
+    height: 52px;
+        width: 340px;
+}
+.our-works__text{
+    margin-left: 50px;
+    height: 108px;
+        width: 340px;
+}
+.our-works__link{
+    margin-left: 50px;
+    height: 66px;
+        width: 297px;
+        top: 220px;
+}
+.our-works__mobie-trackers{
+    background-image: url('../img/Rectangle\ 87_2.png');
+    height: 301px;
+        width: 240px;
+}
+.our-works__mobie-trackers img{
+    display: none;
+}
+.our-works__mobie-trackers p{
+    display: none;
+}
+.our-works__mobie-trackers h3 {
+height: 72px;
+width: 240px;
+margin-top: 330px;
+font-family: Mulish;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    letter-spacing: 0.01em;
+}
+.our-works__univer-today{
+    background-image: url('../img/Rectangle\ 87_3.png');
+    height: 301px;
+        width: 240px;
+}
+.our-works__univer-today img {
+    display: none;
+}
+.our-works__univer-today p {
+    display: none;
+}
+.our-works__univer-today h3 {
+height: 36px;
+width: 240px;
+font-family: Mulish;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    letter-spacing: 0.01em;
+    margin-top: 330px;
+}
+.our-works__blog-study{
+    background-image: url('../img/Rectangle\ 87_3.png');
+        height: 301px;
+            width: 240px;
+}
+.our-works__blog-study img {
+    display: none;
+}
+
+.our-works__blog-study p {
+    display: none;
+}
+.our-works__blog-study h3 {
+height: 72px;
+width: 240px;
+font-family: Mulish;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    letter-spacing: 0.01em;
+    margin-top: 330px;
+}
+.our-works__cards {
+    margin-left: 470px;
+}
+.row__our-works{
+    margin-top: -100px;
+}
+.row__our-works {
+    margin-top: 0px;
+    height: 415px;
+}
+.stage-works__background{
+    width: 1280px;
+    height: 1302px;
+}
+.stage-work__zagolovok-and-opisanie h3{
+    margin-left: -20px;
+}
+.stage-work__zagolovok-and-opisanie p{
+    margin-left: -20px;
+}
+.stage-works__one {
+height: 182px;
+    width: 760px;
+    border-radius: 0px;
+    padding: 35px 0px 35px 0px;
+    margin-left: 470px;
+}
+.stage-works__one p{
+font-family: Mulish;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    height: 112px;
+    width: 641px;
+    margin-left: -201px;
+    }
+        .stage-works__one span {
+            margin-left: 190px;
+        }
+.stage-work__zagolovok-and-opisanie p {
+    height: 68px;
+        width: 329px;
+font-family: Mulish;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 0.01em;
+}
+.stage-works__two {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #FFFFFF;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    height: 154px;
+    width: 760px;
+    margin-left: 476px;
+}
+.stage-works__three {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #FFFFFF;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    height: 154px;
+    width: 760px;
+    margin-left: 476px;
+}
+.stage-works__four {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #FFFFFF;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    height: 154px;
+    width: 760px;
+    margin-left: 476px;
+}
+.stage-works__two p {
+    height: 56px;
+    width: 949px;
+    font-family: Mulish;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    margin-left: -201px;
+    margin-top: -39px;
+}
+.stage-works__two span {
+    margin-left:20px ;
+        margin-left: 184px;
+}
+.stage-works__three span{
+    display: flex;
+    align-items: center;
+}
+.stage-works__three p {
+margin-left: -201px;
+font-family: Mulish;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+height: 84px;
+    width: 641px;
+}
+.stage-works__three span {
+    margin-left: 184px;
+}
+.stage-works__four p {
+    height: 84px;
+        width: 641px;
+        font-family: Mulish;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 28px;
+            letter-spacing: 0.01em;
+margin-left: -201px;
+}
+.stage-works__four span {
+    margin-left: 184px;
+}
+.block-blog__zagolovok-and-text h3 {
+    font-family: Mulish;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 52px;
+    letter-spacing: 0.01em;
+    margin-left: -21px;
+    margin-top: -14px;
+}
+.block-blog__zagolovok-and-text p {
+    font-family: Mulish;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 34px;
+        letter-spacing: 0.01em;
+        height: 102px;
+            width: 297px;
+            margin-left: -21px;
+}
+.block-blog__zagolovok-and-text a {
+    height: 66px;
+    width: 278px;
+    left: 0px;
+    top: 180px;
+    border: 1px solid #000000;
+    padding: 20px 40px 20px 40px;
+    color: #000000;
+    margin-left: -21px;
+}
+    .block-blog__cards-last-month p {
+    display: none;
+        }
+.block-blog__cards-see-in-rinok p {
+display: none;
+}
+.block-blog__cards-email p {
+display: none;
+}
+.block-blog__cards-last-month {
+height: 454px;
+    width: 250px;
+    background-image: url("../img/Rectangle 95.png");
+}
+.block-blog__background{
+    width: 1280px;
+}
+.block-blog__cards-see-in-rinok {
+    width: 250px;
+    height:454px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: -60px;
+    background-image: url("../img/Rectangle 95.png");
+}
+.block-blog__cards-email {
+    width: 250px;
+    height: 454px;
+    margin-top: -60px;
+    background-image: url("../img/Rectangle 95.png");
+}
+.block-blog__cards{
+    margin-left: 440px;
+}
+.block-blog__cards img {
+    margin-top: 80px;
+    margin-left: 30px;
+}
+.block-blog__cards-last-month h3 {
+    font-family: Mulish;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 26px;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        height: 78px;
+            width: 190px;
+}
+.block-blog__cards-last-month h3 {
+font-family: Mulish;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    height: 78px;
+    width: 190px;
+    margin-left: 30px;
+}
+.block-blog__cards-see-in-rinok h3{
+height: 52px;
+width: 190px;
+font-family: Mulish;
+font-size: 20px;
+font-weight: 600;
+line-height: 26px;
+letter-spacing: 0.01em;
+}
+.block-blog__cards-email h3{
+    font-family: Mulish;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 26px;
+        letter-spacing: 0.01em;
+    height: 104px;
+        width: 190px;
+}
+.block-blog__cards-last-month {
+    height: 454px;
+    width: 250px;
+    margin-top: -60px;
+}
+.callus__zagolovok h3 {
+    font-family: Mulish;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 56px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #000000;
+    margin-left: -20px;
+}
+.callus__contact-info {
+    height: 164px;
+    width: 401px;
+    margin-left: -21px;
+    margin-top: -20px;
+}
+.form-block__background{
+    height: 754px;
+        width: 618px;
+        margin-left: 612px;
+}
+.form-block__name-and-phone {
+display: flex;
+flex-direction: column;
+}
+.form-block__name-and-phone .form-name{
+margin-bottom: 40px;
+    margin-left: 100px;
+    margin-top: -22px;
+}
+.form-block__name-and-phone input{
+    width: 418px;
+}
+.form-block__lastname-and-email{
+    display: flex;
+        flex-direction: column;
+}
+.form-block__lastname-and-email input{
+    width: 418px;
+}
+.form-block__lastname-and-email .form-email{
+        margin-top: 40px;
+            margin-left: 100px;
+}
+.form-block__lastname-and-email .form-lastname{
+    margin-top: -21px;
+}
+.form-block__your-massage input {
+    width: 418px;
+    margin-left: -20px;
+    margin-top: 40px;
+}
+.form-block__name-and-phone .form-phone{
+    margin-left: 100px;
+}
+.form-block__lastname-and-email .form-lastname{
+    margin-left: 100px;
+}
+.form-block__checkbox-and-text .form-checkbox{
+    margin-left: -20px;
+    margin-top: -165px;
+}
+.form-block__checkbox-and-text p{
+    height: 72px;
+        width: 382px;
+        font-family: Open Sans;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            letter-spacing: 0.01em;
+            margin-top: -94px;
+}
+.check-box__text{
+    margin-top: -70px;
+}
+.check-box__text{
+    margin-left: -20px;
+}
+.form-block__checkbox-and-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 128px;
+    margin-left: 120px;
+}
+.form-block__button {
+    height: 57px;
+    width: 224px;
+    left: 1506px;
+    top: 673px;
+    border-radius: 0px;
+    background: #F6523C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 300px;
+    margin-top: 2px;
+}
+.callus__background {
+    width: 1280px;
+    background-color: #ffffff;
+    margin-top: 160px;
+        height: 1121px;
+}
+.footer__backround {
+    height: 685px;
+    width: 1920px;
+    margin-top: -12px;
+    background-color: #000000;
+}
+.footer__text-logo p {
+    font-family: Mulish;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    color: #FFFFFF;
+    margin-left: -20px;
+}
+.footer__company h3 {
+    font-family: Mulish;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-left: 270px;
+}
+.footer__company li {
+        padding-top: 32px;
+        font-family: Mulish;
+        font-family: Open Sans;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 33px;
+        letter-spacing: 0em;
+        margin-left: -120px;
+    }
+    .footer_company__blog{
+        display: none;
+    }
+    .footer__company .footer_company__contact{
+        display: none;
+    }
+        .footer__service h3 {
+            font-family: Mulish;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 33px;
+            letter-spacing: 0em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-left: 522px;
+            margin-top: -397px;
+        }
+                .footer__service li {
+                    padding-top: 42px;
+                    margin-left: -152px;
+                    font-family: Mulish;
+                    font-size: 18px;
+                    font-weight: 400;
+                    line-height: 23px;
+                    letter-spacing: 0em;
+                }
+                .footer-callus__contact-info{
+                    margin-left: -517px;
+                }
+                                .footer-callus__zagolovok h3 {
+                                    font-family: Mulish;
+                                    font-size: 24px;
+                                    font-weight: 400;
+                                    line-height: 33px;
+                                    letter-spacing: 0em;
+                                    color: #FFFFFF;
+                                    text-transform: uppercase;
+                                    margin-left: -517px;
+                                }
+.footer__backround {
+    height: 725px;
+    width: 1280px;
+    margin-top: -12px;
+    background-color: #000000;
+}
+.footer__callus {
+    margin-left: 1398px;
+    margin-top: -406px;
+}
+.footer-callus__contact-info-phone{
+    margin-top: 60px;
+}
+.footer-callus__contact-info-adress{
+    margin-top: 44px;
+}
+    .footer-callus__contact-info-email{
+        margin-top: 10px;
+    }
+        .footer-link-img{
+            margin-top: 45px;
+        }
+                .footer__down-text p {
+                    font-family: Open Sans;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 25px;
+                        letter-spacing: 0em;
+                        height: 25px;
+                            width: 534px;
+                            margin-left: -992px;
+                            margin-top: -6px;
+                }
+                .footer__down-text{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+}
+
+

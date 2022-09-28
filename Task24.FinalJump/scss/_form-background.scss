@@ -1,0 +1,76 @@
+.form-block__background{
+height: 660px;
+    width: 1060px;
+    border: 1px solid #DFDFDF;
+    margin-left: 790px;
+    margin-top: -260px;
+}
+.form-block__name-and-phone{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 90px;
+}
+.form-block__name-and-phone input{
+width: 359px;
+}
+.form-block__your-massage input {
+    width: 820px;
+}
+.form-block__lastname-and-email input {
+    width: 349px;
+}
+.form-block__lastname-and-email{
+        display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-top: 60px;
+}
+.form-block__your-massage{
+    margin-left: 120px;
+}
+.form-block__your-massage input{
+    width: 815px;
+    margin-top: 60px;
+}
+.form-block__checkbox-and-text p{
+    font-family: Open Sans;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0.01em;
+        height: 36px;
+            width: 784px;
+            margin-left: 18px;
+}
+.form-block__checkbox-and-text{
+        display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 60px;
+            margin-left: 120px;
+}
+.form-block__checkbox-and-text span{
+    color: #F6523C;
+}
+.form-block__button{
+height: 57px;
+    width: 224px;
+    left: 1506px;
+    top: 673px;
+    border-radius: 0px;
+    background: #F6523C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 776px;
+    margin-top: 60px;
+}
+.form-block__button a {
+    font-family: Mulish;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 25px;
+        letter-spacing: 0em;
+        color: #FFFFFF;
+}
