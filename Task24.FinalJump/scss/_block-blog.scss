@@ -39,7 +39,7 @@ color:#000000;
 .block-blog__cards-last-month{
     width: 430px;
     height: 546px;
-    background-image: url('../img/Rectangle\ 95.png');
+    background-color: #FFFFFF;
 }
 .block-blog__cards-last-month h3{
 font-family: Mulish;
@@ -128,4 +128,34 @@ font-family: Mulish;
 .block-blog__cards img {
     margin-top: 80px;
     margin-left: 120px;
+}
+.block-blog__cards-last-month-img{
+background-image: url(../img/Teamwork_1280.png);
+width: 190px;
+height: 190px;
+margin-top: 80px;
+margin-left: 120px;
+}
+.block-blog__cards-see-in-rinok-img{
+background-image: url(../img/Teamwork_rinok_1280.png);
+width: 190px;
+height: 190px;
+margin-top: 80px;
+margin-left: 120px;
+}
+.block-blog__cards-email-img{
+background-image: url(../img/Teamwork_email_1280.png);
+width: 190px;
+height: 190px;
+margin-top: 80px;
+margin-left: 120px;
+}
+.block-blog__cards-last-month h3{
+margin-left: 50px;
+}
+.block-blog__cards-see-in-rinok h3{
+margin-left: 50px;
+}
+.block-blog__cards-email h3{
+margin-left: 50px;
 }

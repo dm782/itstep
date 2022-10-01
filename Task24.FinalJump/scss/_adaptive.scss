@@ -618,7 +618,73 @@ margin-bottom: 40px;
                     justify-content: center;
                     align-items: center;
                 }
-            }
+                                .block-blog__cards-last-month-img {
+                                    background-image: url(../img/Teamwork_1280.png);
+                                    width: 190px;
+                                    height: 190px;
+                                    margin-top: 80px;
+                                    margin-left: 30px;
+                                }
+                                .block-blog__cards-see-in-rinok-img{
+                                    background-image: url(../img/Teamwork_rinok_1280.png);
+                                    width: 190px;
+                                    height: 190px;
+                                    margin-top: 80px;
+                                    margin-left: 30px;
+                                }
+                                .block-blog__cards-email-img{
+                                    background-image: url(../img/Teamwork_email_1280.png);
+                                    width: 190px;
+                                    height: 190px;
+                                    margin-top: 80px;
+                                    margin-left: 30px;
+                                }
+.block-blog__cards-last-month h3{
+    font-family: Mulish;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 26px;
+        letter-spacing: 0.01em;
+        height: 78px;
+            width: 190px;
+            margin-left: 30px;
+}
+.block-blog__cards-see-in-rinok h3{
+    font-family: Mulish;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 26px;
+        letter-spacing: 0.01em;
+        height: 104px;
+            width: 190px;
+            margin-left: 30px;
+            text-transform: uppercase;
+}
+.block-blog__cards-email h3{
+    font-family: Mulish;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 26px;
+        letter-spacing: 0.01em;
+        height: 104px;
+            width: 190px;
+            margin-left: 30px;
+            text-transform: uppercase;
+}
+.block-blog__cards-email {
+    width: 250px;
+    height: 454px;
+    margin-left: -541px;
+    margin-top: -60px;
+}
+.block-blog__cards-see-in-rinok {
+    width: 250px;
+    height: 454px;
+    margin-left: 291px;
+    margin-right: 20px;
+    margin-top: -60px;
+}
+}
 @media (max-width: 768px) {
 .block-ourplus__text {
         font-family: Mulish;
@@ -767,5 +833,543 @@ margin-top: -44px;
 }
 .our-works__link img {
     margin-left: 35px;
+}
+.our-works__mobie-trackers img{
+    display: none;
+}
+.our-works__mobie-trackers{
+    background-image: url('../img/Rectangle_768.png');
+    height: 301px;
+        width: 220px;
+        left: 0px;
+        top: 0px;
+}
+.our-works__mobie-trackers P{
+font-family: Mulish;
+font-size: 24px;
+font-weight: 600;
+line-height: 36px;
+letter-spacing: 0.01em;
+}
+.our-works__univer-today img{
+    display: none;
+}
+.our-works__univer-today {
+    background-image: url('../img/Rectangle_768.png');
+    height: 301px;
+    width: 220px;
+    left: 0px;
+    top: 0px;
+}
+.our-works__univer-today p{
+font-family: Mulish;
+font-size: 24px;
+font-weight: 600;
+line-height: 36px;
+letter-spacing: 0.01em;
+}
+.our-works__blog-study img{
+    display: none;
+}
+.our-works__blog-study {
+    background-image: url('../img/Rectangle_768.png');
+    height: 301px;
+    width: 220px;
+    left: 0px;
+    top: 0px;
+}
+.our-works__blog-study p{
+font-family: Mulish;
+font-size: 24px;
+font-weight: 600;
+line-height: 36px;
+letter-spacing: 0.01em;
+text-align: left;
+}
+.row__our-works {
+    margin-top: 0px;
+    height: 531px;
+    width: 768px;
+}
+.our-works__cards {
+    margin-left: 34px;
+}
+.our-works__background {
+    width: 768px;
+}
+.stage-work__article{
+    margin-top: 100px;
+}
+.stage-work__zagolovok-and-opisanie {
+    padding-top: 95.63px;
+    margin-left: 51px;
+}
+.stage-work__zagolovok-and-opisanie h3{
+font-family: Mulish;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 31px;
+    letter-spacing: 0.01em;
+}
+.stage-work__zagolovok-and-opisanie p{
+font-family: Mulish;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+}
+.stage-work__article {
+    margin-top: 235px;
+    margin-left: -439px;
+}
+.stage-works__one {
+height: 55px;
+    width: 700px;
+    padding: 35px 0px 35px 0px;
+}
+.stage-works__one p {
+    font-family: Mulish;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    height: 169px;
+    width: 622px;
+    margin-left: -264px;
+}
+.stage-works__one span {
+    font-family: Mulish;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 47px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    margin-left: 268px;
+}
+.stage-works__two {
+    height: 55px;
+    width: 700px;
+    padding: 35px 0px 35px 0px;
+}
+
+.stage-works__two p {
+    font-family: Mulish;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: -270px;
+}
+
+.stage-works__two span {
+    font-family: Mulish;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 47px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    margin-left: 268px;
+}
+.stage-works__three {
+    height: 55px;
+    width: 700px;
+    padding: 35px 0px 35px 0px;
+}
+
+.stage-works__three p {
+    font-family: Mulish;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    margin-left: -270px;
+}
+
+.stage-works__three span {
+    font-family: Mulish;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 47px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    margin-left: 268px;
+}
+.stage-works__four {
+    height: 55px;
+    width: 700px;
+    padding: 35px 0px 35px 0px;
+}
+
+.stage-works__four p {
+    font-family: Mulish;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    margin-left: -270px;
+}
+
+.stage-works__four span {
+    font-family: Mulish;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 47px;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    margin-left: 268px;
+}
+.stage-works__background {
+    width: 768px;
+    height: 894px;
+}
+.block-blog__zagolovok-and-text {
+    margin-left: 52px;
+    padding-top: 80px;
+}
+.block-blog__zagolovok-and-text p {
+        font-family: Mulish;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 25px;
+        letter-spacing: 0.01em;
+        height: 50px;
+        width: 294px;
+        margin-left: -21px;
+}
+.block-blog__zagolovok-and-text h3 {
+font-family: Mulish;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+    letter-spacing: 0.01em;
+    margin-left: -21px;
+    margin-top: -14px;
+    height: 31px;
+        width: 294px;
+}
+.block-blog__cards-last-month img{
+    display: none;
+}
+.block-blog__cards-last-month {
+    height: 400px;
+    width: 220px;
+    margin-top: 120px;
+    margin-left: -410px;
+}
+.block-blog__cards-last-month-img{
+    background-image: url(../img/Teamwork_768.png);
+    width: 170px;
+    height: 170px;
+    margin-top: 40px;
+    margin-left: 25px;
+}
+.block-blog__cards-last-month h3{
+margin-left: 30px;
+font-family: Mulish;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0.01em;
+    height: 78px;
+        width: 160px;
+        text-transform: uppercase;
+}
+.block-blog__cards-email {
+    width: 220px;
+    height: 400px;
+    margin-top: 120px;
+    margin-left: -481px;
+}
+.block-blog__cards-see-in-rinok {
+    width: 220px;
+    height: 400px;
+    margin-left: 261px;
+    margin-right: 20px;
+    margin-top: 120px;
+}
+.block-blog__cards-see-in-rinok-img{
+background-image: url(../img/Teamwork_2_768.png);
+width: 170px;
+height: 170px;
+    margin-top: 40px;
+        margin-left: 25px;
+}
+.block-blog__cards-email-img{
+background-image: url(../img/Teamwork_1_768.png);
+width: 170px;
+height: 170px;
+    margin-top: 40px;
+        margin-left: 25px;
+}
+.block-blog__cards-email h3{
+font-family: Mulish;
+font-size: 20px;
+font-weight: 600;
+line-height: 26px;
+letter-spacing: 0.01em;
+height: 130px;
+width: 160px;
+margin-left: 30px;
+text-transform: uppercase;
+}
+.block-blog__cards-see-in-rinok h3{
+    font-family: Mulish;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 26px;
+        letter-spacing: 0.01em;
+        height: 52px;
+            width: 160px;
+            text-transform: uppercase;
+            margin-left: 30px;
+}
+.block-blog__background {
+    width: 768px;
+}
+
+.callus__block-with-contact {
+    margin-top: -30px;
+}
+
+.callus__zagolovok h3 {
+    font-family: Mulish;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 56px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #000000;
+    margin-left: -37px;
+}
+.callus__background {
+height: 1159.6060791015625px;
+    width: 768px;
+}
+.form-block__background {
+height: 685.807373046875px;
+    width: 700px;
+    border-radius: 0px;
+    margin-left: 57px;
+    margin-top: 28.97px;
+}
+.callus__zagolovok span {
+font-family: Open Sans;
+font-size: 24px;
+font-weight: 400;
+line-height: 34px;
+letter-spacing: 0.01em;
+}
+.callus__contact-info-phone {
+    margin-left: 51px;
+}
+.callus__contact-info-phone p {
+    font-family: Mulish;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    margin-left: 53px;
+    margin-top: -36px;
+}
+.callus__contact-info-adress p {
+    height: 68px;
+    width: 401px;
+    font-family: Mulish;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    margin-left: 53px;
+    margin-top: -48px;
+}
+.callus__contact-info-email p {
+    font-family: Mulish;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    margin-left: 53px;
+    margin-top: -33px;
+}
+.callus__contact-info-adress{
+margin-left: 53px;
+}
+.callus__contact-info-adress{
+    margin-left: 53px;
+}
+.callus__contact-info-email {
+    margin-left: 53px;
+    margin-top: -20px;
+}
+.callus__zagolovok h3 {
+    font-family: Mulish;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 56px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #000000;
+    margin-left: -37px;
+    margin-top: -57px;
+}
+.form-block__name-and-phone .form-name {
+    margin-bottom: 40px;
+    margin-left: 100px;
+    margin-top: -22px;
+    width: 500px;
+}
+.form-block__name-and-phone .form-phone {
+    margin-left: 100px;
+    width: 500px;
+}
+.form-block__lastname-and-email .form-lastname {
+    margin-left: 100px;
+    width: 500px;
+}
+.form-block__lastname-and-email .form-email {
+    margin-top: 40px;
+    margin-left: 100px;
+    width: 500px;
+}
+.form-block__your-massage input {
+    width: 418px;
+    margin-left: -20px;
+    margin-top: 40px;
+    width: 500px;
+}
+.form-block__checkbox-and-text p {
+    height: 54px;
+    width: 464px;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    margin-top: -116px;
+    font-family: Open Sans;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0.01em;
+}
+.form-block__button {
+    height: 57px;
+    width: 224px;
+    left: 1506px;
+    top: 673px;
+    border-radius: 0px;
+    background: #F6523C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 371px;
+    margin-top: -28px;
+}
+.footer__text-logo p {
+    display: none;
+}
+.footer__company li {
+    padding-top: 32px;
+    font-family: Mulish;
+    font-family: Open Sans;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0em;
+    margin-left: -357px;
+}
+.footer__company h3 {
+    font-family: Mulish;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-left: 34px;
+    margin-top: 80px;
+}
+.footer__service a {
+    color: #FFFFFF;
+    margin-left: 354px;
+    font-family: Mulish;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    text-transform: uppercase;
+}
+.footer__service h3 {
+    font-family: Mulish;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-left: 242px;
+    margin-top: -397px;
+}
+.footer__service a {
+height: 48px;
+width: 191px;
+font-family: Mulish;
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0em;
+}
+.footer__callus {
+    margin-left: 1012px;
+    margin-top: -406px;
+}
+.footer-callus__contact-info-phone p{
+font-family: Mulish;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+}
+.footer-callus__contact-info-adress p{
+    font-family: Mulish;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0em;
+        height: 60px;
+            width: 172px;
+}
+.footer-callus__contact-info-email p{
+    font-family: Mulish;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0em;
+}
+    .footer__backround {
+            height: 725px;
+            width: 768px;
+            margin-top: -12px;
+            background-color: #000000;
+        }
+                .footer__down-text p {
+                font-family: Open Sans;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 22px;
+                letter-spacing: 0em;
+                margin-left: -693px;
 }
 }
