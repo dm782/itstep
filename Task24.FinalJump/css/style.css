@@ -1102,6 +1102,20 @@ body {
 }
 
 @media (max-width: 1920px) {
+  .our-works__link span {
+    background-image: url("../img/Group 8.png");
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    margin-left: 40px;
+  }
+  .our-works__link span:hover {
+    background-image: url("../img/Group 8 (1).png");
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    margin-left: 40px;
+  }
   .site-menu__button a:hover {
     width: 240px;
     height: 67px;
@@ -1111,7 +1125,7 @@ body {
     justify-content: center;
     align-items: center;
     color: #000000;
-    margin-top: 5px;
+    margin-top: 1px;
   }
   .site-menu__language {
     margin-left: 20px;
