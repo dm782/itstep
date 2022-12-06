@@ -1,0 +1,99 @@
+.site-offer__background {
+background: #FFFFFF;
+    padding: 70px 50px 50px;
+    margin-top: 100px;
+    margin-left: 137px;
+    width: 513px;
+    float: left;
+}
+.site-form__inputs{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+.site-form__inputs-phone{
+    margin-top: 5px;
+}
+.site-form__inputs-email{
+    margin-top: 5px;
+}
+.styled_checkbox {
+    width: 33%;
+    position: relative;
+    padding-top: 30px;
+    margin-bottom: 18px;
+}
+.styled_checkbox label {
+    font-size: 12px;
+    line-height: 15px;
+    cursor: pointer;
+    position: relative;
+}
+.styled_checkbox {
+    display: flex;
+    flex-direction: row;
+}
+.styled_checkbox__product_1{
+        display: flex;
+        flex-direction: column;
+}
+.styled_checkbox__product_2 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 74px;
+}
+.styled_checkbox__product_3 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 74px;
+}
+textarea{
+    width: 404px;
+    height: 100px;
+}
+button {
+    width: 50%;
+    display: block;
+        color: #FFFFFF;
+        background: #333333;
+        padding: 15px 31px;
+        font-size: 14px;
+        line-height: 21px;
+        text-decoration: none;
+        text-transform: uppercase;
+}
+button:hover {
+    width: 50%;
+    display: block;
+    color: #FFFFFF;
+    background: yellow;
+    padding: 15px 31px;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+}
+.site-form__button{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+}
+.contact_form_error {
+    width: 50%;
+    background: #F8F8F8;
+    border-left: 4px solid #FC7E7E;
+    padding: 6px 14px;
+    font-size: 9px;
+    line-height: 14px;
+    color: #000000;
+    margin-left: 11px;
+}
+.site-offer__background{
+    font-family: 'Montserrat', sans-serif;
+}
+input{
+    width: 100%;
+}
+.styled_checkbox{
+    display: flex;
+    justify-content: space-between;
+}

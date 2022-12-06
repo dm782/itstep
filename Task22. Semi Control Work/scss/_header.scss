@@ -1,0 +1,144 @@
+@font-face {
+    font-family: "Gilroy";
+    src: url(../fonts/Gilroy-Light.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Gilroy";
+    src: url(../fonts/Gilroy-ExtraBold.otf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+html,
+body {
+    font-family: "Gilroy", sans-serif;
+    width: 1920px;
+}
+
+.container {
+    width: 1295px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    height: 90px;
+    align-items: center;
+    margin-left: 312px;
+    
+}
+
+.header>div {
+    display: flex;
+    height: 90px;
+    align-items: center;
+}
+
+.header__logo {
+    border-left: 1px solid #C4C4C4;
+    padding: 0 36px;
+}
+
+.header__phone {
+    padding: 0 30px;
+    border-left: 1px solid #C4C4C4;
+}
+
+.header__phone a {
+    color: #000;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
+}
+
+.header__salon {
+    padding: 0 30px;
+    border-left: 1px solid #C4C4C4;
+}
+
+.header__salon a {
+    color: #000;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
+    display: flex;
+    align-content: center;
+}
+
+.header__salon a .arrow-down {
+    margin-left: 15px;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-image: url(../img/Group\ 1.png);
+}
+
+.header__special {
+    padding: 0 30px;
+    border-left: 1px solid #C4C4C4;
+}
+
+.header__special a {
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px 8px;
+    background-color: #00868A;
+    display: flex;
+    align-items: center;
+}
+
+.header__special a .eye {
+    width: 26px;
+    height: 22px;
+    display: inline-block;
+    margin-right: 10px;
+    background-image: url(../img/eye.png);
+}
+
+.header__social ul {
+    list-style: none;
+    display: flex;
+    border-left: 1px solid #C4C4C4;
+    margin: 0;
+    padding: 0;
+}
+
+.header__social ul li {
+    border-right: 1px solid #C4C4C4;
+    padding: 0 24px;
+    display: flex;
+    height: 90px;
+    align-items: center;
+}
+
+.header__social ul li a {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-position: center center;
+}
+
+.header__social ul li a.vk {
+    background-image: url(../img/vk.png);
+}
+
+.header__social ul li a.yt {
+    background-image: url(../img/youtube.png);
+}
+
+.header__social ul li a.fb {
+    background-image: url(../img/facebook.png);
+}
+
+.header__social ul li a.ig {
+    background-image: url(../img/instagram.png);
+}
+
+/*# sourceMappingURL=style.css.map */

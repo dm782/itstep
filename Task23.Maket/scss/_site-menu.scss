@@ -1,0 +1,47 @@
+.site-menu__logo{
+    background-image: url('../img/Logo.png');
+   height: 59px;
+        width: 168px;
+        
+
+}
+ul{
+    display: flex;
+    flex-direction:row;
+    align-self: center;
+    justify-content: space-around;
+}
+.site-menu{
+        display: flex;
+            flex-direction: row;
+            
+            
+                
+}
+li{
+    list-style-type: none;
+
+    
+
+}
+.site-menu__language{
+            display: flex;
+                flex-direction: row;
+                margin-left: 80px;
+}
+.site-menu a{
+    text-decoration: none;
+    color: black;
+    padding-left: 52px;
+    font-weight: 600;
+    
+}
+.site-menu__language a{
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+.navozy{
+    margin-left: 600px;
+}
+

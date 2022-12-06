@@ -1,0 +1,77 @@
+.callus__background{
+    width: 1920px;
+    height: 980px;
+    background-color: #ffffff;
+    margin-top: 160px;
+}
+.callus__zagolovok h3{
+font-family: Mulish;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 56px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color:#000000;
+
+
+}
+.callus__zagolovok span {
+    font-family: Mulish;
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 56px;
+            letter-spacing: 0.01em;
+            color:#F6523C;
+}
+.callus__zagolovok{
+    padding-top: 160px;
+    margin-left: 70px;
+}
+.callus__contact-info{
+height: 164px;
+width: 401px;
+}
+.callus__img-phone{
+    background-image: url('../img/bi_phone.png');
+    width: 30px;
+    height: 30px;
+}
+.callus__contact-info-phone p{
+font-family: Mulish;
+font-size: 24px;
+font-weight: 400;
+line-height: 30px;
+letter-spacing: 0em;
+    margin-left: 60px;
+    margin-top: -30px;
+}
+.callus__contact-info-adress p{
+height: 68px;
+width: 401px;
+font-family: Mulish;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    margin-left: 60px;
+    margin-top: -40px;
+}
+.callus__contact-info-phone{
+    margin-left: 70px;
+}
+.callus__contact-info-adress{
+    margin-left: 70px;
+}
+.callus__contact-info-email p{
+font-family: Mulish;
+font-size: 24px;
+font-weight: 400;
+line-height: 30px;
+letter-spacing: 0em;
+margin-left: 60px;
+margin-top: -33px;
+}
+.callus__contact-info-email{
+    margin-left: 70px;
+    margin-top: -20px;
+}

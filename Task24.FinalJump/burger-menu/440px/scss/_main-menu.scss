@@ -1,0 +1,99 @@
+.menu-item__img {
+    background-image: url("../img/Group 21.png");
+    height: 40px;
+    width: 180px;
+    margin-bottom: 70px;
+    margin-left: 20px;
+    background-repeat: no-repeat;
+}
+.menu-item__close{
+    background-image: url("../img/close.png");
+    height: 40px;
+    width: 40px;
+    margin-left: 370px;
+}
+.menu-item {
+    height: 785px;
+    width: 440px;
+    background-color: black;
+    padding-top: 30px;
+}
+.menu-link li {
+    list-style-type: none;
+    margin-top: 40px;
+    margin-left: -20px;
+}
+.menu-link a{
+    text-decoration: none;
+    font-family: Mulish;
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 35px;
+        letter-spacing: 0em;
+        color: #FFFFFF;
+}
+.menu-link a:hover {
+    text-decoration: none;
+    font-family: Mulish;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 35px;
+    letter-spacing: 0em;
+    color: #F6523C;
+}
+.menu-link__button a {
+height: 66px;
+    width: 300px;
+    left: 0px;
+    top: 180px;
+    border: 1px solid #ffffff;
+    padding: 20px 40px 20px 40px;
+    color: #ffffff;
+    margin-left: -21px;
+    text-decoration: none;
+    font-family: Open Sans;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 26px;
+        letter-spacing: 0.01em;
+        margin-left: 20px;
+
+}
+.menu-link__button img{
+margin-left: 32px;
+}
+.menu-link__button{
+    margin-top: 80px;
+}
+.site-menu__language ul{
+    display: flex;
+    flex-direction: row;
+}
+.site-menu__language-en{
+            border-right: 1px solid #ffffff;
+            margin-left: 20px; 
+}
+.site-menu__language a{
+    font-family: Mulish;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 23px;
+        letter-spacing: 0.01em;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        margin-right: 5px;
+        text-decoration: none;
+        }
+.site-menu__language-en{
+    margin-left: 5px;
+}
+.site-menu__language-en {
+    margin-left: -20px;
+    padding-right: 5px;
+}
+.site-menu__language{
+    margin-top: 181px;
+}
+.site-menu__language li{
+    list-style-type: none;
+}
