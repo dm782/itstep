@@ -1,0 +1,35 @@
+        select {
+            width: 200px;
+            height: 40px;
+            font-size: 20px;
+        }
+
+        /* Стиль для блока */
+        div {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* Стиль для каждого пункта списка с цветом фона и текста */
+        option.red {
+            background-color: red;
+            color: white;
+        }
+
+        option.green {
+            background-color: green;
+            color: white;
+        }
+
+        option.blue {
+            background-color: blue;
+            color: white;
+        }
+
+        option.yellow {
+            background-color: yellow;
+        }
+
+        option.pink {
+            background-color: pink;
+        }

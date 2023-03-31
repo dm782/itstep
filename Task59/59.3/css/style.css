@@ -1,0 +1,10 @@
+  li.even:hover {
+      color: red;
+  }
+
+  li.odd:hover {
+      color: blue;
+  }
+  li.close{
+    color:black;
+  }
