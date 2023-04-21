@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Example</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+
+
+
+
+    function Click() { // компонент Div
+
+        function clck(e){
+           let p = document.querySelector("p");
+           let v = +p.innerText;
+            v++;
+            p.innerText = v;
+        }
+
+        return (<div>
+            <button onClick={clck}>+1</button>
+            <p>0</p>
+            </div>);
+    }
+
+
+
+
+
+        ReactDOM.createRoot(
+            document.getElementById("app")
+            // document.querySelector(".Numb")
+        )
+            .render(
+                <div>
+                    
+                    <Click /> 
+
+                </div>
+            );
+    </script>
+</body>
+
+</html>

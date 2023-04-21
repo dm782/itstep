@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        function Calculator() {
+            const [x, setX] = React.useState(0);
+            const [y, setY] = React.useState(0);
+            const [znak, setZnak] = React.useState(0);
+            const [z, setZ] = React.useState(0);
+
+                function znakChangeNumber(event) {
+                setZnak(event.target.value);
+            }
+
+              function xznakChangeNumber(event) {
+                setX(event.target.value);
+            }
+
+              function yChangeNumber(event) {
+                setY(event.target.value);
+            }
+
+            function calculate() {
+                let inputX = document.getElementById("x");
+                let inputY = document.getElementById("y");
+                let inputZnak = document.getElementById("znak");
+
+                setX(+inputX.value);
+                setY(+inputY.value);
+            }
+            return (
+                <div>
+                    <input type="text" name="x" id="x" onChange={xznakChangeNumber} />
+                    <input type="text" name="y" id="y" onChange={yChangeNumber} />
+                    
+                    
+                    
+                        <div>
+                        {znak == "+" &&
+                            <>Сумма: {x}+{y}={x + y} <br /></>
+                        }
+                        {znak == "-" &&
+                            <>Разность: {x}-{y}={x - y} <br /></>
+                        }
+                        {znak == "*" &&
+                            <>Произведение: {x}*{y}={x * y} <br /></>
+                        }
+                        {znak == "/" && y == 0 &&
+                            <>Деление на ноль</>
+                        }
+                        {znak == "/" && y != 0 &&
+                            <>Частное: {x}:{y}={x / y}</>
+                        }
+                    </div>
+
+                    <div>
+                    <select name="znak" id="znak" value={znak} onChange={znakChangeNumber}>
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                    </select>
+                    </div>
+                    
+                </div>
+
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("app"))
+            .render(
+                <Calculator />
+            );
+    </script>
+</body>
+
+</html>

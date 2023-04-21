@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Example</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+
+
+
+
+        function Change() { // компонент Div
+
+            function clck(e) {
+                let ione = document.querySelector(".ione");
+                let itwo = document.querySelector(".itwo");
+                var temp = ione.value;
+                // Заменить значение input1 на значение input2
+                ione.value = itwo.value;
+                // Заменить значение input2 на сохраненное значение temp
+                itwo.value = temp;
+            }
+
+            return (<div><button onClick={clck}>Поменять местами</button>
+                <input type="text" class="ione"></input>
+                <input type="text" class="itwo"></input>
+            </div>)
+        }
+
+
+
+
+
+        ReactDOM.createRoot(
+            document.getElementById("app")
+        )
+            .render(
+                <div>
+
+                    <Change />
+
+                </div>
+            );
+    </script>
+</body>
+
+</html>
