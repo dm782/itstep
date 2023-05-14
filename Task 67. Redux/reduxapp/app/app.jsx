@@ -10,7 +10,7 @@ const store = redux.createStore(reducer);
 store.dispatch({
   type: "SET_STATE",
   state: {
-    phones: [ "Xiaomi Mi 10","sacsca"] // Названия телефонов уже имеющихся в массиве
+    phones: [ "Xiaomi Mi 10","dima"] // Названия телефонов уже имеющихся в массиве
   }
 });
  
