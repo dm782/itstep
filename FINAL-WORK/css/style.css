@@ -40,3 +40,27 @@ li {
   .logo{
     margin-top: 10px;
   }
+
+  .information-area_title h1{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin-left: 40px;
+    margin-top: 50px;
+  }
+  .information-area_title h1 span{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: blue;
+  }
+  .information-area_text{
+    font-weight: 300;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    margin-left: 40px;
+  }
+  .information-area .container{
+    width: 350px;
+  }
+  .information-area_image{
+    margin-left: 700px;
+  }
+  .information-area{
+    margin-top: -500px;
+  }
