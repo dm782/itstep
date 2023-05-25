@@ -1,0 +1,42 @@
+li {
+    list-style-type: none; /* Убираем маркеры */
+  }
+  
+  a {
+    text-decoration: none; /* Убираем подчёркивание ссылок */
+  }
+
+  .site-menu ul {
+    display: flex; /* Создаем гибкий контейнер */
+    flex-direction: row; /* Располагаем элементы в горизонтальном порядке */
+  }
+  .top-row .container{
+    display: flex; /* Создаем гибкий контейнер */
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+
+  .site-menu ul li a{
+    font-family: 'Philosopher', sans-serif;;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-right: 20px;
+    color: #333333;
+  }
+
+  .site-menu ul li a:hover{
+    font-family: 'Philosopher', sans-serif;;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-right: 20px;
+    color: red;
+  }
+
+  .logo{
+    margin-top: 10px;
+  }
