@@ -1,0 +1,12 @@
+body{
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+#app{
+    width: 800px;
+}
+.blog_posts{
+    margin-top: 50px;
+}

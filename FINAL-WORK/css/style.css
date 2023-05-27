@@ -42,9 +42,162 @@ li {
   }
 
 .information-area{
-    width: 350px;
+    width: 500px;
+    margin-left: 40px;
+    margin-top: 135px;
 }
 .information-article .container{
     display: flex; /* Создаем гибкий контейнер */
     flex-direction: row; /* Располагаем элементы в горизонтальном порядке */
+}
+
+.information-area_title h1{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 600;
+}
+
+.information-area_title span{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 600;
+  color: blue;
+}
+
+.information-area_text p{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 400;
+}
+
+.information-area_image{
+  margin-left: 100px;
+  margin-top: 50px;
+}
+.button_title{
+  background-color: rgb(104, 104, 228); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 72px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50px; /* Очень закругленные углы */
+}
+.button-link_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button_title:hover {
+  background-color: blue; /* Синий цвет при наведении */
+}
+
+.container .year-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
+  color:aliceblue;
+  width: 100%;
+  height: 100%;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-weight: 600;
+}
+
+html { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 18px;
+}
+
+.burger {
+  width: 24px;
+  height: 2px;
+  background-color: black;
+}
+
+@media (max-width: 960px) {
+  .site-menu ul li {
+    display: none;
+  }
+  .burger{
+    display: block;
+  }
+}
+.site-menu ul {
+  display: flex;
+  justify-content: space-between;
+}
+.information-area_image{
+  display: none;
+}
+.information-article{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.burger-menu {
+  float: right;
+}
+.burger-menu {
+  position: fixed;
+  top: 40px;
+  right: 50px;
+}
+  footer {
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+@media (min-width: 960px) {
+  .site-menu ul li {
+    display: block;
+  }
+  .burger{
+    display: none;
+  }
+  .information-area_image{
+    display: block;
+  }
+  footer {
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  body {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  .information-article{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
