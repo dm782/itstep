@@ -28,15 +28,15 @@ const FormAdd = (props) => {
     return <>
                     <form class="blog_form" action="" onSubmit={handleFormSubmit}>
                         <div class="mb-3">
-                            <label for="name" class="form-label">Название</label>
+                            <label htmlFor="name" class="form-label">Название</label>
                             <input type="text" class="form-control" id="name" onChange={handleNameChange} />
                         </div>
                         <div class="mb-3">
-                            <label for="price" class="form-label">Цена</label>
+                            <label htmlFor="price" class="form-label">Цена</label>
                             <input type="text" class="form-control" id="price" onChange={handlePriceChange}/>
                         </div>
                         <div class="mb-3">
-                            <label for="quantity" class="form-label">Количество</label>
+                            <label htmlFor="quantity" class="form-label">Количество</label>
                             <input type="text" class="form-control" id="quantity" onChange={handleQuantityChange}/>
                         </div>
                         <div class="mb-3">

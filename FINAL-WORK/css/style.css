@@ -128,43 +128,7 @@ body {
   background-color: black;
 }
 
-@media (max-width: 960px) {
-  .site-menu ul li {
-    display: none;
-  }
-  .burger{
-    display: block;
-  }
-}
-.site-menu ul {
-  display: flex;
-  justify-content: space-between;
-}
-.information-area_image{
-  display: none;
-}
-.information-article{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.burger-menu {
-  float: right;
-}
-.burger-menu {
-  position: fixed;
-  top: 40px;
-  right: 50px;
-}
-  footer {
-    height: 50px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-
-@media (min-width: 960px) {
+@media (min-width: 1280px) {
   .site-menu ul li {
     display: block;
   }
@@ -174,11 +138,8 @@ body {
   .information-area_image{
     display: block;
   }
-  footer {
-    height: 50px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+  .conteiner .year-name {
+   height: 100%;
   }
   body {
     height: 100%;
@@ -187,12 +148,13 @@ body {
   body {
     margin: 0;
   }
-  
-  
-  footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+   
+  .contact-information .container .year-name {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
   }
   .information-article{
     display: flex;
@@ -200,4 +162,197 @@ body {
     justify-content: center;
     flex-direction: column;
   }
+  .burger-menu {
+    float: right;
+  }
+  .burger-menu {
+    position: fixed;
+    top: 40px;
+    right: 50px;
+  }
 }
+@media (max-width: 1280px) {
+  .site-menu ul li {
+    display: block;
+  }
+  .burger{
+    display: none;
+  }
+}
+.burger-menu {
+  position: fixed;
+  top: 40px;
+  right: 50px;
+}
+.site-menu ul {
+  display: flex;
+  justify-content: space-between;
+}
+.information-area_image{
+  display: block;
+}
+.information-article{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contact-information .container .year-name {
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:30px;
+  width:100%;
+}
+
+@media (max-width: 1115px) {
+  .information-area_image{
+    display: none;
+  }
+  .site-menu ul li {
+    display: block;
+  }
+  .burger{
+    display: none;
+  }
+}
+
+@media (max-width: 1115px) {
+  .information-area_image{
+    display: none;
+  }
+  .site-menu ul li {
+    display: none;
+  }
+  .burger{
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .information-area_title h1{
+ width: 331px;
+ font-size: 21px;
+}
+.information-area_text p{
+width: 333px;
+}
+.information-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.contact-information .container .year-name {
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:30px;
+  width:100%;
+}
+.burger-menu {
+  float: right;
+}
+.burger-menu {
+  position: fixed;
+  top: 40px;
+  right: 50px;
+}
+}
+@media (max-width: 540px) {
+  .information-area{
+    width: 200px;
+  }
+}
+@media (max-width: 480px) {
+  html{
+    width: 100%;
+  }
+  .contact-information .container .year-name {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+  }
+  .burger-menu {
+    float: right;
+  }
+  .burger-menu {
+    position: fixed;
+    top: 40px;
+    right: 50px;
+  }
+  .information-area{
+    width: 160px;
+  }
+  .container .year-name{
+    margin-top: 100%;
+   }
+   .information-area_title h1 {
+    width: 331px;
+    font-size: 16px;
+}
+.information-area_text p {
+  width: 333px;
+  font-size: 14px;
+}
+}
+@media (max-width: 414px) {
+body{
+  width: 100%;
+}
+.information-area{
+  width: 140px;
+}
+.information-area_title h1 {
+  width: 334px;
+  font-size: 14px;
+}
+.information-area_text p {
+width: 334px;
+font-size: 12px;
+}
+}
+@media (max-width: 375px) {
+  .contact-information .container .year-name {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+  }
+  .information-area{
+    width: 100px;
+  }
+  .information-area_title h1 {
+    width: 295px;
+    font-size: 14px;
+  }
+  .information-area_text p {
+  width: 295px;
+  font-size: 12px;
+  }
+}
+@media (max-width: 280px) {
+  .contact-information .container .year-name {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+  }
+  .information-area{
+    width: 80px;
+  }
+  .information-area_title h1 {
+    width: 200px;
+    font-size: 12px;
+}
+.information-area_text p {
+  width: 200px;
+  font-size: 10px;
+}
+}
+
