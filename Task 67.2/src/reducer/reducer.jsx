@@ -11,10 +11,12 @@ const reducer = (state = {}, action) => {
             let newId = ++state.lastIdProduct;
             let newProduct  = {
                 id: newId,
+                image: action.product.image,
                 name: action.product.name,
                 price: action.product.price,
                 quantity: action.product.quantity,
-                favorite: action.product.favorite
+                favorite: action.product.favorite,
+                edIz: action.product.edIz
             };
             return {...state, 
                     products: [...state.products, newProduct], 
@@ -24,9 +26,8 @@ const reducer = (state = {}, action) => {
             return {...state, 
                     products: state.products.filter((item) => item.id != action.productId)
                     }
-        case "PRODUCT_LIKE":
-            return{
-                ...state,
+        case "PRODUCT_FAVORITE": {
+            return {...state,
                 products: state.products.map((item) => {
                     if(item.id == action.id){
                         item.favorite = true;
@@ -34,9 +35,9 @@ const reducer = (state = {}, action) => {
                     return item;
                 })
             }
-        case "PRODUCT_DISLIKE":
-            return{
-                ...state,
+        }
+        case "PRODUCT_UNFAVORITE": {
+            return {...state,
                 products: state.products.map((item) => {
                     if(item.id == action.id){
                         item.favorite = false;
@@ -44,6 +45,8 @@ const reducer = (state = {}, action) => {
                     return item;
                 })
             }
+        }
+
         case "PRODUСT_EDIT":
             break;
             

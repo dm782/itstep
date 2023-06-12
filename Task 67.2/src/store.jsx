@@ -1,9 +1,28 @@
+/*
+state = {
+    products: [
+        {
+            id,
+            name,
+            price,
+            quantity,
+            favorite
+        }
+    ],
+    user: {
+        name,
+        age
+    },
+
+    lastIdProduct //- id последнего добавленного продукта
+}
+*/
 const reducer = require("./reducer/reducer.jsx");
 const redux = require("redux");
 
 const store = redux.createStore(reducer);
 
-store.dispatch({ // Вы отправляете их в стор, * используя метод store.dispatch(). Метод dispatch находится в store.jsx
+store.dispatch({
     type: "INIT",
     user: {
         name: "Вася Пупкин",
@@ -11,11 +30,13 @@ store.dispatch({ // Вы отправляете их в стор, * исполь
     },
     products: [
         {
+            image: "",
             id: 1,
             name: "Молоко",
             price: 5,
             quantity: 1,
-            favorite: false
+            edIz: "Л.",
+            favorite: false,
         }
     ],
     lastIdProduct: 1

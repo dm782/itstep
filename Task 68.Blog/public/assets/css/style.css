@@ -10,6 +10,11 @@ body{
 .blog_posts{
     margin-top: 50px;
 }
+.button_trash, .button_favorite, .button_unfavorite{
+    cursor: pointer;
+    border: 0;
+    background-color: #fff;
+}
 .red{
-color: red;
+    color: red
 }

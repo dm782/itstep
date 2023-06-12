@@ -1,0 +1,268 @@
+@media (min-width: 1280px) {
+    .site-menu ul li {
+      display: block;
+    }
+    .burger{
+      display: none;
+    }
+    li {
+        list-style-type: none; /* Убираем маркеры */
+      }
+      
+      a {
+        text-decoration: none; /* Убираем подчёркивание ссылок */
+      }
+      .site-menu ul {
+        display: flex; /* Создаем гибкий контейнер */
+        flex-direction: row; /* Располагаем элементы в горизонтальном порядке */
+      }
+      .top-row .container{
+        display: flex; /* Создаем гибкий контейнер */
+        flex-direction: row;
+        margin-top: 20px;
+        margin-left: 40px;
+      }
+      .site-menu ul li a{
+        font-family: 'Philosopher', sans-serif;;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 30px;
+        text-transform: uppercase;
+        margin-right: 20px;
+        color: #333333;
+      }
+    
+      .site-menu ul li a:hover{
+        font-family: 'Philosopher', sans-serif;;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 30px;
+        text-transform: uppercase;
+        margin-right: 20px;
+        color: red;
+      }
+      .information-data{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+      }
+      .contact-information .container .year-name {
+        position:fixed;
+        left:0px;
+        bottom:0px;
+        height:30px;
+        width:100%;
+      }
+      .container .year-name{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333333;
+        color:aliceblue;
+        width: 100%;
+        height: 100%;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-weight: 600;
+      }
+      .sum_div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .button_result{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;        
+      }
+      .delete_last_spend-money{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;    
+      }
+      label{
+          font-family: 'Yanone Kaffeesatz', sans-serif;
+          font-weight: 400;
+      }
+      .information-data_input-date{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .information-data_full-zp{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .information-data_expenses{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .information-data_current_spend-money{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .information-data_delete_last_spend-money{
+      margin-top: 10px;
+    }
+    .top-row .container{
+      display: flex; /* Создаем гибкий контейнер */
+      flex-direction: row;
+      margin-top: 20px;
+      margin-left: 40px;
+    }
+    .top-row .container{
+      display: flex; /* Создаем гибкий контейнер */
+      flex-direction: row;
+      margin-top: 33px;
+      margin-left: 40px;
+    }
+    .logo{
+      margin-top: 10px;
+    }
+}
+
+@media (max-width: 1280px) {
+  .site-menu ul li {
+    display: none;
+  }
+  .burger{
+    display: block;
+  }
+  .burger {
+    width: 24px;
+    height: 2px;
+    background-color: black;
+  }
+  .burger-menu {
+    position: fixed;
+    top: 40px;
+    right: 50px;
+  }
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 18px;
+  }
+
+  .burger-menu {
+    float: right;
+  }
+
+  .information-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .container .year-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+    color:aliceblue;
+    width: 100%;
+    height: 100%;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 600;
+  }
+  .contact-information .container .year-name {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+  }
+  label{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 400;
+}
+.information-data_input-date{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.information-data_full-zp{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin-top: 10px;
+}
+.information-data_expenses{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin-top: 10px;
+}
+.information-data_current_spend-money{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin-top: 10px;
+}
+.information-data_delete_last_spend-money{
+margin-top: 10px;
+}
+.button_result{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;        
+}
+.sum_div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top-row .container{
+  display: flex; /* Создаем гибкий контейнер */
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+.top-row .container{
+  display: flex; /* Создаем гибкий контейнер */
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+}
+
+@media (max-width: 720px) {
+  .top-row .container{
+    display: flex; /* Создаем гибкий контейнер */
+    flex-direction: row;
+    margin-top: 33px;
+    margin-left: 40px;
+  }
+}
+
+@media (max-height: 500px) {
+  .information-data{
+    margin-top: 20px;
+  }
+}
+
+@media (max-height: 400px) {
+  .information-data{
+    margin-top: -20px;
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style2.css">
+    <title>Финансовый учёт</title>
+</head>
+<body>
+    <header>
+        <div class="top-row">
+            <div class="container">
+                <div class="logo">
+                    <a href="#">
+                        <img src="./img/money.png" alt="Money" title="Money">
+                    </a>
+                </div>
+                <div class="site-menu">
+                    <ul>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#">Текущее состояние</a></li>
+                        <li><a href="#">Когда накоплю на мечту?</a></li>
+                        <li><a href="#">Общее и Среднее количество трат</a></li>
+                        <li><a href="#">О приложении</a></li>
+                    </ul>
+                </div>
+                <div class="burger-menu">
+                    <div class="burger"></div>
+                    <div class="burger"></div>
+                    <div class="burger"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="information-data">
+        <div class="container">
+            <div class="information-data_input-date">
+                <label for="start-date">Дата начала:</label>
+                <input type="date" class="start-date" name="start-date">
+            </div>
+            <div class="information-data_full-zp">
+                <label for="full_zp_input">Сумма полной зарплаты:</label>
+                <input type="number" class="full_zp_input" name="full_zp_input">
+            </div>
+            <div class="information-data_expenses">
+                <label for="expenses_input">Обязательные траты:</label>
+                <input type="number" class="expenses_input" name="expenses_input">
+            </div>
+            <div class="information-data_current_spend-money">
+                <label for="new_spend">Новая трата:</label>
+                <input type="number" class="expenses_input" name="new_spend">
+            </div>
+            <div class="information-data_delete_last_spend-money">
+                <button>Удалить последнюю тарату</button>
+            </div>
+            <div class="button_result">
+                <button>Добавить</button>
+            </div>
+            <div class="sum_div">
+                <h3>0.00</h3>
+            </div>
+        </div>
+    </div>
+    <footer class="contact-information">
+        <div class="container">
+            <div class="year-name">
+                <p>(C) 2023 Дмитрий Митин</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
