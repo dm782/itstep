@@ -204,3 +204,8 @@ label {
     left: 30px;
   }
 }
+@media (max-height: 500px) {
+  .dream_area{
+    margin-top: 20px;
+  }
+}

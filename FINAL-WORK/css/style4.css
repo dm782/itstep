@@ -1,5 +1,5 @@
 @media (min-width: 1280px) {
-    .top-row .container{
+.top-row .container{
         display: flex; /* Создаем гибкий контейнер */
         flex-direction: row;
         margin-top: 20px;
@@ -224,5 +224,10 @@ li {
     bottom:0px;
     height:30px;
     width:100%;
+  }
+}
+@media (max-height: 500px) {
+  .expenses_area{
+    margin-top: -55px;
   }
 }
