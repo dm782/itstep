@@ -1,3 +1,6 @@
+.dream_area{
+  margin-top: -75px;
+}
 @media (min-width: 1280px) {
     .top-row .container{
         display: flex; /* Создаем гибкий контейнер */

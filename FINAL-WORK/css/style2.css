@@ -132,6 +132,9 @@
     .logo{
       margin-top: 10px;
     }
+    .infomation-data_buttons{
+      margin-top: 0px;
+    }
 }
 
 @media (max-width: 1280px) {
@@ -255,10 +258,31 @@ margin-top: 10px;
   }
 }
 
-@media (max-height: 500px) {
-  .information-data{
-    margin-top: 20px;
+@media (max-height: 300px) {
+  .information-data {
+    margin-top: -70px;
+}
+  label{
+    font-size: 10px;
   }
+  .top-row .container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+    margin-left: 40px;
+}
+.burger-menu {
+  position: fixed;
+  top: 40px;
+  right: 50px;
+  margin-top: -25px;
+}
+.information-data_inputs{
+  margin-top: -20px;
+}
+.sum_div{
+  margin-top: -20px;
+}
 }
 
 @media (max-height: 400px) {

@@ -1,0 +1,60 @@
+.link_html-css:hover {
+  background: red;
+  box-shadow: 1px 5px 15px red;
+}
+
+.link_js:hover {
+  background: red;
+  box-shadow: 1px 5px 15px red;
+}
+
+.link_for-me:hover {
+  background: red;
+  box-shadow: 1px 5px 15px red;
+}
+
+.link_sample-work:hover {
+  background: red;
+  box-shadow: 1px 5px 15px red;
+}
+
+.link_reviews:hover {
+  background: red;
+  box-shadow: 1px 5px 15px red;
+}
+
+.card {
+  height: 200px;
+}
+
+.card h2 {
+  font-size: 25px;
+  color: white;
+}
+
+.card small {
+  font-size: 15px;
+  color: white;
+}
+
+.card:hover h2 {
+  font-size: 50px;
+  color: red;
+}
+
+.card:hover small {
+  font-size: 30px;
+  color: white;
+}
+
+.card button {
+  display: none;
+}
+
+.card:hover button {
+  display: block;
+}
+
+background-image {
+  background-repeat: no-repeat;
+}/*# sourceMappingURL=style.css.map */
