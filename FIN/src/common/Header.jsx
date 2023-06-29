@@ -7,7 +7,7 @@ const Header = () => {
     <div class="container">
         <div class="logo">
             <a href="#">
-                <img src="./img/money.png" alt="Money" title="Money"/>
+                <img src="./public/assets/img/money.png" alt="Money" title="Money"/>
             </a>
         </div>
         <div class="site-menu">

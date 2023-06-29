@@ -18,7 +18,7 @@ const Main = () => {
             </div>
 
             <div class="information-area_image">
-                <img src=".public/assets/img/home-font.png" alt="Gale invest" title="Image"/>
+                <img src="./public/assets/img/home-font.png" alt="Gale invest" title="Image"/>
             </div>
 
         </div>  
