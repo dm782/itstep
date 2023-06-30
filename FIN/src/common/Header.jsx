@@ -3,26 +3,26 @@ const connect = require("react-redux").connect;
 
 const Header = () => {
 
-    return  <div class="top-row">
-    <div class="container">
-        <div class="logo">
+    return  <div className="top-row">
+    <div className="container">
+        <div className="logo">
             <a href="#">
                 <img src="./public/assets/img/money.png" alt="Money" title="Money"/>
             </a>
         </div>
-        <div class="site-menu">
+        <div className="site-menu">
             <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Текущее состояние</a></li>
-                <li><a href="#">Когда накоплю на мечту?</a></li>
-                <li><a href="#">Общее и Среднее количество трат</a></li>
-                <li><a href="#">О приложении</a></li>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/state">Текущее состояние</a></li>
+                <li><a href="/dream">Когда накоплю на мечту?</a></li>
+                <li><a href="/expense">Общее и Среднее количество трат</a></li>
+                <li><a href="/about">О приложении</a></li>
             </ul>
         </div>
-        <div class="burger-menu">
-            <div class="burger"></div>
-            <div class="burger"></div>
-            <div class="burger"></div>
+        <div className="burger-menu">
+            <div className="burger"></div>
+            <div className="burger"></div>
+            <div className="burger"></div>
         </div>
     </div>
 </div>
