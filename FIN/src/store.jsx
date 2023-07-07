@@ -14,6 +14,16 @@ const store = redux.createStore(reducer(history), {},
     )
 );
 
-
+store.dispatch({
+    type: "INIT",
+    sum: [
+        {      
+            date: 0,
+            sumFullSalary: 0,
+            expense: 0,
+            addExp: 0,
+        }
+    ],
+});
 
 module.exports = {store, history};
