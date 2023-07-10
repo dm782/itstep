@@ -320,7 +320,7 @@ body {
     justify-content: space-between;
   }
   .information-area_image{
-    display: block;
+    display: none;
   }
   .information-article{
     display: flex;
@@ -338,6 +338,34 @@ body {
   }
 }
 
+@media (max-width: 1230px) {
+  .information-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 22%;
+}
+  .burger{
+    display: none;
+  }
+  .information-area_image{
+    display: none;
+  }
+  .site-menu ul li {
+    display: none;
+  }
+  .burger{
+    display: block;
+  }
+  .contact-information .container .year-name {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+}
+}
 
 @media (max-width: 1024px) {
   .information-area {
@@ -345,7 +373,10 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-left: 24%;
+    margin-left: 14%;
+}
+.container, .container-sm {
+  max-width: 700px;
 }
   .burger{
     display: none;
@@ -359,16 +390,128 @@ body {
   .burger{
     display: block;
   }
+  .contact-information .container .year-name {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
 }
-
+}
+/* @media (max-width: 1000px) {
+  .information-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 21%;
+}
+.information-article .container {
+  display: flex;
+  flex-direction: row;
+  margin-left: -2%;
+}
+  .burger{
+    display: none;
+  }
+  .information-area_image{
+    display: none;
+  }
+  .site-menu ul li {
+    display: none;
+  }
+  .burger{
+    display: block;
+  }
+  .contact-information .container .year-name {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+}
+} */
+@media (max-width: 768px) {
+  .information-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 7%;
+}
+.container, .container-sm {
+  max-width: 500px;
+}
+  .burger{
+    display: none;
+  }
+  .information-area_image{
+    display: none;
+  }
+  .site-menu ul li {
+    display: none;
+  }
+  .burger{
+    display: block;
+  }
+  .contact-information .container .year-name {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+}
+}
+@media (max-width: 600px) {
+  .information-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 12%;   
+    width: 400px;
+}
+.container, .container-sm {
+  max-width: 418px;
+}
+.contact-information .container .year-name {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
+}
+}
 @media (max-width: 500px) {
   .information-area {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-left: 18%;
-    
+    margin-left: 12%;   
+    width: 300px;
+}
+
+.container, .container-sm {
+    max-width: 350px;
+}
+
+.contact-information .container .year-name {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
+}
+}
+@media (max-width: 450px) {
+  .information-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 12%;   
+    width: 250px;
 }
   .burger{
     display: none;
@@ -383,7 +526,59 @@ body {
     display: block;
   }
 }
-
+@media (max-width: 400px) {
+  .information-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 12%;   
+    width: 220px;
+}
+.container, .container-sm {
+  max-width: 250px;
+}
+  .burger{
+    display: none;
+  }
+  .information-area_image{
+    display: none;
+  }
+  .site-menu ul li {
+    display: none;
+  }
+  .burger{
+    display: block;
+  }
+}
+@media (max-width: 300px) {
+  .information-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 12%;   
+    width: 180px;
+}
+.container, .container-sm {
+  max-width: 220px;
+}
+}
+@media (max-height: 600px) {
+  .information-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: -20%;
+    margin-top: -375px;
+}
+.information-area {
+  width: 400px;
+  margin-left: 40px;
+  margin-top: 135px;
+}
+}
 @media (max-height: 500px) {
   .information-area {
     display: flex;
@@ -444,6 +639,13 @@ body {
 }
 }
 /* Вторая страница*/
+
+.information-data_inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
 @media (min-width: 1280px) {
   .site-menu ul li {
@@ -598,6 +800,12 @@ body {
 
 @media (max-width: 1280px) {
 
+  .information-data_inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 .site-menu ul li {
   display: none;
 }
@@ -720,6 +928,13 @@ margin-left: 40px;
 
 @media (max-width: 720px) {
 
+  .information-data_inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -220px;
+  }
 
     .site-menu ul li {
       display: none;
@@ -833,33 +1048,494 @@ margin-left: 40px;
     }
 
     }
+    @media (max-width: 600px) {
 
-@media (max-height: 300px) {
-/* .information-data {
-  margin-top: -70px;
-} */
-label{
-  font-size: 10px;
-}
-.top-row .container {
-  display: flex;
-  flex-direction: row;
-  margin-top: 0px;
-  margin-left: 40px;
-}
-.burger-menu {
-position: fixed;
-top: 40px;
-right: 50px;
-margin-top: -25px;
-}
-.information-data_inputs{
-margin-top: -20px;
-}
-.sum_div{
-margin-top: -20px;
-}
-}
+      .information-data_inputs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: -185px;
+      }
+    
+        .site-menu ul li {
+          display: none;
+        }
+        .burger{
+          display: block;
+        }
+        .burger {
+          width: 24px;
+          height: 2px;
+          background-color: black;
+        }
+        .burger-menu {
+          position: fixed;
+          top: 40px;
+          right: 50px;
+        }
+        .burger-menu {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 18px;
+        }
+        
+        .burger-menu {
+          float: right;
+        }
+        
+        .information-data{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 50%;
+          
+        }
+        .container .year-name{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #333333;
+          color:aliceblue;
+          width: 100%;
+          height: 100%;
+          font-family: 'Yanone Kaffeesatz', sans-serif;
+          font-weight: 600;
+        }
+        .contact-information .container .year-name {
+          position:fixed;
+          left:0px;
+          bottom:0px;
+          height:30px;
+          width:100%;
+        }
+        label{
+          font-family: 'Yanone Kaffeesatz', sans-serif;
+          font-weight: 400;
+        }
+        .information-data_input-date{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        }
+        .information-data_full-zp{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        }
+        .information-data_expenses{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        }
+        .information-data_current_spend-money{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        }
+        .information-data_delete_last_spend-money{
+        margin-top: 10px;
+        }
+        .button_result{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;        
+        }
+        .sum_div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .top-row .container{
+        display: flex; /* Создаем гибкий контейнер */
+        flex-direction: row;
+        margin-top: 20px;
+        margin-left: 40px;
+        }
+        .top-row .container{
+        display: flex; /* Создаем гибкий контейнер */
+        flex-direction: row;
+        margin-top: 20px;
+        margin-left: 40px;
+        }
+    
+        }
+        @media (max-width: 480px) {
+
+          .information-data_inputs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: -120px;
+          }
+        
+            .site-menu ul li {
+              display: none;
+            }
+            .burger{
+              display: block;
+            }
+            .burger {
+              width: 24px;
+              height: 2px;
+              background-color: black;
+            }
+            .burger-menu {
+              position: fixed;
+              top: 40px;
+              right: 50px;
+            }
+            .burger-menu {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              height: 18px;
+            }
+            
+            .burger-menu {
+              float: right;
+            }
+            
+            .information-data{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-top: 50%;
+              
+            }
+            .container .year-name{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: #333333;
+              color:aliceblue;
+              width: 100%;
+              height: 100%;
+              font-family: 'Yanone Kaffeesatz', sans-serif;
+              font-weight: 600;
+            }
+            .contact-information .container .year-name {
+              position:fixed;
+              left:0px;
+              bottom:0px;
+              height:30px;
+              width:100%;
+            }
+            label{
+              font-family: 'Yanone Kaffeesatz', sans-serif;
+              font-weight: 400;
+            }
+            .information-data_input-date{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            }
+            .information-data_full-zp{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            }
+            .information-data_expenses{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            }
+            .information-data_current_spend-money{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            }
+            .information-data_delete_last_spend-money{
+            margin-top: 10px;
+            }
+            .button_result{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;        
+            }
+            .sum_div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            .top-row .container{
+            display: flex; /* Создаем гибкий контейнер */
+            flex-direction: row;
+            margin-top: 20px;
+            margin-left: 40px;
+            }
+            .top-row .container{
+            display: flex; /* Создаем гибкий контейнер */
+            flex-direction: row;
+            margin-top: 20px;
+            margin-left: 40px;
+            }
+        
+            }
+            @media (max-width: 350px) {
+
+              .information-data_inputs {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                margin-top: -100px;
+              }
+            
+                .site-menu ul li {
+                  display: none;
+                }
+                .burger{
+                  display: block;
+                }
+                .burger {
+                  width: 24px;
+                  height: 2px;
+                  background-color: black;
+                }
+                .burger-menu {
+                  position: fixed;
+                  top: 40px;
+                  right: 50px;
+                }
+                .burger-menu {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  height: 18px;
+                }
+                
+                .burger-menu {
+                  float: right;
+                }
+                
+                .information-data{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  margin-top: 50%;
+                  
+                }
+                .container .year-name{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background-color: #333333;
+                  color:aliceblue;
+                  width: 100%;
+                  height: 100%;
+                  font-family: 'Yanone Kaffeesatz', sans-serif;
+                  font-weight: 600;
+                }
+                .contact-information .container .year-name {
+                  position:fixed;
+                  left:0px;
+                  bottom:0px;
+                  height:30px;
+                  width:100%;
+                }
+                label{
+                  font-family: 'Yanone Kaffeesatz', sans-serif;
+                  font-weight: 400;
+                }
+                .information-data_input-date{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                }
+                .information-data_full-zp{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                }
+                .information-data_expenses{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                }
+                .information-data_current_spend-money{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                }
+                .information-data_delete_last_spend-money{
+                margin-top: 10px;
+                }
+                .button_result{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;        
+                }
+                .sum_div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                }
+                .top-row .container{
+                display: flex; /* Создаем гибкий контейнер */
+                flex-direction: row;
+                margin-top: 20px;
+                margin-left: 40px;
+                }
+                .top-row .container{
+                display: flex; /* Создаем гибкий контейнер */
+                flex-direction: row;
+                margin-top: 20px;
+                margin-left: 40px;
+                }
+            
+                }
+            @media (max-width: 300px) {
+
+              .information-data_inputs {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                margin-top: -60px;
+              }
+            
+                .site-menu ul li {
+                  display: none;
+                }
+                .burger{
+                  display: block;
+                }
+                .burger {
+                  width: 24px;
+                  height: 2px;
+                  background-color: black;
+                }
+                .burger-menu {
+                  position: fixed;
+                  top: 40px;
+                  right: 50px;
+                }
+                .burger-menu {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  height: 18px;
+                }
+                
+                .burger-menu {
+                  float: right;
+                }
+                
+                .information-data{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  margin-top: 50%;
+                  
+                }
+                .container .year-name{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background-color: #333333;
+                  color:aliceblue;
+                  width: 100%;
+                  height: 100%;
+                  font-family: 'Yanone Kaffeesatz', sans-serif;
+                  font-weight: 600;
+                }
+                .contact-information .container .year-name {
+                  position:fixed;
+                  left:0px;
+                  bottom:0px;
+                  height:30px;
+                  width:100%;
+                }
+                label{
+                  font-family: 'Yanone Kaffeesatz', sans-serif;
+                  font-weight: 400;
+                }
+                .information-data_input-date{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                }
+                .information-data_full-zp{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                }
+                .information-data_expenses{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                }
+                .information-data_current_spend-money{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+                }
+                .information-data_delete_last_spend-money{
+                margin-top: 10px;
+                }
+                .button_result{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;        
+                }
+                .sum_div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                }
+                .top-row .container{
+                display: flex; /* Создаем гибкий контейнер */
+                flex-direction: row;
+                margin-top: 20px;
+                margin-left: 40px;
+                }
+                .top-row .container{
+                display: flex; /* Создаем гибкий контейнер */
+                flex-direction: row;
+                margin-top: 20px;
+                margin-left: 40px;
+                }
+            
+                }
 
 /* @media (max-height: 400px) {
 .information-data{

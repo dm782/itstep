@@ -8,7 +8,6 @@ const State = (props) => {
         expense: 0,
         addExp: 0,
       });
-
       function handleFormSubmit(event){
         event.preventDefault();
         props.onSumAdd(data);
@@ -34,14 +33,14 @@ function handleExpenseChange(event){
 }
 
 function handleAddExpChange(event){
-  setData({...data, addExp: event.target.value});
-}
+    setData({...data, addExp: event.target.value});
+  }
 
 function getResult() {
     return  (new Date() - new Date(data.date)) / 2600000000 * (Number(data.sumFullSalary) - Number(data.expense)) - Number(data.addExp);
 }
 
-
+// console.log(data.addExp)
     return <>
     <form className="sum_form" action="" onSubmit={handleFormSubmit}>
     <div className="information-data">
@@ -70,7 +69,7 @@ function getResult() {
                 <button type="button" class="btn btn-primary">Удалить последюю трату</button>
                 </div>
                 <div className="button_result">
-                <button type="button" class="btn btn-primary">Добавить</button>
+                <button type="button" class="btn btn-primary" onClick={getResult}>Добавить</button>
                 </div>
             </div>
             
