@@ -16,8 +16,9 @@ const store = redux.createStore(reducer(history), {},
 
 store.dispatch({
     type: "INIT",
-    sum: [
+    newSum: [
         {      
+            id: 1,
             date: 0,
             sumFullSalary: 0,
             expense: 0,

@@ -1,5 +1,7 @@
 const React = require("react");
 const connect = require("react-redux").connect;
+const {SUM_ADD} = require("../action/action.jsx");
+
 const State = (props) => {
 
     let [data, setData] = React.useState({
@@ -8,17 +10,18 @@ const State = (props) => {
         expense: 0,
         addExp: 0,
       });
+
       function handleFormSubmit(event){
         event.preventDefault();
-        props.onSumAdd(data);
-      
-//   setData({
-//     date: '',
-//     sumFullSalary: 0,
-//     expense: 0,
-//     addExp: 0,
-//   });
-}
+        props.onSumAdd(data);      
+        setData({
+        date: 0,
+        sumFullSalary: 0,
+        expense: 0,
+        addExp: 0,
+        });
+        props.history.push("/list")
+    }
 
 function handleDateChange(event){
   setData({...data, date: event.target.value});
@@ -40,7 +43,6 @@ function getResult() {
     return  (new Date() - new Date(data.date)) / 2600000000 * (Number(data.sumFullSalary) - Number(data.expense)) - Number(data.addExp);
 }
 
-// console.log(data.addExp)
     return <>
     <form className="sum_form" action="" onSubmit={handleFormSubmit}>
     <div className="information-data">
@@ -69,12 +71,12 @@ function getResult() {
                 <button type="button" class="btn btn-primary">Удалить последюю трату</button>
                 </div>
                 <div className="button_result">
-                <button type="button" class="btn btn-primary" onClick={getResult}>Добавить</button>
+                <button type="button" class="btn btn-primary">Добавить</button>
                 </div>
             </div>
             
             <div className="sum_div">
-                <h3>{getResult()}</h3>
+                <h3>{getResult().toFixed(2)} Руб.</h3>
             </div>
         </div>
     </div>
@@ -83,7 +85,9 @@ function getResult() {
 }
 
 const mapStateToProps = state => {
-    return {}
+    return {
+        newSum: state.sum.newSum,
+    }
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -95,6 +99,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(State);
+
 // module.exports = State;
 
 

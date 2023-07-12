@@ -14,9 +14,10 @@ const Header = () => {
             <ul>
                 <li><a href="/">Главная</a></li>
                 <li><a href="/state">Текущее состояние</a></li>
+                <li><a href="/list">Таблица трат</a></li>
                 <li><a href="/dream">Когда накоплю на мечту?</a></li>
                 <li><a href="/expense">Общее и Среднее количество трат</a></li>
-                <li><a href="/about">О приложении</a></li>
+                {/* <li><a href="/about">О приложении</a></li> */}
             </ul>
         </div>
         <div className="burger-menu">

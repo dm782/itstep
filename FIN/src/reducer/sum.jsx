@@ -3,7 +3,7 @@ const reducer = (state = {}, action) => {
     switch(action.type){
         case "INIT":
             return {...state,
-                sum: action.sum,                
+                newSum: action.newSum,                
             }
         case "SUM_ADD":
             let newSum  = {               
@@ -13,7 +13,7 @@ const reducer = (state = {}, action) => {
                 addExp: action.sum.addExp,
             };
             return {...state, 
-                    sum: [...state.sum, newSum], 
+                    newSum: [...state.sum, newSum], 
                     }; 
         case "LAST_DELETE":
             break;
