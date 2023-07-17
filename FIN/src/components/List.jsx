@@ -5,10 +5,29 @@ const {SUM_ADD} = require("../action/action.jsx");
 const List = (props) => {
 //   if (!props.newSum || !Array.isArray(props.newSum)) {
 //     return null; 
-//   }
-// function getResult() {
-//     return  (new Date() - new Date(data.date)) / 2600000000 * (Number(data.sumFullSalary) - Number(data.expense)) - Number(data.addExp);
-// }
+// //   }
+
+const saveTableData = () => {
+    localStorage.setItem("tableData", JSON.stringify(props.newSum));
+  };
+
+const calculateTotalAddExp = () => {
+    let total = 0;
+    props.newSum.forEach((item) => {
+      total += Number(item.addExp);
+    });
+    return total;
+  };
+
+  const getResult = (date, sumFullSalary, expense) => {
+    return (
+      (new Date() - new Date(date)) / 2600000000 *
+      (Number(sumFullSalary) - Number(expense)) -
+      calculateTotalAddExp()
+    );
+}
+
+
 
   return <>
       <table className="table">
@@ -35,13 +54,20 @@ const List = (props) => {
                               </tr>
                   })
               }
-              <tr>
+               <tr>
                   <td colSpan="5" align="right">Итого:</td>
-                  {/* <td align="right">{getResult()}</td> */}
+                  <td align="right">{calculateTotalAddExp().toString()}</td>
                   <td></td>
-              </tr>
+              </tr> 
           </tbody>
       </table>
+      <div className="getResult">
+  <h3>Отклонение от нормы:</h3>
+  {props.newSum.map((item) => (
+    <h4>{getResult(item.date, item.sumFullSalary, item.expense).toFixed(2)} Руб.</h4>
+
+  ))}
+</div>
   </>
 }
 
@@ -60,32 +86,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(List);
-
-// const React = require("react");
-// const connect = require("react-redux").connect;
-
-// const List = (props) => {
-//   if (!props.newSum || !Array.isArray(props.newSum)) {
-//     return null; // or handle the case when props.newSum is not an array
-//   }
-
-//   return (
-//     <tbody>
-//       {props.newSum.map((item, index) => (
-//         <tr key={index}>
-//           <td>{item.value}</td>
-//         </tr>
-//       ))}
-//     </tbody>
-//   );
-// };
-
-// const mapStateToProps = (state) => {
-//   return {
-//     newSum: state.sum.newSum,
-//   };
-// };
-
-// const mapDispatchToProps = {};
-
-// module.exports = connect(mapStateToProps, mapDispatchToProps)(List);

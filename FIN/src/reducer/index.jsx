@@ -1,5 +1,5 @@
 const redux = require("redux");
-const sum = require("./sum.jsx");
+const sum = require("../reducer/sum.jsx");
 const connectRouter = require("connected-react-router").connectRouter;
 
 const reducers = (history) => redux.combineReducers({

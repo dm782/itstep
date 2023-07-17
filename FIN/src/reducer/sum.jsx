@@ -13,7 +13,7 @@ const reducer = (state = {}, action) => {
                 addExp: action.sum.addExp,
             };
             return {...state, 
-                    newSum: [...state.sum, newSum], 
+                    newSum: [...state.newSum, newSum], 
                     }; 
         case "LAST_DELETE":
             break;

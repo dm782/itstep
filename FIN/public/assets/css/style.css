@@ -19,20 +19,20 @@ li {
     margin-left: 40px;
   }
 
-  .site-menu ul li a{
+  .site-menu ul li{
     font-family: 'Philosopher', sans-serif;;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 25px;
     line-height: 30px;
     text-transform: uppercase;
     margin-right: 20px;
     color: #333333;
   }
 
-  .site-menu ul li a:hover{
+  .site-menu ul li:hover{
     font-family: 'Philosopher', sans-serif;;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 10px;
     line-height: 30px;
     text-transform: uppercase;
     margin-right: 20px;
@@ -690,12 +690,7 @@ body {
       margin-right: 20px;
       color: red;
     }
-    .information-data{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 100px;
-    }
+ 
     .contact-information .container .year-name {
       position:fixed;
       left:0px;
@@ -833,12 +828,7 @@ body {
   float: right;
 }
 
-.information-data{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10%;
-}
+
 .container .year-name{
   display: flex;
   justify-content: center;
@@ -933,7 +923,6 @@ margin-left: 40px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: -220px;
   }
 
     .site-menu ul li {
@@ -963,13 +952,7 @@ margin-left: 40px;
       float: right;
     }
     
-    .information-data{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 50%;
-      
-    }
+
     .container .year-name{
       display: flex;
       justify-content: center;
@@ -1055,7 +1038,7 @@ margin-left: 40px;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        margin-top: -185px;
+        
       }
     
         .site-menu ul li {
@@ -1085,12 +1068,7 @@ margin-left: 40px;
           float: right;
         }
         
-        .information-data{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 50%;
-          
+
         }
         .container .year-name{
           display: flex;
@@ -1169,7 +1147,7 @@ margin-left: 40px;
         margin-left: 40px;
         }
     
-        }
+        
         @media (max-width: 480px) {
 
           .information-data_inputs {
@@ -1177,7 +1155,7 @@ margin-left: 40px;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            margin-top: -120px;
+            
           }
         
             .site-menu ul li {
@@ -1207,13 +1185,7 @@ margin-left: 40px;
               float: right;
             }
             
-            .information-data{
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              margin-top: 50%;
-              
-            }
+
             .container .year-name{
               display: flex;
               justify-content: center;
@@ -1299,7 +1271,7 @@ margin-left: 40px;
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                margin-top: -100px;
+                
               }
             
                 .site-menu ul li {
@@ -1329,13 +1301,7 @@ margin-left: 40px;
                   float: right;
                 }
                 
-                .information-data{
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  margin-top: 50%;
-                  
-                }
+
                 .container .year-name{
                   display: flex;
                   justify-content: center;
@@ -1451,13 +1417,7 @@ margin-left: 40px;
                   float: right;
                 }
                 
-                .information-data{
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  margin-top: 50%;
-                  
-                }
+
                 .container .year-name{
                   display: flex;
                   justify-content: center;
@@ -1759,7 +1719,14 @@ label {
     margin-top: 20px;
   }
 }
-
+.information-data{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 135px;
+    
+}
 /*Четвёртая страница*/
 
 .expenses_area .container {
@@ -2096,7 +2063,8 @@ margin-top: 10px;
 .site-menu ul li {
   display: none;
 }
-.burger{
+
+.site-menu ul.menu-open li {
   display: block;
 }
 .burger {
@@ -2148,7 +2116,8 @@ margin-top: 10px;
 .site-menu ul li {
   display: none;
 }
-.burger{
+
+.site-menu ul.menu-open li {
   display: block;
 }
 .burger {
@@ -2200,7 +2169,8 @@ margin-top: 10px;
 .site-menu ul li {
   display: none;
 }
-.burger{
+
+.site-menu ul.menu-open li {
   display: block;
 }
 .burger {
@@ -2252,7 +2222,8 @@ margin-top: 10px;
 .site-menu ul li {
   display: none;
 }
-.burger{
+
+.site-menu ul.menu-open li {
   display: block;
 }
 .burger {
@@ -2304,7 +2275,8 @@ margin-top: 10px;
 .site-menu ul li {
   display: none;
 }
-.burger{
+
+.site-menu ul.menu-open li {
   display: block;
 }
 .burger {
@@ -2356,7 +2328,8 @@ margin-top: 10px;
 .site-menu ul li {
   display: none;
 }
-.burger{
+
+.site-menu ul.menu-open li {
   display: block;
 }
 .burger {
@@ -2408,7 +2381,8 @@ margin-top: 10px;
 .site-menu ul li {
   display: none;
 }
-.burger{
+
+.site-menu ul.menu-open li {
   display: block;
 }
 .burger {
@@ -2449,4 +2423,149 @@ margin-top: 10px;
 .logo{
   margin-top: 10px;
 }
+}
+.getResult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.getResult h3 {
+  text-align: center;
+}
+
+.getResult h4 {
+  margin-top: 10px;
+}
+@media (max-width: 1024px){
+  .top-row .container {
+      display: flex;
+      flex-direction: row;
+      margin-top: 60px;
+      margin-left: 40px;
+  }
+  }
+@media (max-width: 720px){
+.top-row .container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 60px;
+    margin-left: 40px;
+}
+}
+@media (max-width: 430px) {
+  th {
+    width: 50px; /* задайте нужную ширину */
+    height: 20px; /* задайте нужную высоту */
+    font-size: 10px; /* задайте нужный размер текста */
+  }
+  .table{
+    margin-top: 20px;
+  }
+}
+.site-menu ul {
+  display: none;
+}
+
+.site-menu ul.menu-open {
+  display: block;
+}
+@media (max-width: 1280px){
+.top-row .container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 80px;
+    margin-left: 40px;
+}
+}
+@media (max-width: 400px){
+.information-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 75px;
+}
+}
+@media (max-width: 1280px){
+.top-row .container {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    flex-direction: row;
+    margin-top: 80px;
+    margin-left: 40px;
+}
+.information-article .container {
+    display: flex;
+    flex-direction: row;
+    margin-top: -75px;
+}
+}
+@media (max-width: 720px){
+.information-data_inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -105px;
+}
+}
+@media (min-width: 1280px){
+.site-menu ul {
+  display: block;
+}
+
+.site-menu ul.menu-open {
+  display: none;
+}
+li {
+  list-style-type: none; /* Убираем маркеры */
+}
+
+a {
+  text-decoration: none; /* Убираем подчёркивание ссылок */
+}
+
+.site-menu ul {
+  display: flex; /* Создаем гибкий контейнер */
+  flex-direction: row; /* Располагаем элементы в горизонтальном порядке */
+}
+.top-row .container{
+  display: flex; /* Создаем гибкий контейнер */
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.site-menu ul li{
+  font-family: 'Philosopher', sans-serif;;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 30px;
+  text-transform: uppercase;
+  margin-right: 20px;
+  color: #333333;
+}
+
+.site-menu ul li:hover{
+  font-family: 'Philosopher', sans-serif;;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 30px;
+  text-transform: uppercase;
+  margin-right: 20px;
+  color: red;
+}
+}
+@media (max-width: 1280px){
+  .site-menu ul li{
+    font-family: 'Philosopher', sans-serif;;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-right: 20px;
+    color: #333333;
+  }
 }

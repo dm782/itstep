@@ -12,9 +12,6 @@ const Main = () => {
                 <div class="information-area_text">
                     <p>Данный информационный продукт поможет сэкономить денежные средства, не уходя в "Минус", по уникальной формуле не имеющей аналогов в рускоязычном сегменте Интернет-сети</p>
                 </div>
-                <div class="button-link_title">
-                    <a href="#" class="button_title">Начать</a>
-                </div>
             </div>
 
             <div class="information-area_image">
