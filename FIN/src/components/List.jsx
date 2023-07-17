@@ -7,10 +7,6 @@ const List = (props) => {
 //     return null; 
 // //   }
 
-const saveTableData = () => {
-    localStorage.setItem("tableData", JSON.stringify(props.newSum));
-  };
-
 const calculateTotalAddExp = () => {
     let total = 0;
     props.newSum.forEach((item) => {
