@@ -21,6 +21,7 @@ function handleAddExpChange(event){
     setData({...data, addExp: event.target.value});
   }
 
+
     return (<>
     <form className="sum_form" action="" onSubmit={handleFormSubmit}>
     <div className="information-data">
@@ -52,14 +53,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onSumAdd: (sum) => {
-    if (!isNaN(sum)) { // Проверка, что sum не является NaN
-      dispatch({
-        type: SUM_ADD,
-        sum
-      });
+    onSumAdd: (sum) => {
+        dispatch({
+            type: SUM_ADD, sum 
+        })
     }
-  }
 });
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(StateAdd);
