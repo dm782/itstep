@@ -1,0 +1,121 @@
+html{
+    box-sizing: border-box;
+}
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #2C2D35;
+}
+.header .container{
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1440px;
+    padding-left: 165px;
+    padding-right: 165px;
+    margin: 0 auto;
+    background-color: #E1EDE6;
+}
+.header__logo-text{
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.header__logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.header__menu-list nav ul{
+    display: flex;
+    flex-direction: row;
+}
+li {
+    list-style: none;
+}
+.header__menu-list nav ul {
+color: #2C2D35;
+font-family: Raleway;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+gap: 60px;
+}
+.header__menu-list-and-icon{
+    display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        gap: 60px;
+}
+
+@media (max-width: 768px) {
+    .header .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 768px;
+            padding-left: 39px;
+            padding-right: 39px;
+            margin: 0 auto;
+        }
+    .header__menu-list nav ul {
+color: #2C2D35;
+font-family: Raleway;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.header__logo-text p{
+color: #598D66;
+font-family: Raleway;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+}
+@media (max-width: 576px) {
+    .header .container{
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        height: 123px;
+        padding: 0;
+    }
+    .header__logo{
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .header__menu-list-and-icon{
+        gap: calc(124px - 60px);
+        border-top: 1px solid #C3D1C6;;
+    }
+    .header__menu-list nav ul {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        padding-left: 0px;
+        padding-right: 33px;
+    }
+}

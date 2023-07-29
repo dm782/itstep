@@ -1,0 +1,87 @@
+.block-sketchbook{
+    height: 500px;
+    background-color: #FFFFFF;
+
+}
+.block-sketchbook-text_article h3{
+    font-family: Roboto;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em; 
+    color: #666666;
+}
+.block-sketchbook .container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+}
+.block-sketchbook-text_sentence p{
+    font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 31px;
+        letter-spacing: 0em;
+        color: #85859B;
+        width: 350px;
+        height: 124px;
+        margin-top: -30px;
+        margin-bottom: 40px;
+}
+.block-sketchbook_img{
+    margin-top: 90px;
+}
+.block-sketchbook-text_button a {
+padding: 20px 50px 20px 50px;
+    border: 1px solid #7875FE;
+    font-family: Roboto;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 23px;
+        letter-spacing: 0em;
+        
+}
+.block-sketchbook-text_button {
+    margin: 20px 0 0 0;
+    display: block;
+}
+.block-sketchbook_img{
+    display: block;
+}
+.block-sketchbook_img-768{
+    display: none;
+}
+@media (max-width: 768px) {
+    .block-sketchbook_img-768{
+        display: block;
+        margin-top: 50px;
+    }
+    .block-sketchbook_img{
+        display: none;
+    }
+    .block-sketchbook .container{
+        height: 394px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .block-sketchbook-text_article h3{
+    color: #666;
+    font-family: Roboto;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    }
+    .block-sketchbook-text_sentence p{
+        color: #85859B;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 170%;
+        width: 330px;
+    }
+
+}

@@ -1,0 +1,290 @@
+.block-plus_pics-text{
+    display: flex;
+    flex-direction: row;
+}
+.block-plus_pics-text_v1{
+    display: flex;
+    flex-direction: row;
+}
+.block-plus_pics-text_v1-text_column {
+    display: flex;
+    flex-direction: column;
+        justify-content: flex-start;
+}
+.block-plus_pics-text_v2-text_column {
+    display: flex;
+    flex-direction: column;
+}
+.block-plus_pics-text_v3-text_column {
+    display: flex;
+    flex-direction: column;
+}
+.block-plus_pics-text_v2 {
+    display: flex;
+    flex-direction: row;
+}
+.block-plus_pics-text_v3 {
+    display: flex;
+    flex-direction: row;
+}
+.block-plus_pics-text{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 70px;
+}
+.block-plus_pics-text_v1-text{
+font-family: Roboto;
+font-size: 18px;
+font-weight: 500;
+line-height: 27px;
+letter-spacing: 0em;
+}
+.block-plus_pics-text_v2-text-article{
+    font-family: Roboto;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 27px;
+        letter-spacing: 0em;
+}
+.block-plus_pics-text_v3-text-article{
+        font-family: Roboto;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 27px;
+            letter-spacing: 0em;
+}
+.block-plus_pics-text_v1-text-senetence{
+    font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 27px;
+        letter-spacing: 0em;
+        width: 160px;
+        height: 54px;
+        color: #85859B;
+}
+.block-plus_pics-text_v2-text-senetence{
+        font-family: Roboto;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 27px;
+            letter-spacing: 0em;
+            width: 160px;
+            height: 54px;
+            color: #85859B;
+}
+.block-plus_pics-text_v3-text-senetence{
+        font-family: Roboto;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 27px;
+            letter-spacing: 0em;
+            width: 160px;
+            height: 54px;
+            color: #85859B;
+}
+.block-plus_other{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.block-plus_other-text_article h3{
+    font-family: Roboto;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 40px;
+        letter-spacing: 0em;
+        width: 350px;
+        height: 74px;
+}
+.block-plus_other-text_sentence p{
+    font-family: Roboto;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 31px;
+        letter-spacing: 0em;
+        width: 350px;
+        height: 351px;
+}
+.block-plus_full{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.block-plus_pics-text_v1-text-senetence p{
+    margin-top: -30px;
+}
+.block-plus_pics-text_v2-text-senetence p {
+    margin-top: -30px;
+}
+.block-plus_pics-text_v3-text-senetence p {
+    margin-top: -30px;
+}
+.block-plus_other{
+    margin-top: 50px;
+}
+.block-plus{
+    margin-top: 50px;
+}
+.block-plus_other-bigimg768 {
+    display: none;
+}
+@media (max-width: 768px) {
+.block-plus_pics-text_v1 {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .block-plus_pics-text_v1::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #C0C0C0;
+    }
+.block-plus_pics-text_v2 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.block-plus_pics-text_v2::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #C0C0C0;
+}
+.block-plus_pics-text_v3 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.block-plus_pics-text_v3::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #C0C0C0;
+}
+.block-plus_other-bigimg{
+    display: none;
+}
+.block-plus_other-bigimg768 {
+    display: block;
+}
+.block-plus_other-text_article h3{
+    color: #666;
+        font-family: Roboto;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        width: 330px;
+}
+.block-plus_other-text_sentence p{
+    color: #85859B;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 170%;
+}
+
+}
+@media (max-width: 576px) {
+.block-plus {
+    margin-top: 35px;
+}
+.block-plus_other{
+    display: flex;
+    flex-direction: column;
+    margin-left: 33px;
+}
+.block-plus_pics-text_v1-text h5{
+    color: #666;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        /* 24px */
+}
+.block-plus_pics-text_v1-text-senetence p{
+    color: #85859B;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 24px */
+}
+.block-plus_pics-text_v2-text-article h5 {
+    color: #666;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 24px */
+}
+
+.block-plus_pics-text_v2-text-senetence p {
+    color: #85859B;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 24px */
+}
+.block-plus_pics-text_v3-text-article h5 {
+    color: #666;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    /* 24px */
+}
+
+.block-plus_pics-text_v3-text-senetence p {
+    color: #85859B;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 24px */
+}
+.block-plus_other-text_article h3{
+color: #666;
+font-family: Roboto;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 100%;
+}
+.block-plus_other-text_sentence p {
+    color: #85859B;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 170%;
+    width: 510px;
+    margin-top: -65px;
+    height: 205px;
+}
+.block-plus_other {
+    margin-top: 0px;
+}
+}

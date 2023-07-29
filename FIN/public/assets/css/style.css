@@ -2024,7 +2024,7 @@ text-decoration: none; /* Убираем подчёркивание ссылок
 .site-menu ul li a {
 font-family: 'Philosopher', sans-serif;
 font-weight: 700;
-font-size: 14px;
+font-size: 15px;
 line-height: 30px;
 text-transform: uppercase;
 margin-right: 20px;
@@ -2562,10 +2562,22 @@ a {
   .site-menu ul li{
     font-family: 'Philosopher', sans-serif;;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 30px;
     text-transform: uppercase;
     margin-right: 20px;
     color: #333333;
+    width: 100%;
+    
+    
   }
+  .site-menu ul li:hover {
+    font-family: 'Philosopher', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-right: 20px;
+    color: red;
+}
 }

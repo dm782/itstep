@@ -1,0 +1,151 @@
+.block-firms .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 250px;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+.block-firms_hanmeuhle{
+    display: block;
+}
+.block-firms_hanmeuhle-768 {
+    display: none;
+}
+.block-firms_canson{
+    display: block;
+}
+.block-firms_canson-768 {
+    display: none;
+}
+.block-firms_royaltalens{
+    display: block;
+}
+.block-firms_royaltalens-768 {
+    display: none;
+}
+.block-firms_fabriano{
+    display: block;
+}
+.block-firms_fabriano-768 {
+    display: none;
+}
+@media (max-width: 768px) {
+    .block-firms_hanmeuhle {
+            display: none;
+        }
+    
+        .block-firms_hanmeuhle-768 {
+            display: block;
+       display: flex;
+    width: 150px;
+    height: 80px;
+    padding: 0px 13.529px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border: 1px solid #C4C4C4;
+        }
+    
+        .block-firms_canson {
+            display: none;
+        }
+    
+        .block-firms_canson-768 {
+            display: block;
+    display: flex;
+        width: 150px;
+        height: 80px;
+        padding: 0px 13.529px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border: 1px solid #C4C4C4;
+        }
+    
+        .block-firms_royaltalens {
+            display: none;
+        }
+    
+        .block-firms_royaltalens-768 {
+            display: block;
+    display: flex;
+    width: 150px;
+    height: 80px;
+    padding: 0px 13.529px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border: 1px solid #C4C4C4;
+        }
+    
+        .block-firms_fabriano {
+            display: none;
+        }
+    
+        .block-firms_fabriano-768 {
+            display: block;
+    display: flex;
+        width: 150px;
+        height: 80px;
+        padding: 0px 13.529px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border: 1px solid #C4C4C4;
+        }
+                .block-firms .container {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+}
+}
+@media (max-width: 576px) {
+   .block-firms_hanmeuhle-768{
+    display: none;
+   }
+   .block-firms_canson-768{
+    display: none;
+   }
+   .block-firms_royaltalens-768{
+    display: none;
+   }
+   .block-firms_fabriano-768{
+    display: none;
+   }
+   .block-firms_hanmeuhle-576 {
+   display: flex;
+   width: 240px;
+   padding: 31.985px 27.294px 43.274px 27.294px;
+   justify-content: center;
+   align-items: center;
+   }
+   .block-firms_canson-576 {
+   display: flex;
+   width: 240px;
+   height: 127px;
+   padding: 38.57px 32px 38.571px 32.941px;
+   justify-content: center;
+   align-items: center;
+   flex-shrink: 0;
+   }
+   .block-firms_royaltalens-576 {
+    display: flex;
+        width: 240px;
+        height: 127px;
+        padding: 0px 14.118px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+   }
+   .block-firms_fabriano-576{
+    display: flex;
+        width: 240px;
+        height: 127px;
+        padding: 0px 21.647px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+   }
+}

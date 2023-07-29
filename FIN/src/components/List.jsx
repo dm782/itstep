@@ -60,7 +60,18 @@ const calculateTotalAddExp = () => {
       <div className="getResult">
   <h3>Отклонение от нормы:</h3>
   {props.newSum.map((item) => (
-    <h4>{getResult(item.date, item.sumFullSalary, item.expense).toFixed(2)} Руб.</h4>
+    <h4>
+    {getResult(item.date, item.sumFullSalary, item.expense).toFixed(2) < 0 ? (
+      <h4 style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      {getResult(item.date, item.sumFullSalary, item.expense).toFixed(2)} Руб.
+      
+      <br /><span style={{ color: "red" }}> Живёшь не по финансам, больше экономь!</span>
+    </h4>
+    ) : (
+      getResult(item.date, item.sumFullSalary, item.expense).toFixed(2)
+    )}{" "}
+    Руб.
+  </h4>
 
   ))}
 </div>
