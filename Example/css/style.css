@@ -1075,7 +1075,7 @@ li {
   }
   .block-replics {
     display: flex;
-    height: 620px;
+    height: 380px;
     padding: 0px 165px;
     justify-content: center;
     align-items: flex-start;
@@ -1391,7 +1391,7 @@ li {
   }
   .block-replics {
     display: flex;
-    height: 620px;
+    height: 271px;
     padding: 0px 0px;
     justify-content: center;
     align-items: flex-start;
@@ -2197,15 +2197,751 @@ li {
   .block-reproductions {
     padding-left: 39px;
     padding-right: 39px;
+    overflow: hidden;
   }
   .block-reproductions__cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+    padding-top: 90px;
   }
   .block-reproductions__cards-top,
   .block-reproductions__cards-down {
     display: flex;
     flex-wrap: wrap;
+  }
+  .block-reproductions__top-article {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%;
+    /* 33px */
+  }
+  .block-reproductions__top-countries-france a {
+    border-radius: 20px;
+    background-color: #376B44;
+    padding: 10px 20px;
+    color: #F4F6F5;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+@media (max-width: 576px) {
+  .block-reproductions {
+    padding-left: 39px;
+    padding-right: 39px;
+  }
+  .block-reprodictions__top {
+    width: 408px;
+    height: 87px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .block-reproductions__cards_amour {
+    width: 240px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards-down_rose {
+    width: 240px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards_amour_author {
+    color: #86928B;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards_amour h6 {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards_amour_paper {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards_amour_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+  }
+  .block-reproductions__cards_amour a {
+    display: flex;
+    width: 200px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards-down_rose_author {
+    color: #86928B;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards-down_rose h6 {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards-down_rose_paper {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards-down_rose_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+  }
+  .block-reproductions__cards-down_rose a {
+    display: flex;
+    width: 200px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards_girl-with-dog {
+    width: 240px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards_girl-with-dog img {
+    width: 200px;
+  }
+  .block-reproductions__cards_girl-with-dog_author {
+    color: #86928B;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards_girl-with-dog h6 {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards_girl-with-dog_paper {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards_girl-with-dog_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+  }
+  .block-reproductions__cards_girl-with-dog a {
+    display: flex;
+    width: 200px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards-down_birds {
+    width: 240px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards-down_birds img {
+    width: 200px;
+  }
+  .block-reproductions__cards-down_birds_author {
+    color: #86928B;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards-down_birds h6 {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards-down_birds_paper {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards-down_birds_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 20px;
+  }
+  .block-reproductions__cards-down_birds a {
+    display: flex;
+    width: 200px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards_procedure {
+    width: 240px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards_procedure img {
+    width: 200px;
+  }
+  .block-reproductions__cards_procedure_author {
+    color: #86928B;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards_procedure h6 {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards_procedure_paper {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards_procedure_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 20px;
+  }
+  .block-reproductions__cards_procedure a {
+    display: flex;
+    width: 200px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards-down_fish {
+    width: 240px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards-down_fish img {
+    width: 200px;
+  }
+  .block-reproductions__cards-down_fish_author {
+    color: #86928B;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards-down_fish h6 {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-bottom: 5px;
+  }
+  .block-reproductions__cards-down_fish_paper {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards-down_fish_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 20px;
+  }
+  .block-reproductions__cards-down_fish a {
+    display: flex;
+    width: 200px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+@media (max-width: 320px) {
+  .block-reproductions__top-article {
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%;
+    /* 26.4px */
+  }
+  .block-reproductions__top-countries-german a {
+    border-radius: 20px;
+    background-color: #D4E8D9;
+    padding: 10px 20px;
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__top-countries {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  .block-reproductions {
+    padding-left: 14px;
+    /* padding-right: 8px; */
+  }
+  .block-reproductions__top-countries-england a {
+    border-radius: 20px;
+    background-color: #D4E8D9;
+    padding: 10px 20px;
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__top-countries-france a {
+    border-radius: 20px;
+    background-color: #376B44;
+    padding: 10px 20px;
+    color: #F4F6F5;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards_amour {
+    width: 290px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards_amour img {
+    width: 250px;
+    height: 250px;
+  }
+  .block-reproductions__cards_amour a {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards_amour_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+  .block-reproductions__cards_girl-with-dog {
+    width: 290px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards_girl-with-dog img {
+    width: 250px;
+    height: 250px;
+  }
+  .block-reproductions__cards_girl-with-dog a {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards_girl-with-dog_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+  .block-reproductions__cards_procedure {
+    width: 290px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards_procedure img {
+    width: 250px;
+    height: 250px;
+  }
+  .block-reproductions__cards_procedure a {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards_procedure_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+    padding-bottom: 20px;
+    padding-top: 40px;
+  }
+  .block-reproductions__cards-down_rose {
+    width: 290px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards-down_rose img {
+    width: 250px;
+    height: 250px;
+  }
+  .block-reproductions__cards-down_rose a {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards-down_rose_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+  .block-reproductions__cards-down_birds {
+    width: 290px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards-down_birds img {
+    width: 250px;
+    height: 250px;
+  }
+  .block-reproductions__cards-down_birds a {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards-down_birds_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+    padding-bottom: 20px;
+    padding-top: 40px;
+  }
+  .block-reproductions__cards-down_fish {
+    width: 290px;
+    height: 514px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #E1EDE6;
+    display: flex;
+    flex-direction: column;
+  }
+  .block-reproductions__cards-down_fish img {
+    width: 250px;
+    height: 250px;
+  }
+  .block-reproductions__cards-down_fish a {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #598D66;
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .block-reproductions__cards-down_fish_price {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 0;
+    padding-bottom: 20px;
+    padding-top: 40px;
   }
 }/*# sourceMappingURL=style.css.map */
