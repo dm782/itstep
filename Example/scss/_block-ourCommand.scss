@@ -1,0 +1,404 @@
+.block-ourCommand .container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 165px;
+    height: 580px;
+}
+.block-ourCommand__text-article h5{
+    color: #2C2D35;
+    font-family: Raleway;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%;
+}
+.block-ourCommand_text-area p{
+    color: #2C2D35;
+        font-family: Raleway;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        width: 635px;
+}
+.block-ourCommand__text-photo{
+    display: flex;
+    gap: 30px;
+}
+.block-ourCommand__img{
+    padding-right: 30px;
+}
+        .block-ourCommand__img320{
+            display: none;
+        }
+        .block-ourCommand__img{
+            display: block;
+        }
+@media (max-width: 1300px) {
+    .block-ourCommand .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 39px;
+        padding-top: 70px;
+        height: 965px;
+    }
+
+    .block-ourCommand__text-article h5 {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%;
+    }
+
+    .block-ourCommand_text-area p {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        width: 635px;
+    }
+
+    .block-ourCommand__text-photo {
+        display: flex;
+        gap: 30px;
+    }
+
+    .block-ourCommand__img {
+        padding-right: 30px;
+    }
+
+}
+@media (max-width: 768px) {
+.block-ourCommand .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 39px;
+        padding-top: 70px;
+        height: 965px;
+    }
+
+    .block-ourCommand__text-article h5 {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%;
+    }
+
+    .block-ourCommand_text-area p {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        width: 635px;
+    }
+
+    .block-ourCommand__text-photo {
+        display: flex;
+        gap: 30px;
+    }
+
+    .block-ourCommand__img {
+        padding-right: 30px;
+    }
+
+}
+@media (max-width: 704px) {
+    .block-ourCommand .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 39px;
+        padding-top: 50px;
+        height: 756px;
+    }
+
+    .block-ourCommand__text-article h5 {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%;
+        margin: 0;
+        padding-top: 30px;
+    }
+
+    .block-ourCommand_text-area p {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        width: 510px;
+    }
+
+    .block-ourCommand__text-photo {
+        display: flex;
+        gap: 30px;
+        padding-bottom: 50px;
+    }
+
+    .block-ourCommand__img {
+        padding-right: 30px;
+    }
+}
+@media (max-width: 576px) {
+    .block-ourCommand .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 39px;
+        padding-top: 50px;
+        height: 756px;
+    }
+
+    .block-ourCommand__text-article h5 {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%;
+        margin: 0;
+        padding-top: 30px;
+    }
+
+    .block-ourCommand_text-area p {
+        color: #2C2D35;
+            font-family: Raleway;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 140%;
+            width: 510px;
+    }
+
+    .block-ourCommand__text-photo {
+        display: flex;
+        gap: 30px;
+        padding-bottom: 50px;
+    }
+
+    .block-ourCommand__img {
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 573px) {
+    .block-ourCommand .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 3px;
+        padding-top: 50px;
+        height: 756px;
+    }
+
+    .block-ourCommand__text-article h5 {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%;
+        margin: 0;
+        padding-top: 30px;
+    }
+
+    .block-ourCommand_text-area p {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        width: 270px;
+    }
+
+    .block-ourCommand__text-photo {
+        display: flex;
+        gap: 15px;
+        padding-bottom: 50px;
+    }
+
+    .block-ourCommand__img {
+        display: flex;
+        background-image: url('../img/picHand320.png');
+    }
+
+    .block-ourCommand__img1440 {
+        display: none;
+    }
+
+    .block-ourCommand__img320 {
+        display: block;
+    }
+
+    .block-ourCommand__img {
+        display: none;
+    }
+}
+
+@media (max-width: 320px) {
+    .block-ourCommand .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 3px;
+        padding-top: 50px;
+        height: 756px;
+    }
+
+    .block-ourCommand__text-article h5 {
+        color: #2C2D35;
+            font-family: Raleway;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 110%;
+        margin: 0;
+        padding-top: 30px;
+    }
+
+    .block-ourCommand_text-area p {
+        color: #2C2D35;
+            font-family: Raleway;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 140%;
+            width: 270px;
+    }
+
+    .block-ourCommand__text-photo {
+        display: flex;
+        gap: 15px;
+        padding-bottom: 50px;
+    }
+
+    .block-ourCommand__img {
+        display: flex;
+        background-image: url('../img/picHand320.png');
+    }
+    .block-ourCommand__img1440{
+        display: none;
+    }
+        .block-ourCommand__img320{
+            display: block;
+        }
+        .block-ourCommand__img{
+            display: none;
+        }
+}
+@media (max-width: 317px) {
+    .block-ourCommand .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 3px;
+        padding-top: 50px;
+        height: 440px;
+    }
+
+    .block-ourCommand__text-article h5 {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%;
+        margin: 0;
+        padding-top: 0px;
+    }
+
+    .block-ourCommand_text-area p {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        width: 270px;
+    }
+
+    .block-ourCommand__text-photo {
+        display: flex;
+        gap: 15px;
+        padding-bottom: 50px;
+    }
+
+    .block-ourCommand__img {
+        display: flex;
+        background-image: url('../img/picHand320.png');
+    }
+
+    .block-ourCommand__img320 {
+        display: none;
+    }
+
+    .block-ourCommand__img {
+        display: none;
+    }
+}
+@media (max-width: 300px) {
+    .block-ourCommand .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 3px;
+        padding-top: 50px;
+        height: 440px;
+    }
+
+    .block-ourCommand__text-article h5 {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%;
+        margin: 0;
+        padding-top: 0px;
+    }
+
+    .block-ourCommand_text-area p {
+        color: #2C2D35;
+        font-family: Raleway;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        width: 240px;
+    }
+
+    .block-ourCommand__text-photo {
+        display: flex;
+        gap: 7px;
+        padding-bottom: 50px;
+    }
+
+    .block-ourCommand__img {
+        display: flex;
+        background-image: url('../img/picHand320.png');
+    }
+
+    .block-ourCommand__img320 {
+        display: none;
+    }
+
+    .block-ourCommand__img {
+        display: none;
+    }
+}
