@@ -316,7 +316,7 @@ color: #86928B;
 
     .block-replics {
         display: flex;
-        height: 620px;
+        height: 360px;
         padding: 0px 165px;
         justify-content: center;
         align-items: flex-start;
@@ -665,7 +665,7 @@ color: #86928B;
             width: 320px;
             height: 433px;
             background-color: #E1EDE6;
-            transform: translateX(-61px);
+            transform: translateX(0px);
             z-index: 9999;
             justify-content: flex-start;
             
@@ -816,8 +816,8 @@ color: #86928B;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    padding-left: 24px;
-    padding-right: 17px;
+    padding-left: 33px;
+    padding-right: 33px;
     width: 201px;
 }
 .header__menu-list.open {
@@ -830,5 +830,11 @@ color: #86928B;
     z-index: 9999;
     justify-content: flex-start;
     margin-left: 36px;
+}
+.block-replics__text {
+    width: 200px;
+    height: 233px;
+    flex-shrink: 0;
+    padding-left: 30px;
 }
 }

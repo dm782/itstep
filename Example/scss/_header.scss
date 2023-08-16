@@ -410,10 +410,6 @@ line-height: normal;
         align-items: center;
         gap: 8px;
     }
-    .header__menu-list-and-icon{
-        gap: calc(124px - 60px);
-        // border-top: 1px solid #C3D1C6;
-    }
     .header__menu-list nav ul {
         color: #2C2D35;
         font-family: Raleway;
@@ -441,12 +437,6 @@ line-height: normal;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-    }
-
-    .header__menu-list-and-icon {
-        gap: 0px;
-        // border-top: 1px solid #C3D1C6;
-        ;
     }
 
     .header__menu-list nav ul {
@@ -495,6 +485,8 @@ line-height: normal;
                 height: 433px;
                 background-color: #E1EDE6;
                 gap: 50px;
+                padding-top: 16px;
+                z-index: 9999;
     }
 
 .menu__btn {
@@ -506,10 +498,7 @@ line-height: normal;
     padding: 0;
     border-radius: 0;
 }
-.header__menu-list-and-icon {
-    gap: 340px;
-    padding-bottom: 10px;
-}
+
 .header__menu-list {
     display: none;
 }
@@ -518,7 +507,6 @@ line-height: normal;
     background-color: transparent;
     border: none;
     padding-left: 23px;
-    padding-top: 16px;
 }
 .header__menu-list{
     align-self: flex-start;
@@ -531,10 +519,35 @@ line-height: normal;
     height: 433px;
     background-color: #E1EDE6;
     transform: translateX(-61px);
-    z-index: 9999;
 }
 .menu__btn-close {
     display: block;
+}
+.header__menu-list.open {
+    position: absolute;
+    left: 0;
+    top: 76px;
+}
+.menu__btn {
+    position: absolute;
+    left: 15px;
+    top: 85px;
+    display: block;
+}
+.header__icon{
+position: absolute;
+right: 15px;
+top: 85px;
+}
+.menu__btn {
+        display: flex;
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
+    }
 }
 @media (max-width: 420px) {
     .header .container {
@@ -575,9 +588,17 @@ line-height: normal;
         border-radius: 0;
     }
 
-    .header__menu-list-and-icon {
-        gap: calc(340px - 30px);
-    }
+.header__menu-list.open {
+    position: absolute;
+    left: 0;
+    top: 76px;
+}
+.menu__btn {
+    position: absolute;
+    left: 15px;
+    top: 85px;
+    display: block;
+}
 }
 @media (max-width: 390px) {
     .header .container {
@@ -618,9 +639,11 @@ line-height: normal;
         border-radius: 0;
     }
 
-    .header__menu-list-and-icon {
-        gap: calc(340px - 60px);
-    }
+.header__menu-list.open {
+    position: absolute;
+    left: 0;
+    top: 76px;
+}
 }
 @media (max-width: 390px) {
     .header .container {
@@ -661,9 +684,17 @@ line-height: normal;
         border-radius: 0;
     }
 
-    .header__menu-list-and-icon {
-        gap: calc(340px - 60px);
-    }
+.header__menu-list.open {
+    position: absolute;
+    left: 0;
+    top: 76px;
+}
+.menu__btn {
+    position: absolute;
+    left: 15px;
+    top: 85px;
+    display: block;
+}
 }
 @media (max-width: 360px) {
     .header .container {
@@ -703,10 +734,17 @@ line-height: normal;
         padding: 0;
         border-radius: 0;
     }
-
-    .header__menu-list-and-icon {
-        gap: calc(340px - 120px);
-    }
+.header__menu-list.open {
+    position: absolute;
+    left: 0;
+    top: 76px;
+}
+.menu__btn {
+    position: absolute;
+    left: 15px;
+    top: 85px;
+    display: block;
+}
 }
 @media (max-width: 330px) {
     .header .container {
@@ -747,9 +785,17 @@ line-height: normal;
         border-radius: 0;
     }
 
-    .header__menu-list-and-icon {
-        gap: calc(340px - 120px);
-    }
+.header__menu-list.open {
+    position: absolute;
+    left: 0;
+    top: 76px;
+}
+.menu__btn {
+    position: absolute;
+    left: 15px;
+    top: 85px;
+    display: block;
+}
 }
 @media (max-width: 300px) {
     .header .container {
@@ -790,9 +836,17 @@ line-height: normal;
         border-radius: 0;
     }
 
-    .header__menu-list-and-icon {
-        gap: calc(340px - 180px);
-    }
+.header__menu-list.open {
+    position: absolute;
+    left: 0;
+    top: 76px;
+}
+.menu__btn {
+    position: absolute;
+    left: 15px;
+    top: 85px;
+    display: block;
+}
 }
 
         @media (max-width: 270px) {
@@ -834,8 +888,16 @@ line-height: normal;
                 border-radius: 0;
             }
     
-            .header__menu-list-and-icon {
-                gap: calc(340px - 210px);
-            }
+.header__menu-list.open {
+    position: absolute;
+    left: 0;
+    top: 76px;
+}
+.menu__btn {
+    position: absolute;
+    left: 15px;
+    top: 85px;
+    display: block;
+}
         }
-    }
+    
