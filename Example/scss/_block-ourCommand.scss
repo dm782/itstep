@@ -111,9 +111,12 @@
     .block-ourCommand__img {
         padding-right: 30px;
     }
-
+        .block-ourCommand {
+            margin-left: -5px;
+        }
 }
 @media (max-width: 704px) {
+
     .block-ourCommand .container {
         display: flex;
         flex-direction: column;

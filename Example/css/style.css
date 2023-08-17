@@ -1222,6 +1222,7 @@ li {
     align-items: center;
     gap: 30px;
     flex-shrink: 0;
+    margin-left: -12px;
   }
   .block-replics__img576 {
     display: none;
@@ -3694,7 +3695,6 @@ li {
   .block-reproductions {
     padding-left: 39px;
     padding-right: 39px;
-    overflow: hidden;
   }
   .block-reproductions__cards-top,
   .block-reproductions__cards-down {
@@ -7709,7 +7709,7 @@ li {
   }
   .block-reproductions__cards_amour a {
     display: flex;
-    width: 200px;
+    width: 202px;
     height: 50px;
     padding: 20px 60px;
     justify-content: center;
@@ -11822,6 +11822,9 @@ li {
   }
   .block-ourCommand__img {
     padding-right: 30px;
+  }
+  .block-ourCommand {
+    margin-left: -5px;
   }
 }
 @media (max-width: 704px) {
