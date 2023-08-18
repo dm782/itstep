@@ -55,7 +55,7 @@ li {
 .header__menu-list nav ul {
 color: #2C2D35;
 font-family: Raleway;
-font-size: 20px;
+font-size: 18px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
@@ -70,6 +70,15 @@ gap: 60px;
 }
 .menu__btn-close {
     display: none;
+}
+.header__menu-list nav ul li a:hover {
+    color: #598D66;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    gap: 60px;
 }
 @media (max-width: 970px) {
 .header .container {
@@ -112,7 +121,7 @@ gap: 60px;
     .header__menu-list nav ul {
         color: #2C2D35;
         font-family: Raleway;
-        font-size: 20px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -230,7 +239,7 @@ gap: 60px;
     .header__menu-list nav ul {
         color: #2C2D35;
         font-family: Raleway;
-        font-size: 20px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -262,7 +271,7 @@ gap: 60px;
     .header__menu-list nav ul {
 color: #2C2D35;
 font-family: Raleway;
-font-size: 18px;
+font-size: 16px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
@@ -379,7 +388,7 @@ line-height: normal;
     .header__menu-list nav ul {
         color: #2C2D35;
         font-family: Raleway;
-        font-size: 20px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;

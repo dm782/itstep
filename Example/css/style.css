@@ -65,7 +65,7 @@ li {
 .header__menu-list nav ul {
   color: #2C2D35;
   font-family: Raleway;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -82,6 +82,16 @@ li {
 
 .menu__btn-close {
   display: none;
+}
+
+.header__menu-list nav ul li a:hover {
+  color: #598D66;
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  gap: 60px;
 }
 
 @media (max-width: 970px) {
@@ -120,7 +130,7 @@ li {
   .header__menu-list nav ul {
     color: #2C2D35;
     font-family: Raleway;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -226,7 +236,7 @@ li {
   .header__menu-list nav ul {
     color: #2C2D35;
     font-family: Raleway;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -257,7 +267,7 @@ li {
   .header__menu-list nav ul {
     color: #2C2D35;
     font-family: Raleway;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -363,7 +373,7 @@ li {
   .header__menu-list nav ul {
     color: #2C2D35;
     font-family: Raleway;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -923,6 +933,36 @@ li {
 
 .block-replics__img576 {
   display: none;
+}
+
+.block-replics__text-button a:hover {
+  height: 65px;
+  padding: 20px 60px;
+  gap: 6px;
+  flex-shrink: 0;
+  border: 1px solid #598D66;
+  color: #F4F6F5;
+  font-family: Raleway;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #598D66;
+}
+
+.block-replics__text-button a:active {
+  height: 65px;
+  padding: 20px 60px;
+  gap: 6px;
+  flex-shrink: 0;
+  border: 1px solid #598D66;
+  color: #FFFFFF;
+  font-family: Raleway;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #376B44;
 }
 
 @media (max-width: 1150px) {
@@ -7636,7 +7676,7 @@ li {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding-top: 100px;
+    padding-top: 30px;
   }
 }
 @media (max-width: 576px) {
@@ -8056,7 +8096,7 @@ li {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding-top: 100px;
+    padding-top: 30px;
   }
 }
 @media (max-width: 565px) {
@@ -8368,7 +8408,7 @@ li {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 30px;
     padding-right: 25px;
   }
 }
@@ -8687,7 +8727,7 @@ li {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 30px;
   }
 }
 @media (max-width: 400px) {
@@ -9331,7 +9371,8 @@ li {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 30px;
+    padding-right: 0;
   }
 }
 @media (max-width: 360px) {
@@ -9653,7 +9694,7 @@ li {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 30px;
   }
 }
 @media (max-width: 340px) {
@@ -10912,7 +10953,7 @@ li {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 30px;
     padding-right: 40px;
   }
 }

@@ -71,6 +71,34 @@ flex-shrink: 0;
 .block-replics__img576 {
     display: none;
 }
+.block-replics__text-button a:hover {
+    height: 65px;
+    padding: 20px 60px;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #F4F6F5;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background-color: #598D66;
+}
+.block-replics__text-button a:active {
+    height: 65px;
+    padding: 20px 60px;
+    gap: 6px;
+    flex-shrink: 0;
+    border: 1px solid #598D66;
+    color: #FFFFFF;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background-color: #376B44;
+}
 @media (max-width: 1150px) {
     .block-replics .container {
             display: flex;
