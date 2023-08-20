@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .site-menu__logo{
     background-image: url('../img/logo.png');
     width: 200px;
@@ -7,7 +6,7 @@
 .site-menu{
         display: flex;
         justify-content: space-around;
-        margin-bottom: 80px;
+        margin-bottom: 1000px;
 }
 .site-menu__menu-item ul{
         display: flex;
@@ -125,7 +124,6 @@ margin-top: -35px;
         line-height: 25px;
         color: #000000;
 }
-=======
 .site-menu__logo{
     background-image: url('../img/logo.png');
     width: 200px;
@@ -227,10 +225,10 @@ body{
     margin-top: -88px;
 }
 .article-white__border{
-border-left: 1px solid #000000;
-height: 230px;
-margin-left: 135px;
-margin-top: -35px;
+    border-left: 1px solid #000000;
+    height: 230px;
+    margin-left: 135px;
+    margin-top: -35px;
 }
 .article-white__menu-item{
     margin-top: -70px;
@@ -252,4 +250,4 @@ margin-top: -35px;
         line-height: 25px;
         color: #000000;
 }
->>>>>>> ea76e2b31cba1c12c47c7c491140af1b1ad89226
+

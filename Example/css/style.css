@@ -8403,7 +8403,7 @@ li {
   }
   .block-reproductions__cards {
     text-align: center;
-    width: 103.0927835052%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -8722,7 +8722,7 @@ li {
   }
   .block-reproductions__cards {
     text-align: center;
-    width: 103.0927835052%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -9049,7 +9049,7 @@ li {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 30px;
   }
 }
 @media (max-width: 380px) {
@@ -9695,6 +9695,7 @@ li {
     flex-direction: row;
     justify-content: center;
     padding-top: 30px;
+    padding-left: 25px;
   }
 }
 @media (max-width: 340px) {
