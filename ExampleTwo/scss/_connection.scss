@@ -1,0 +1,188 @@
+.connection .container{
+    height: 980px;
+    background-color: #fff;
+    display: flex;
+}
+.connection__connection-with-us__article p{
+    color: #000;
+        font-family: Mulish;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%;
+        /* 56px */
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+}
+.connection__connection-with-us__article span {
+color: #F6523C;
+    font-family: Mulish;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+.connection__connection-with-us__phone{
+    display: flex;
+    align-items: center;
+}
+.connection__connection-with-us__adress{
+    display: flex;
+    align-items: center;
+}
+.connection__connection-with-us__email{
+    display: flex;
+    align-items: center;
+}
+.connection__connection-with-us__phone__link a{
+    color: #000;
+        font-family: Mulish;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+        margin-left: 30px;
+}
+.connection__connection-with-us__adress__text p{
+    color: #000;
+        font-family: Mulish;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        /* 33.6px */
+        width: 341px;
+        margin-left: 30px;
+}
+.connection__connection-with-us__email__link a{
+    color: #000;
+        font-family: Mulish;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-left: 30px;
+}
+.connection__form__up__name {
+    border: none;
+    border-bottom: 1px solid #929292;
+    /* Цвет и толщина полоски */
+    outline: none;
+    padding-bottom: 5px;
+    /* Расстояние между полоской и текстом */
+    width: 359px;
+}
+
+.connection__form__up__name::placeholder {
+    color: #999;
+    text-transform: uppercase;
+}
+.connection__form__up__number-phone{
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 359px;
+    margin-left: 92px;
+}
+.connection__form__up__number-phone::placeholder {
+    color: #999;
+    text-transform: uppercase;
+}
+
+.connection__form__middle__last-name {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 359px;
+}
+
+.connection__form__middle__last-name::placeholder {
+    color: #999;
+    text-transform: uppercase;
+}
+
+.connection__form__middle__email {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 359px;
+    margin-left: 92px;
+}
+
+.connection__form__middle__email::placeholder {
+    color: #999;
+    text-transform: uppercase;
+}
+
+.connection__form__message__input {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 820px;
+}
+
+.connection__form__message__input::placeholder {
+    color: #999;
+    text-transform: uppercase;
+}
+.connection__form__down label{
+    color: #929292;
+        font-family: Open Sans;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        /* 18.2px */
+        letter-spacing: 0.14px;
+        width: 784px;
+        display: block;
+        padding-left: 18px;
+}
+.connection__form__down{
+    display: flex;
+    align-items: baseline;
+}
+.connection__form__up{
+    padding-bottom: 60px;
+}
+.connection__form__middle {
+    padding-bottom: 60px;
+}
+.connection__form__down{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.connection__form__button a{
+display: inline-flex;
+    height: 57px;
+    padding: 22px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    background-color: #F6523C;
+    width: 224px;
+    height: 57px;
+    color: #FFF;
+        font-family: Mulish;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+}
+.connection__form {
+    width: 1060px;
+    height: 658px;
+    flex-shrink: 0;
+    border: 1px solid #DFDFDF;
+    padding-top: 90px;
+    padding-left: 120px;
+    margin-top: 160px;
+}
