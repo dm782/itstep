@@ -1,7 +1,8 @@
-.connection .container{
-    height: 980px;
+.connection .container {
+    height: 990px;
     background-color: #fff;
     display: flex;
+    align-items: baseline;
 }
 .connection__connection-with-us__article p{
     color: #000;
@@ -75,18 +76,25 @@ color: #F6523C;
     /* Расстояние между полоской и текстом */
     width: 359px;
 }
+.connection__form__border {
+    border: 1px solid #DFDFDF;
+    width: 1060px;
+    height: 660px;
+    margin-top: 160px;
+}
+
 
 .connection__form__up__name::placeholder {
     color: #999;
     text-transform: uppercase;
 }
-.connection__form__up__number-phone{
+.connection__form__up__number-phone {
     border: none;
     border-bottom: 1px solid #929292;
     outline: none;
     padding-bottom: 5px;
     width: 359px;
-    margin-left: 92px;
+    margin-left: 120px;
 }
 .connection__form__up__number-phone::placeholder {
     color: #999;
@@ -112,8 +120,9 @@ color: #F6523C;
     outline: none;
     padding-bottom: 5px;
     width: 359px;
-    margin-left: 92px;
+    margin-left: 120px;
 }
+
 
 .connection__form__middle__email::placeholder {
     color: #999;
@@ -125,9 +134,18 @@ color: #F6523C;
     border-bottom: 1px solid #929292;
     outline: none;
     padding-bottom: 5px;
-    width: 820px;
+    width: 850px;
+    margin-left: 0px;
 }
-
+.connection__form__up{
+    margin-left: -41px;
+}
+.connection__form__middle {
+    margin-left: -41px;
+}
+.connection__form__message{
+    margin-left: -41px;
+}
 .connection__form__message__input::placeholder {
     color: #999;
     text-transform: uppercase;
@@ -155,12 +173,13 @@ color: #F6523C;
 .connection__form__middle {
     padding-bottom: 60px;
 }
-.connection__form__down{
+.connection__form__down {
     padding-top: 60px;
     padding-bottom: 60px;
+    margin-left: -40px;
 }
-.connection__form__button a{
-display: inline-flex;
+.connection__form__button a {
+    display: inline-flex;
     height: 57px;
     padding: 22px 60px;
     justify-content: center;
@@ -171,18 +190,24 @@ display: inline-flex;
     width: 224px;
     height: 57px;
     color: #FFF;
-        font-family: Mulish;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
+    font-family: Mulish;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    left: 1378px;
 }
 .connection__form {
-    width: 1060px;
-    height: 658px;
     flex-shrink: 0;
+    padding-top: 104px;
+    padding-left: 201px;
     border: 1px solid #DFDFDF;
-    padding-top: 90px;
-    padding-left: 120px;
+    width: 930px;
+    height: 561px;
+    margin-left: 63px;
     margin-top: 160px;
+}
+.connection__connection-with-us{
+    padding-right: 43px;
 }
