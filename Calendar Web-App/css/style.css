@@ -1,0 +1,50 @@
+.week-days p{
+    height: 70px;
+    width: 150px;
+    color: white;
+    background-color: red;
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    align-items: center;
+    margin: 0;
+}
+.week-days{
+    display: flex;
+}
+.month{
+    height: 70px;
+        width: 1110px;
+        color: white;
+        background-color: red;
+        border: 5px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+}
+.week-one p {
+    height: 70px;
+    width: 150px;
+    color: white;
+    background-color: red;
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    align-items: center;
+    margin: 0;
+}
+.week-one{
+    display: flex;
+}
+.day1:hover{
+    background-color: #7e1010;
+}
+.day2:hover {
+    background-color: #7e1010;
+}
+.day3:hover {
+    background-color: #7e1010;
+}

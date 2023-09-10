@@ -211,3 +211,148 @@ color: #F6523C;
 .connection__connection-with-us{
     padding-right: 43px;
 }
+@media (max-width: 1280px) {
+.connection__form__up form{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+.connection__form__middle{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+.connection__form__up {
+    padding-bottom: 0px;
+    margin-left: -223px;
+}
+.connection__form__middle {
+    padding-bottom: 0px;
+}
+.connection__form__up__name {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 418px;
+}
+.connection__form__up__number-phone {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 418px;
+    margin-left: 120px;
+    padding-top: 40px;
+}
+.connection__form__middle__last-name {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 418px;
+    padding-top: 40px;
+}
+.connection__form__middle__email {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 418px;
+    margin-left: 120px;
+    padding-top: 40px;
+}
+.connection__form__message__input {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 418px;
+    margin-left: 120px;
+}
+.connection__form__down label {
+    color: #929292;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 0.14px;
+    width: 784px;
+    display: block;
+    padding-left: 18px;
+    width: 382px;
+}
+.connection__form__middle {
+    padding-bottom: 0px;
+    margin-left: -223px;
+}
+.connection__form__message__input {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 418px;
+    margin-left: -61px;
+    padding-top: 40px;
+}
+.connection__form__middle__number-phone {
+    border: none;
+    border-bottom: 1px solid #929292;
+    outline: none;
+    padding-bottom: 5px;
+    width: 418px;
+    margin-left: 120px;
+}
+.connection__form__button a {
+    display: inline-flex;
+    height: 57px;
+    padding: 22px 60px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    background-color: #F6523C;
+    width: 224px;
+    height: 57px;
+    color: #FFF;
+    font-family: Mulish;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    left: 799px;
+}
+.connection__form {
+    flex-shrink: 0;
+    padding-top: 104px;
+    padding-left: 201px;
+    border: 1px solid #DFDFDF;
+    width: 400px;
+    height: 652px;
+    margin-left: 13px;
+    margin-top: 160px;
+}
+.connection__connection-with-us {
+    padding-right: 43px;
+    padding-left: 50px;
+}
+.connection__form__down {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-left: -95px;
+}
+.connection__connection-with-us {
+    padding-right: 43px;
+    padding-left: 50px;
+    position: relative;
+    top: -86px;
+}
+.connection .container {
+    height: 1080px;
+    background-color: #fff;
+    display: flex;
+    align-items: baseline;
+}
+}
