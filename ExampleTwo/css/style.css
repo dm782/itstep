@@ -2361,7 +2361,7 @@ body {
     width: 370px;
   }
   .our-works {
-    height: 2568px;
+    height: 2606px;
   }
   .our-works__text-link__article p {
     color: #000;
@@ -4166,6 +4166,7 @@ body {
     background-color: #fff;
     padding-top: 80px;
     padding-left: 30px;
+    order: 2;
   }
   .blog__results__cloud__img {
     background-image: url("../img/cloud1920px.png");
@@ -4694,6 +4695,7 @@ body {
     background-color: #fff;
     padding-top: 80px;
     padding-left: 35px;
+    order: 3;
   }
   .blog__results__last-month__img {
     background-image: url("../img/last_month768px.png");
@@ -7827,7 +7829,7 @@ a {
     gap: 18px;
     position: absolute;
     left: 0px;
-    top: 8530px;
+    top: 8325px;
     padding-left: 20px;
     padding-left: -36px;
   }
