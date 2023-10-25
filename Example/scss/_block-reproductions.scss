@@ -1967,15 +1967,16 @@
         flex-direction: column;
         gap: 30px;
     }
-                .block-reproductions__cards {
-                    text-align: center;
-                    width: calc(100% / 0.97);
-                    display: flex;
-                    flex-wrap: wrap;
-                    flex-direction: row;
-                    justify-content: center;
-                    padding-top: 0px;
-                }
+.block-reproductions__cards {
+    text-align: center;
+    width: 103.0927835052%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 0px;
+    margin-left: -18px;
+}
 }
 @media (max-width: 1200px) {
     .block-reproductions {
@@ -6072,15 +6073,15 @@
     font-weight: 500;
     line-height: normal;
 }
-                .block-reproductions__cards {
-                    text-align: center;
-                    width: calc(100% / 0.97);
-                    display: flex;
-                    flex-wrap: wrap;
-                    flex-direction: row;
-                    justify-content: center;
-                    padding-top: 0px;
-                }
+.block-reproductions__cards {
+    text-align: center;
+    width: 104.092784%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 0px;
+}
 }
 @media (max-width: 766px) {
     .block-reproductions {
@@ -8762,16 +8763,16 @@ color: #598D66;
         margin-left: -70px;
         /* padding-right: 8px; */
     }
-        .block-reproductions__cards {
-            text-align: center;
-            width: calc(100% / 0.97);
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            justify-content: center;
-            padding-top: 30px;
-            padding-left: 25px;
-        }
+.block-reproductions__cards {
+    text-align: center;
+    width: 103.0927835052%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 30px;
+    padding-left: 0px;
+}
 }
 @media (max-width: 340px) {
     .block-reproductions__top-article {

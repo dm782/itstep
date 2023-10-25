@@ -3502,6 +3502,7 @@ li {
     flex-direction: row;
     justify-content: center;
     padding-top: 0px;
+    margin-left: -18px;
   }
 }
 @media (max-width: 1200px) {
@@ -7251,7 +7252,7 @@ li {
   }
   .block-reproductions__cards {
     text-align: center;
-    width: 103.0927835052%;
+    width: 104.092784%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -9695,7 +9696,7 @@ li {
     flex-direction: row;
     justify-content: center;
     padding-top: 30px;
-    padding-left: 25px;
+    padding-left: 0px;
   }
 }
 @media (max-width: 340px) {
