@@ -1,4 +1,808 @@
-// const TelegramBot = require('node-telegram-bot-api'); // Отправляет список сегодняшних лидов по команде /today
+const { Telegraf } = require('telegraf');
+const fetch = require('node-fetch');
+
+const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+const chatId = '1013645358';
+const lpTrackerToken = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
+
+const bot = new Telegraf(telegramToken);
+
+async function sendMessage(message) { // Копируемое
+    try {
+        await bot.telegram.sendMessage(chatId, message);
+        console.log('Сообщение успешно отправлено в Telegram');
+    } catch (error) {
+        console.error('Ошибка при отправке сообщения в Telegram:', error);
+    }
+}
+
+bot.on('text', async (ctx) => { // Ответ при вводе любого текста
+
+    try {
+        const url = `https://direct.lptracker.ru/lead/79061902`; // url лида
+        const headers = { // используется для передачи заголовков в HTTP-запросах
+            token: lpTrackerToken // Токен lptracker
+        }; // Закрыл объект
+        const response = await fetch(url, { headers }); // выполняется запрос к указанному URL с использованием функции fetch
+        const data = await response.json(); // После получения ответа от сервера, используется метод .json() для преобразования ответа в формат JSON. Затем данные из ответа сохраняются в переменную data.
+        const lead = data.result; // Далее, предполагается, что в полученных данных есть свойство result, и оно присваивается переменной lead         
+            const message = ` 
+                ID лида: ${lead.id} 
+                Имя лида: ${lead.contact.name}
+                Контакт ID: ${lead.contact.details.find(detail => detail.type === 'phone').data}
+                Дата создания: ${lead.created_at}
+            `;
+            await sendMessage(message);
+    } catch (error) { // Обработка ошибки
+        console.error('Ошибка при получении данных из LPTracker:', error);
+    }
+});
+
+ bot.launch() // Запуск бота
+
+
+
+
+
+
+
+// const { Telegraf } = require('telegraf');
+// const axios = require('axios');
+
+// const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const bot = new Telegraf(TELEGRAM_BOT_TOKEN);
+// const chatId = '1013645358';
+// const lpTrackerToken = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
+
+// bot.hears('getLeads', async (ctx) => {
+//     try {
+//         const response = await axios.get('https://direct.lptracker.ru/lead/103451/list?offset=10&limit=1&sort[updated_at]=3&filter[created_at_from]=1535529725');
+//         const leads = response.data;
+//         return ctx.replyWithJSON(leads);
+//     } catch (error) {
+//         ctx.reply(error.message);
+//     }
+// });
+
+// bot.launch();
+
+
+
+
+
+
+
+
+// const { Telegraf } = require('telegraf');
+// const fetch = require('node-fetch');
+
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358';
+// const lpTrackerToken = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
+
+// const bot = new Telegraf(telegramToken);
+
+// async function sendMessage(message) {
+//     try {
+//         await bot.telegram.sendMessage(chatId, message);
+//         console.log('Сообщение успешно отправлено в Telegram');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// }
+
+// bot.command('edit', async (ctx) => {
+//     try {
+//         await ctx.reply('Введите номер лида');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// });
+
+// bot.on('text', async (ctx) => {
+//     const leadNumber = ctx.message.text;
+
+//     try {
+//         const url = `https://direct.lptracker.ru/lead/${leadNumber}`;
+//         const headers = {
+//             token: lpTrackerToken
+//         };
+//         const response = await fetch(url, { headers });
+//         const data = await response.json();
+
+//         if (data.status === 'success') {
+//             const lead = data.result;
+//             const formattedDate = new Date(lead.created_at).toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' });
+//             const message = `
+//                 ID лида: ${lead.id}
+//                 Имя лида: ${lead.contact.name}
+//                 Контакт ID: ${lead.contact.details.find(detail => detail.type === 'phone').data}
+//                 Дата создания: ${lead.created_at}
+//             `;
+//             await sendMessage(message);
+//         } else {
+//             const errorMessage = `Ошибка при получении данных о лиде: ${data.errors[0].message}`;
+//             await sendMessage(errorMessage);
+//         }
+//     } catch (error) {
+//         console.error('Ошибка при получении данных из LPTracker:', error);
+//     }
+// });
+
+// bot.launch().then(() => {
+//     console.log('Бот успешно запущен');
+// }).catch((error) => {
+//     console.error('Ошибка при запуске бота:', error);
+// });
+
+
+
+
+
+
+
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358';
+
+// // Создание экземпляра объекта TelegramBot
+// const bot = new TelegramBot(telegramToken, { polling: true });
+
+// // Функция для отправки сообщения в Telegram
+// async function sendMessage(message) {
+//     try {
+//         const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+//         const data = {
+//             chat_id: chatId,
+//             text: message,
+//         };
+
+//         await axios.post(url, data);
+//         console.log('Сообщение успешно отправлено в Telegram');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// }
+// // Ваш код для получения данных
+// fetch('https://652e50390b8d8ddac0b12649.mockapi.io/person/', {
+//     method: 'GET',
+//     headers: { 'content-type': 'application/json' },
+// })
+//     .then((res) => {
+//         if (res.ok) {
+//             return res.json();
+//         } else {
+//             throw new Error('Error: ' + res.status);
+//         }
+//     })
+//     .then((data) => {
+//         console.log(data);
+
+//         const message = JSON.stringify(data);
+
+//     })
+//     .catch((error) => {
+//         console.error(error);
+//     });
+
+// bot.onText(/\/edit/, async (msg) => {
+//     const chatId = msg.chat.id;
+
+//     try {
+//         await bot.sendMessage(chatId, 'Введите номер лида');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// });
+
+// bot.on('message', async (msg) => {
+//     const chatId = msg.chat.id;
+//     const messageText = msg.text;
+
+//     if (messageText) {
+//         try {
+//             const leadNumber = messageText;
+//             const url = `https://652e50390b8d8ddac0b12649.mockapi.io/person/${leadNumber}`;
+//             const response = await axios.get(url);
+//             const data = response.data;
+
+//             const message = JSON.stringify(data);
+//             await sendMessage(message);
+//         } catch (error) {
+//             console.error('Ошибка при получении данных из MockAPI:', error);
+//         }
+//     }
+// });
+
+
+
+
+// const TelegramBot = require('node-telegram-bot-api'); // Вывод элемента по номеру id
+// const axios = require('axios');
+
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358';
+
+// // Создание экземпляра объекта TelegramBot
+// const bot = new TelegramBot(telegramToken, { polling: true });
+
+// // Функция для отправки сообщения в Telegram
+// async function sendMessage(message) {
+//     try {
+//         const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+//         const data = {
+//             chat_id: chatId,
+//             text: message,
+//         };
+
+//         await axios.post(url, data);
+//         console.log('Сообщение успешно отправлено в Telegram');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// }
+// // Ваш код для получения данных
+// fetch('https://652e50390b8d8ddac0b12649.mockapi.io/person/', {
+//     method: 'GET',
+//     headers: { 'content-type': 'application/json' },
+// })
+//     .then((res) => {
+//         if (res.ok) {
+//             return res.json();
+//         } else {
+//             throw new Error('Error: ' + res.status);
+//         }
+//     })
+//     .then((data) => {
+//         console.log(data);
+
+//         const message = JSON.stringify(data);
+        
+//     })
+//     .catch((error) => {
+//         console.error(error);
+//     });
+
+// bot.onText(/\/edit/, async (msg) => {
+//     const chatId = msg.chat.id;
+
+//     try {
+//         await bot.sendMessage(chatId, 'Введите номер лида');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// });
+
+// bot.on('message', async (msg) => {
+//     const chatId = msg.chat.id;
+//     const messageText = msg.text;
+
+//     if (messageText) {
+//         try {
+//             const leadNumber = messageText;
+//             const url = `https://652e50390b8d8ddac0b12649.mockapi.io/person/${leadNumber}`;
+//             const response = await axios.get(url);
+//             const data = response.data;
+
+//             const message = JSON.stringify(data);
+//             await sendMessage(message);
+//         } catch (error) {
+//             console.error('Ошибка при получении данных из MockAPI:', error);
+//         }
+//     }
+// });
+
+
+
+
+
+// const axios = require('axios'); // Получение лида
+
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358';
+
+// // Функция для отправки сообщения в Telegram
+// async function sendMessage(message) {
+//     try {
+//         const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+//         const data = {
+//             chat_id: chatId,
+//             text: message,
+//         };
+
+//         await axios.post(url, data);
+//         console.log('Сообщение успешно отправлено в Telegram');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// }
+
+// const url = 'https://direct.lptracker.ru/lead/61488688;';
+// const token = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
+
+// axios.get(url, {
+//     headers: {
+//         'token': token
+//     }
+// })
+//     .then(response => {
+//         console.log(response.data);
+//         const message = JSON.stringify(response.data);
+//         const result = response.data.result; // Получение массива "result" из ответа
+
+//         const resultes = response.data.result; // Получение массива "result" из ответа
+
+
+//         sendMessage(message);
+//     })
+//     .catch(error => {
+//         console.error(error);
+//     });
+
+
+
+
+
+// const TelegramBot = require('node-telegram-bot-api'); // Вывод лидов с оплатой и без
+
+// const axios = require('axios'); // Рабочая версия версия вывода лидов № 3
+
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358';
+
+// const bot = new TelegramBot(telegramToken, { polling: true });
+
+// //Функция для отправки сообщения в Telegram
+// async function sendMessage(message) {
+//     try {
+//         const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+//         const data = {
+//             chat_id: chatId,
+//             text: message,
+//         };
+
+//         await axios.post(url, data);
+//         console.log('Сообщение успешно отправлено в Telegram');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// }
+
+// fetch('https://direct.lptracker.ru/lead/62156971/', {
+//     method: 'GET',
+//     headers: { 'content-type': 'application/json' },
+// })
+//     .then((res) => {
+//         if (res.ok) {
+//             return res.json();
+//         } else {
+//             throw new Error('Error: ' + res.status);
+//         }
+//     })
+//     .then((data) => {
+//         console.log(data);
+
+//         const message = JSON.stringify(data);
+
+//     })
+//     .catch((error) => {
+//         console.error(error);
+//     });
+
+
+// const url = 'https://direct.lptracker.ru/lead/62156971/'; // const url = 'https://direct.lptracker.ru/lead/78949162';
+// const token = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
+
+// bot.onText(/\/payments/, async (msg) => {
+//     const chatId = msg.chat.id;
+
+//     axios.get(url, {
+//         headers: {
+//             'token': token
+//         }
+//     })
+//         .then(response => { // мы получаем ответ от запроса и сохраняем данные о лидах в переменную leadData
+//             console.log(response.data); // Также выводим данные ответа в консоль с помощью console.log(response.data)
+//             const leadData = response.data.result; // Данные о лидах в переменную leadData
+
+//             leadData.forEach(lead => { // метод forEach для перебора каждого элемента массива leadData
+//                 const ids = lead.contact.id
+//                 const phone = lead.contact.details.find(detail => detail.type === 'phone').data; // Для извлечения информации о телефоне мы используем метод find для поиска объекта с типом 'phone' в массиве lead.contact.details. Затем мы получаем значение свойства data этого объекта и сохраняем его в переменную phone.
+//                 const name = lead.contact.name; // Переменная имени
+//                 const money = [];
+//                 for (let i = 0; i < lead.payments.length; i++) {
+//                     money.push(lead.payments[i].sum);
+//                 }
+
+//                 const createdAt = lead.created_at; // Переменная даты
+
+//                 console.log('id:', ids);
+//                 console.log('Телефон:', phone);
+//                 console.log('Имя:', name);
+//                 console.log('Оплата:', money);
+//                 console.log('Дата создания:', createdAt);
+
+//                 // Отправка сообщения в Telegram
+//                 const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+
+//                 const telegramData = {
+//                     chat_id: chatId,
+//                     text: `id: ${ids}\nТелефон: ${phone}\nИмя: ${name}\nОплата: ${money}\nДата создания: ${createdAt}`,
+//                 };
+
+//                 axios.post(telegramUrl, telegramData)
+//                     .then(() => {
+//                         console.log('Сообщение успешно отправлено в Telegram');
+//                     })
+//                     .catch(error => {
+//                         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//                     });
+//             });
+//         })
+//         .catch(error => {
+//             console.error('Ошибка при получении данных:', error);
+//         });
+// });
+
+
+
+
+// const TelegramBot = require('node-telegram-bot-api'); // Вывод лидов с оплатой и без
+
+// const axios = require('axios'); // Рабочая версия версия вывода лидов № 3
+
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358';
+
+// const bot = new TelegramBot(telegramToken, { polling: true });
+
+// //Функция для отправки сообщения в Telegram
+// async function sendMessage(message) {
+//     try {
+//         const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+//         const data = {
+//             chat_id: chatId,
+//             text: message,
+//         };
+
+//         await axios.post(url, data);
+//         console.log('Сообщение успешно отправлено в Telegram');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// }
+
+// fetch('https://direct.lptracker.ru/lead/103451/list?offset01&limit=3&sort[updated_at]=3&filter[created_at_from]=1535529725', {
+//     method: 'GET',
+//     headers: { 'content-type': 'application/json' },
+// })
+//     .then((res) => {
+//         if (res.ok) {
+//             return res.json();
+//         } else {
+//             throw new Error('Error: ' + res.status);
+//         }
+//     })
+//     .then((data) => {
+//         console.log(data);
+
+//         const message = JSON.stringify(data);
+
+//     })
+//     .catch((error) => {
+//         console.error(error);
+//     });
+
+
+// const url = 'https://direct.lptracker.ru/lead/103451/list?offset01&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725'; // const url = 'https://direct.lptracker.ru/lead/78949162';
+// const token = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
+
+// bot.onText(/\/payments/, async (msg) => {
+//     const chatId = msg.chat.id;
+
+//     axios.get(url, {
+//         headers: {
+//             'token': token
+//         }
+//     })
+//         .then(response => { // мы получаем ответ от запроса и сохраняем данные о лидах в переменную leadData
+//             console.log(response.data); // Также выводим данные ответа в консоль с помощью console.log(response.data)
+//             const leadData = response.data.result; // Данные о лидах в переменную leadData
+
+//             leadData.forEach(lead => { // метод forEach для перебора каждого элемента массива leadData
+//                 const ids = lead.contact.id
+//                 const phone = lead.contact.details.find(detail => detail.type === 'phone').data; // Для извлечения информации о телефоне мы используем метод find для поиска объекта с типом 'phone' в массиве lead.contact.details. Затем мы получаем значение свойства data этого объекта и сохраняем его в переменную phone.
+//                 const name = lead.contact.name; // Переменная имени
+//                 const money = [];
+//                 for (let i = 0; i < lead.payments.length; i++) {
+//                     money.push(lead.payments[i].sum);
+//                 }
+
+//                 const createdAt = lead.created_at; // Переменная даты
+
+//                 console.log('id:', ids);
+//                 console.log('Телефон:', phone);
+//                 console.log('Имя:', name);
+//                 console.log('Оплата:', money);
+//                 console.log('Дата создания:', createdAt);
+
+//                 // Отправка сообщения в Telegram
+//                 const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+
+//                 const telegramData = {
+//                     chat_id: chatId,
+//                     text: `id: ${ids}\nТелефон: ${phone}\nИмя: ${name}\nОплата: ${money}\nДата создания: ${createdAt}`,
+//                 };
+
+//                 axios.post(telegramUrl, telegramData)
+//                     .then(() => {
+//                         console.log('Сообщение успешно отправлено в Telegram');
+//                     })
+//                     .catch(error => {
+//                         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//                     });
+//             });
+//         })
+//         .catch(error => {
+//             console.error('Ошибка при получении данных:', error);
+//         });
+// });
+
+
+
+
+// const TelegramBot = require('node-telegram-bot-api');
+// const axios = require('axios');
+
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358'; // Замените на ваш chat_id
+
+// axios.get('https://api.example.com/leads')
+//   .then(response => {
+//     const leadData = response.data;
+
+//     leadData.forEach(lead => {
+//       const ids = lead.details.map(item => item.id);
+//       const phone = lead.contact.details.find(detail => detail.type === 'phone').data;
+//       const name = lead.contact.name;
+//       const money = lead.payments[0].sum;
+
+//       const createdAt = lead.created_at;
+
+//       console.log('id:', ids);
+//       console.log('Телефон:', phone);
+//       console.log('Имя:', name);
+//       console.log('Оплата:', money);
+//       console.log('Дата создания:', createdAt);
+
+//       const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+
+//       const telegramData = {
+//         chat_id: chatId,
+//         text: `id: ${ids}\nТелефон: ${phone}\nИмя: ${name}\nОплата: ${money}\nДата создания: ${createdAt}`,
+//       };
+
+//       axios.post(telegramUrl, telegramData)
+//         .then(() => {
+//           console.log('Сообщение успешно отправлено в Telegram');
+//         })
+//         .catch(error => {
+//           console.error('Ошибка при отправке сообщения в Telegram:', error);
+//         });
+//     });
+//   })
+//   .catch(error => {
+//     console.error('Ошибка при получении данных:', error);
+//   });
+
+
+
+
+
+// const TelegramBot = require('node-telegram-bot-api'); // Вывод лидов с оплатой и без
+
+// const axios = require('axios'); // Рабочая версия версия вывода лидов № 3
+
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358';
+
+// const bot = new TelegramBot(telegramToken, { polling: true });
+
+// //Функция для отправки сообщения в Telegram
+// async function sendMessage(message) {
+//     try {
+//         const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+//         const data = {
+//             chat_id: chatId,
+//             text: message,
+//         };
+
+//         await axios.post(url, data);
+//         console.log('Сообщение успешно отправлено в Telegram');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// }
+
+// fetch('https://direct.lptracker.ru/lead/103451/list?offset01&limit=3&sort[updated_at]=3&filter[created_at_from]=1535529725', {
+//     method: 'GET',
+//     headers: { 'content-type': 'application/json' },
+// })
+//     .then((res) => {
+//         if (res.ok) {
+//             return res.json();
+//         } else {
+//             throw new Error('Error: ' + res.status);
+//         }
+//     })
+//     .then((data) => {
+//         console.log(data);
+
+//         const message = JSON.stringify(data);
+
+//     })
+//     .catch((error) => {
+//         console.error(error);
+//     });
+
+
+// const url = 'https://direct.lptracker.ru/lead/103451/list?offset01&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725'; // const url = 'https://direct.lptracker.ru/lead/78949162';
+// const token = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
+
+// bot.onText(/\/payments/, async (msg) => {
+//     const chatId = msg.chat.id;
+
+//     axios.get(url, {
+//         headers: {
+//             'token': token
+//         }
+//     })
+//         .then(response => { // мы получаем ответ от запроса и сохраняем данные о лидах в переменную leadData
+//             console.log(response.data); // Также выводим данные ответа в консоль с помощью console.log(response.data)
+//             const leadData = response.data.result; // Данные о лидах в переменную leadData
+
+//             leadData.forEach(lead => { // метод forEach для перебора каждого элемента массива leadData
+//                 const ids = lead.contact.id
+//                 const phone = lead.contact.details.find(detail => detail.type === 'phone').data; // Для извлечения информации о телефоне мы используем метод find для поиска объекта с типом 'phone' в массиве lead.contact.details. Затем мы получаем значение свойства data этого объекта и сохраняем его в переменную phone.
+//                 const name = lead.contact.name; // Переменная имени
+//                 const money = [];
+//                 for (let i = 0; i < lead.payments.length; i++) {
+//                     money.push(lead.payments[i].sum);
+//                 }
+
+//                 const createdAt = lead.created_at; // Переменная даты
+
+//                 console.log('id:', ids);
+//                 console.log('Телефон:', phone);
+//                 console.log('Имя:', name);
+//                 console.log('Оплата:', money);
+//                 console.log('Дата создания:', createdAt);
+
+//                 // Отправка сообщения в Telegram
+//                 const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+
+//                 const telegramData = {
+//                     chat_id: chatId,
+//                     text: `id: ${ids}\nТелефон: ${phone}\nИмя: ${name}\nОплата: ${money}\nДата создания: ${createdAt}`,
+//                 };
+
+//                 axios.post(telegramUrl, telegramData)
+//                     .then(() => {
+//                         console.log('Сообщение успешно отправлено в Telegram');
+//                     })
+//                     .catch(error => {
+//                         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//                     });
+//             });
+//         })
+//         .catch(error => {
+//             console.error('Ошибка при получении данных:', error);
+//         });
+// });
+
+
+
+
+// const TelegramBot = require('node-telegram-bot-api'); // Вывод оплаченных лидов
+
+// const axios = require('axios'); // Рабочая версия версия вывода лидов № 3
+
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358';
+
+// const bot = new TelegramBot(telegramToken, { polling: true });
+
+// // Функция для отправки сообщения в Telegram
+// // async function sendMessage(message) {
+// //     try {
+// //         const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+// //         const data = {
+// //             chat_id: chatId,
+// //             text: message,
+// //         };
+
+// //         await axios.post(url, data);
+// //         console.log('Сообщение успешно отправлено в Telegram');
+// //     } catch (error) {
+// //         console.error('Ошибка при отправке сообщения в Telegram:', error);
+// //     }
+// // }
+
+// fetch('https://direct.lptracker.ru/lead/103451/list?offset01&limit=3&sort[updated_at]=3&filter[created_at_from]=1535529725', {
+//     method: 'GET',
+//     headers: { 'content-type': 'application/json' },
+// })
+//     .then((res) => {
+//         if (res.ok) {
+//             return res.json();
+//         } else {
+//             throw new Error('Error: ' + res.status);
+//         }
+//     })
+//     .then((data) => {
+//         console.log(data);
+
+//         const message = JSON.stringify(data);
+
+//     })
+//     .catch((error) => {
+//         console.error(error);
+//     });
+
+
+// const url = 'https://direct.lptracker.ru/lead/103451/list?offset01&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725'; // const url = 'https://direct.lptracker.ru/lead/78949162';
+// const token = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
+
+// bot.onText(/\/payments/, async (msg) => {
+//     const chatId = msg.chat.id;
+
+//     axios.get(url, {
+//         headers: {
+//             'token': token
+//         }
+//     })
+//         .then(response => { // мы получаем ответ от запроса и сохраняем данные о лидах в переменную leadData
+//             console.log(response.data); // Также выводим данные ответа в консоль с помощью console.log(response.data)
+//             const leadData = response.data.result; // Данные о лидах в переменную leadData
+
+//             leadData.forEach(lead => { // метод forEach для перебора каждого элемента массива leadData
+//                 const ids = lead.contact.id
+//                 const phone = lead.contact.details.find(detail => detail.type === 'phone').data; // Для извлечения информации о телефоне мы используем метод find для поиска объекта с типом 'phone' в массиве lead.contact.details. Затем мы получаем значение свойства data этого объекта и сохраняем его в переменную phone.
+//                 const name = lead.contact.name; // Переменная имени
+//                 const money = lead.payments[0].sum;
+//                 const createdAt = lead.created_at; // Переменная даты
+
+//                 console.log('id:', ids);
+//                 console.log('Телефон:', phone);
+//                 console.log('Имя:', name);
+//                 console.log('Оплата:', money);
+//                 console.log('Дата создания:', createdAt);
+
+//                 // Отправка сообщения в Telegram
+//                 const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+
+//                 const telegramData = {
+//                     chat_id: chatId,
+//                     text: `id: ${ids}\nТелефон: ${phone}\nИмя: ${name}\nОплата: ${money}\nДата создания: ${createdAt}`,
+//                 };
+
+//                 axios.post(telegramUrl, telegramData)
+//                     .then(() => {
+//                         console.log('Сообщение успешно отправлено в Telegram');
+//                     })
+//                     .catch(error => {
+//                         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//                     });
+//             });
+//         })
+//         .catch(error => {
+//             console.error('Ошибка при получении данных:', error);
+//         });
+// });
+
+
+
+
+// const TelegramBot = require('node-telegram-bot-api'); // Отправляет список лидов c id по команде /today
 
 // const axios = require('axios'); // Рабочая версия версия вывода лидов № 3
 
@@ -23,7 +827,7 @@
 //     }
 // }
 
-// fetch('https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725', {
+// fetch('https://direct.lptracker.ru/lead/103451/list?offset01&limit=3&sort[updated_at]=3&filter[created_at_from]=1535529725', {
 //     method: 'GET',
 //     headers: { 'content-type': 'application/json' },
 // })
@@ -45,152 +849,54 @@
 //     });
 
 
-// const url = 'https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725'; // этот url меняет возможность по разному отображать лиды
+// const url = 'https://direct.lptracker.ru/lead/103451/list?offset01&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725'; // const url = 'https://direct.lptracker.ru/lead/78949162';
 // const token = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
 
-// bot.onText(/\/today/, async (msg) => {
+// bot.onText(/\/listleads/, async (msg) => {
 //     const chatId = msg.chat.id;
 
-//     axios.get(url, {
-//         headers: {
-//             'token': token
-//         }
-//     })
-//         .then(response => { // мы получаем ответ от запроса и сохраняем данные о лидах в переменную leadData
-//             console.log(response.data); // Также выводим данные ответа в консоль с помощью console.log(response.data)
-//             const leadData = response.data.result; // Данные о лидах в переменную leadData
+// axios.get(url, {
+//     headers: {
+//         'token': token
+//     }
+// })
+//     .then(response => { // мы получаем ответ от запроса и сохраняем данные о лидах в переменную leadData
+//         console.log(response.data); // Также выводим данные ответа в консоль с помощью console.log(response.data)
+//         const leadData = response.data.result; // Данные о лидах в переменную leadData
 
-//             leadData.forEach(lead => { // метод forEach для перебора каждого элемента массива leadData
-//                 const phone = lead.contact.details.find(detail => detail.type === 'phone').data; // Для извлечения информации о телефоне мы используем метод find для поиска объекта с типом 'phone' в массиве lead.contact.details. Затем мы получаем значение свойства data этого объекта и сохраняем его в переменную phone.
-//                 const name = lead.contact.name; // Переменная имени
-//                 const createdAt = lead.created_at; // Переменная даты
+//         leadData.forEach(lead => { // метод forEach для перебора каждого элемента массива leadData
+//             const ids = lead.contact.id
+//             const phone = lead.contact.details.find(detail => detail.type === 'phone').data; // Для извлечения информации о телефоне мы используем метод find для поиска объекта с типом 'phone' в массиве lead.contact.details. Затем мы получаем значение свойства data этого объекта и сохраняем его в переменную phone.
+//             const name = lead.contact.name; // Переменная имени
+//             const createdAt = lead.created_at; // Переменная даты
 
-//                 console.log('Телефон:', phone);
+//             console.log('id:', ids);
+//             console.log('Телефон:', phone);
+//             console.log('Имя:', name);
+//             console.log('Дата создания:', createdAt);
 
-//                 console.log('Имя:', name);
-//                 console.log('Дата создания:', createdAt);
+//             // Отправка сообщения в Telegram
+//             const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
 
-//                 // Отправка сообщения в Telegram
-//                 const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+//             const telegramData = {
+//                 chat_id: chatId,
+//                 text: `id: ${ids}\nТелефон: ${phone}\nИмя: ${name}\nДата создания: ${createdAt}`,
+//             };
 
-//                 const telegramData = {
-//                     chat_id: chatId,
-//                     text: `Телефон: ${phone}\nИмя: ${name}\nДата создания: ${createdAt}`,
-//                 };
-
-//                 axios.post(telegramUrl, telegramData)
-//                     .then(() => {
-//                         console.log('Сообщение успешно отправлено в Telegram');
-//                     })
-//                     .catch(error => {
-//                         console.error('Ошибка при отправке сообщения в Telegram:', error);
-//                     });
-//             });
-//         })
-//         .catch(error => {
-//             console.error('Ошибка при получении данных:', error);
+//             axios.post(telegramUrl, telegramData)
+//                 .then(() => {
+//                     console.log('Сообщение успешно отправлено в Telegram');
+//                 })
+//                 .catch(error => {
+//                     console.error('Ошибка при отправке сообщения в Telegram:', error);
+//                 });
 //         });
+//     })
+//     .catch(error => {
+//         console.error('Ошибка при получении данных:', error);
+//     });
 
 // });
-
-
-
-
-
-const TelegramBot = require('node-telegram-bot-api'); // Отправляет список сегодняшних лидов по команде /today
-
-const axios = require('axios'); // Рабочая версия версия вывода лидов № 3
-
-const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
-const chatId = '1013645358';
-
-const bot = new TelegramBot(telegramToken, { polling: true });
-
-// Функция для отправки сообщения в Telegram
-async function sendMessage(message) {
-    try {
-        const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
-        const data = {
-            chat_id: chatId,
-            text: message,
-        };
-
-        await axios.post(url, data);
-        console.log('Сообщение успешно отправлено в Telegram');
-    } catch (error) {
-        console.error('Ошибка при отправке сообщения в Telegram:', error);
-    }
-}
-
-fetch('https://direct.lptracker.ru/lead/103451/list?offset01&limit=3&sort[updated_at]=3&filter[created_at_from]=1535529725', {
-    method: 'GET',
-    headers: { 'content-type': 'application/json' },
-})
-    .then((res) => {
-        if (res.ok) {
-            return res.json();
-        } else {
-            throw new Error('Error: ' + res.status);
-        }
-    })
-    .then((data) => {
-        console.log(data);
-
-        const message = JSON.stringify(data);
-
-    })
-    .catch((error) => {
-        console.error(error);
-    });
-
-
-const url = 'https://direct.lptracker.ru/lead/103451/list?offset01&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725'; // const url = 'https://direct.lptracker.ru/lead/78949162';
-const token = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
-
-bot.onText(/\/today/, async (msg) => {
-    const chatId = msg.chat.id;
-
-axios.get(url, {
-    headers: {
-        'token': token
-    }
-})
-    .then(response => { // мы получаем ответ от запроса и сохраняем данные о лидах в переменную leadData
-        console.log(response.data); // Также выводим данные ответа в консоль с помощью console.log(response.data)
-        const leadData = response.data.result; // Данные о лидах в переменную leadData
-
-        leadData.forEach(lead => { // метод forEach для перебора каждого элемента массива leadData
-            const phone = lead.contact.details.find(detail => detail.type === 'phone').data; // Для извлечения информации о телефоне мы используем метод find для поиска объекта с типом 'phone' в массиве lead.contact.details. Затем мы получаем значение свойства data этого объекта и сохраняем его в переменную phone.
-            const name = lead.contact.name; // Переменная имени
-            const createdAt = lead.created_at; // Переменная даты
-
-            console.log('Телефон:', phone);
-
-            console.log('Имя:', name);
-            console.log('Дата создания:', createdAt);
-
-            // Отправка сообщения в Telegram
-            const telegramUrl = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
-
-            const telegramData = {
-                chat_id: chatId,
-                text: `Телефон: ${phone}\nИмя: ${name}\nДата создания: ${createdAt}`,
-            };
-
-            axios.post(telegramUrl, telegramData)
-                .then(() => {
-                    console.log('Сообщение успешно отправлено в Telegram');
-                })
-                .catch(error => {
-                    console.error('Ошибка при отправке сообщения в Telegram:', error);
-                });
-        });
-    })
-    .catch(error => {
-        console.error('Ошибка при получении данных:', error);
-    });
-
-});
 
 
 
