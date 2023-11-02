@@ -1,18 +1,17 @@
-const path = require("path")
-var envPath = path.join(__dirname, ".env")
-require("dotenv").config({ path: envPath })
-const { telegramToken, lpTrackerToken } = process.env
+const path = require("path") // Подключаю библиотеку path
+var envPath = path.join(__dirname, ".env") // создает переменную envPath, которая содержит путь к файлу .env. __dirname - это глобальная переменная в Node.js, которая представляет путь к текущей директории, в которой находится исполняемый файл.
+require("dotenv").config({ path: envPath }) //  загружает содержимое файла .env и помещает его в переменные окружения. Модуль dotenv позволяет загружать переменные окружения из файла .env в процесс Node.js
+const { telegramToken, lpTrackerToken } = process.env // Деструктуризация telegramToken и lpTrackerToken изenv файла
 
-const fetch = require('node-fetch');
+const fetch = require('node-fetch'); // Подключаю библиотеку запросов
 
-const { Telegraf } = require('telegraf');
-const bot = new Telegraf(telegramToken);
+const { Telegraf } = require('telegraf'); // Подключаю библиотеку Telegraf
+const bot = new Telegraf(telegramToken); // создает новый экземпляр класса Telegraf и присваивает его переменной bot. В скобках (telegramToken) указывается аргумент, который передается в конструктор класса
 
-// bot.command("getid", ctx => ctx.reply(ctx.from.id.toString())) // Отправка сообщения пользователю по id
 
 bot.command('lead', async (ctx) => {
     // Отправляем сообщение "Введите ID лида"
-    await ctx.reply('Введите ID лида'); // Простыми словами await - пожалуйста подожди пока эта операция не будет завершена
+    await ctx.reply('Введите ID лида'); // Вывод сообщения в Телеграм Простыми словами await - пожалуйста подожди пока эта операция не будет завершена
 
     // Ожидаем ответ пользователя
     bot.on('text', async (ctx) => {
@@ -31,28 +30,187 @@ bot.command('lead', async (ctx) => {
     });
 });
 
+
+
 bot.command('list', async (ctx) => {
     try {
         const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
-        const data = await response.json();
-        console.log(data);
-        // data.result.forEach(function (item) {
-        //     console.log(item.id);
-        // });
+        const data = await response.json(); // Преобразование ответа в JSON 
+        // console.log(data.result);
+
 
         data.result.forEach(function (item) {
-            // var idList = item.result.find(obj => obj.name == 'id');
+            var idList = item.id.toString();
             var address = item.custom.find(object => object.name == 'Адрес');
-            // console.log("id: " + idList);
-            ctx.reply(address.value).catch(err => console.log(err));
+            var phone = item.contact.details.find(detail => detail.type === 'phone').data;
+            var name = item.contact.name;
+            var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
+            var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs;// объединяем id и адрес в одну строку
+            ctx.reply(message).catch(err => console.log(err));
         });
+
     } catch (error) {
         console.log("Ошибка при получении данных из LPTracker: " + error);
     }
 });
 
+bot.command('edit', async (ctx) => {
+    try {
+        const response = await fetch("https://direct.lptracker.ru/lead/79061902", { method: 'PUT', headers: { token: lpTrackerToken } });
+        const data = await response.json();
+        const { contact } = data.result;
+        contact.name === 'Максим';
+        await ctx.reply(contact.name).catch(err => console.log(err));
+    } catch (error) {
+        console.error('Ошибка при получении данных из LPTracker:', error);
+    }
+});
+
+
+
 bot.launch() 
 
+
+
+
+
+// const path = require("path")
+// var envPath = path.join(__dirname, ".env")
+// require("dotenv").config({ path: envPath })
+// const { telegramToken, lpTrackerToken } = process.env
+
+// const fetch = require('node-fetch');
+
+// const { Telegraf } = require('telegraf');
+// const bot = new Telegraf(telegramToken);
+
+// const { Markup } = require('telegraf');
+
+// bot.on('text', async (ctx) => {
+//     await ctx.reply('Выберите действие:', Markup.keyboard([
+//         ['Вывести лид по ID'],
+//         ['Вывести список лидов']
+//     ]).resize().oneTime());
+// });
+
+
+// bot.on('text', async (ctx) => {
+//     const selectedAction = ctx.message.text;
+
+//     if (selectedAction === 'Вывести лид по ID') {
+//         // Отправляем сообщение "Введите ID лида"
+//         await ctx.reply('Введите ID лида');
+
+//         // Ожидаем ответ пользователя
+//         bot.on('text', async (ctx) => {
+//             const leadId = ctx.message.text; // Получаем ID лида из сообщения пользователя
+
+//             try {
+//                 const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, { headers: { token: lpTrackerToken } });
+//                 const data = await response.json();
+//                 // console.log(data);
+//                 const { id, contact, created_at, custom } = data.result;
+//                 const message = `ID лида: ${id}\nИмя лида: ${contact.name}\nНомер телефона: ${contact.details.find(detail => detail.type === 'phone').data}\nДата и время выезда на заказ: ${custom.find(object => object.name === 'Дата выполнения сделки').value}\nАдрес заказа: ${custom.find(object => object.name === 'Адрес').value}\nПараметры заказа: ${custom.find(object => object.name === 'Важная информация').value}\nДата создания: ${created_at}`;
+//                 await ctx.reply(message); // Исправлено: передаем сообщение без использования .catch()
+//             } catch (error) {
+//                 console.error('Ошибка при получении данных из LPTracker:', error);
+//             }
+//         });
+//     }
+    
+//     else if (selectedAction === 'Вывести список лидов') {
+//         try {
+//             const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+//             const data = await response.json();
+//             // console.log(data.result);
+
+//             data.result.forEach(async function (item) {
+//                 var idList = item.id.toString();
+//                 var address = item.custom.find(object => object.name === 'Адрес');
+//                 var phone = item.contact.details.find(detail => detail.type === 'phone').data;
+//                 var name = item.contact.name;
+//                 var parametrs = item.custom.find(object => object.name === 'Важная информация').value;
+//                 var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs;
+//                 await ctx.reply(message); // Исправлено: передаем сообщение без использования .catch()
+//             });
+//         } catch (error) {
+//             console.log("Ошибка при получении данных из LPTracker: " + error);
+//         }
+//     } else {
+//         await ctx.reply('Неверный выбор. Пожалуйста, выберите действие из предложенных кнопок.');
+//     }
+// });
+
+
+// bot.launch() 
+
+
+
+
+// const path = require("path") // Подключаю библиотеку path
+// var envPath = path.join(__dirname, ".env") // создает переменную envPath, которая содержит путь к файлу .env. __dirname - это глобальная переменная в Node.js, которая представляет путь к текущей директории, в которой находится исполняемый файл.
+// require("dotenv").config({ path: envPath }) //  загружает содержимое файла .env и помещает его в переменные окружения. Модуль dotenv позволяет загружать переменные окружения из файла .env в процесс Node.js
+// const { telegramToken, lpTrackerToken } = process.env // Деструктуризация telegramToken и lpTrackerToken изenv файла
+
+// const fetch = require('node-fetch'); // Подключаю библиотеку запросов
+
+// const { Telegraf } = require('telegraf'); // Подключаю библиотеку Telegraf
+// const bot = new Telegraf(telegramToken); // создает новый экземпляр класса Telegraf и присваивает его переменной bot. В скобках (telegramToken) указывается аргумент, который передается в конструктор класса
+
+
+// bot.command('lead', async (ctx) => {
+//     // Отправляем сообщение "Введите ID лида"
+//     await ctx.reply('Введите ID лида'); // Вывод сообщения в Телеграм Простыми словами await - пожалуйста подожди пока эта операция не будет завершена
+
+//     // Ожидаем ответ пользователя
+//     bot.on('text', async (ctx) => {
+//         const leadId = ctx.message.text; // Получаем ID лида из сообщения пользователя
+
+//         try {
+//             const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, { headers: { token: lpTrackerToken } });
+//             const data = await response.json();
+//             // console.log(data);
+//             const { id, contact, created_at, custom } = data.result;
+//             const message = `ID лида: ${id}\nИмя лида: ${contact.name}\nНомер телефона: ${contact.details.find(detail => detail.type === 'phone').data}\nДата и время выезда на заказ: ${custom.find(object => object.name == 'Дата выполнения сделки').value}\nАдрес заказа: ${custom.find(object => object.name == 'Адрес').value}\nПараметры заказа: ${custom.find(object => object.name == 'Важная информация').value}\nДата создания: ${created_at}`;
+//             await ctx.reply(message).catch(err => console.log(err));
+//         } catch (error) {
+//             console.error('Ошибка при получении данных из LPTracker:', error);
+//         }
+//     });
+// });
+
+
+
+// bot.command('list', async (ctx) => {
+//     try {
+//         const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+//         const data = await response.json();
+//         // console.log(data.result);
+
+
+//         data.result.forEach(function (item) {
+//             var idList = item.id.toString();
+//             var address = item.custom.find(object => object.name == 'Адрес');
+//             var phone = item.contact.details.find(detail => detail.type === 'phone').data;
+//             var name = item.contact.name;
+//             var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
+//             var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs;// объединяем id и адрес в одну строку
+//             ctx.reply(message).catch(err => console.log(err));
+//         });
+
+//     } catch (error) {
+//         console.log("Ошибка при получении данных из LPTracker: " + error);
+//     }
+// });
+
+// bot.launch() 
+
+// Как работает forEach, ввожу data.result.forEach(function (item) { где data - это JSON result - первый объект или массив .forEach(function и (item) - как единица элемента
+// Дальше в var прописываю переменные = item - единица, без этого НЕ РАБОТАЕТ!, после прописывается весь путь после data.result
+// Если переменная из объекта custom просто так до неё будет не достучаться, значит вывожу по примеру item.custom.find(object => object.name == 'Адрес');
+// Вывод всех переменных в одну осуществляется по аналогичному принципу
+// var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs;
+// ctx.reply(message).catch(err => console.log(err)); - вывод сообщения в Телеграм
 
 
 // const path = require("path")
@@ -86,47 +244,47 @@ bot.launch()
 
 
 
-// // const { Telegraf } = require('telegraf');
-// // const fetch = require('node-fetch');
+// const { Telegraf } = require('telegraf');
+// const fetch = require('node-fetch');
 
-// // const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
-// // const chatId = '1013645358';
-// // const lpTrackerToken = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
+// const telegramToken = '6387626529:AAFIZv733tOtthdvuiNHg2VFnwJl0u83RWk';
+// const chatId = '1013645358';
+// const lpTrackerToken = 'veCOpQNX2WGZCPdime85tsOjSdCrtGCM';
 
-// // const bot = new Telegraf(telegramToken);
+// const bot = new Telegraf(telegramToken);
 
-// // async function sendMessage(message) { // Копируемое
-// //     try {
-// //         await bot.telegram.sendMessage(chatId, message);
-// //         console.log('Сообщение успешно отправлено в Telegram');
-// //     } catch (error) {
-// //         console.error('Ошибка при отправке сообщения в Telegram:', error);
-// //     }
-// // }
+// async function sendMessage(message) { // Копируемое
+//     try {
+//         await bot.telegram.sendMessage(chatId, message);
+//         console.log('Сообщение успешно отправлено в Telegram');
+//     } catch (error) {
+//         console.error('Ошибка при отправке сообщения в Telegram:', error);
+//     }
+// }
 
-// // bot.on('text', async (ctx) => { // Ответ при вводе любого текста
+// bot.on('text', async (ctx) => { // Ответ при вводе любого текста
 
-// //     try {
-// //         const url = `https://direct.lptracker.ru/lead/79061902`; // url лида
-// //         const headers = { // используется для передачи заголовков в HTTP-запросах
-// //             token: lpTrackerToken // Токен lptracker
-// //         }; // Закрыл объект
-// //         const response = await fetch(url, { headers }); // выполняется запрос к указанному URL с использованием функции fetch
-// //         const data = await response.json(); // После получения ответа от сервера, используется метод .json() для преобразования ответа в формат JSON. Затем данные из ответа сохраняются в переменную data.
-// //         const lead = data.result; // Далее, предполагается, что в полученных данных есть свойство result, и оно присваивается переменной lead         
-// //             const message = ` 
-// //                 ID лида: ${lead.id} 
-// //                 Имя лида: ${lead.contact.name}
-// //                 Контакт ID: ${lead.contact.details.find(detail => detail.type === 'phone').data}
-// //                 Дата создания: ${lead.created_at}
-// //             `;
-// //             await sendMessage(message);
-// //     } catch (error) { // Обработка ошибки
-// //         console.error('Ошибка при получении данных из LPTracker:', error);
-// //     }
-// // });
+//     try {
+//         const url = `https://direct.lptracker.ru/lead/79061902`; // url лида
+//         const headers = { // используется для передачи заголовков в HTTP-запросах
+//             token: lpTrackerToken // Токен lptracker
+//         }; // Закрыл объект
+//         const response = await fetch(url, { headers }); // выполняется запрос к указанному URL с использованием функции fetch
+//         const data = await response.json(); // После получения ответа от сервера, используется метод .json() для преобразования ответа в формат JSON. Затем данные из ответа сохраняются в переменную data.
+//         const lead = data.result; // Далее, предполагается, что в полученных данных есть свойство result, и оно присваивается переменной lead         
+//             const message = ` 
+//                 ID лида: ${lead.id} 
+//                 Имя лида: ${lead.contact.name}
+//                 Контакт ID: ${lead.contact.details.find(detail => detail.type === 'phone').data}
+//                 Дата создания: ${lead.created_at}
+//             `;
+//             await sendMessage(message);
+//     } catch (error) { // Обработка ошибки
+//         console.error('Ошибка при получении данных из LPTracker:', error);
+//     }
+// });
 
-// //  bot.launch() // Запуск бота
+//  bot.launch() // Запуск бота
 
 
 
