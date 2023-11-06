@@ -1,4 +1,4 @@
-const path = require("path") // Подключаю библиотеку path
+const path = require("path"); // Подключаю библиотеку path
 var envPath = path.join(__dirname, ".env") // создает переменную envPath, которая содержит путь к файлу .env. __dirname - это глобальная переменная в Node.js, которая представляет путь к текущей директории, в которой находится исполняемый файл.
 require("dotenv").config({ path: envPath }) //  загружает содержимое файла .env и помещает его в переменные окружения. Модуль dotenv позволяет загружать переменные окружения из файла .env в процесс Node.js
 const { telegramToken, lpTrackerToken } = process.env // Деструктуризация telegramToken и lpTrackerToken изenv файла
@@ -9,33 +9,38 @@ const { Telegraf } = require('telegraf'); // Подключаю библиоте
 const bot = new Telegraf(telegramToken); // создает новый экземпляр класса Telegraf и присваивает его переменной bot. В скобках (telegramToken) указывается аргумент, который передается в конструктор класса
 
 (async function () {
-    bot.launch()
-    await bot.telegram.sendMessage(1013645358, { text: "Принять заказ" }, { reply_markup: { inline_keyboard: [[{ text: "Inline button", callback_data: "lnk" }]] } })
-    await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }]] } });
+    bot.launch();
+    await bot.telegram.sendMessage(1013645358, { text: "Принять заказ", reply_markup: { inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]] } });
+    await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }], [{ text: "Фильтрация по принятым заказам" }], [{ text: "Фильтрация по непринятым заказам" }]] } });
 })();
 
-// bot.action("lnk", ctx => ctx.reply("Принять заказ"))
 
 bot.hears('Вывести лид по ID', async (ctx) => {
-    // Отправляем сообщение "Введите ID лида"
-    await ctx.reply('Введите ID лида'); // Вывод сообщения в Телеграм Простыми словами await - пожалуйста подожди пока эта операция не будет завершена
+    await ctx.reply('Введите ID лида');
 
-    // Ожидаем ответ пользователя
     bot.on('text', async (ctx) => {
-        const leadId = ctx.message.text; // Получаем ID лида из сообщения пользователя
+        const leadId = ctx.message.text;
 
         try {
             const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, { headers: { token: lpTrackerToken } });
             const data = await response.json();
-            // console.log(data);
+            console.log(data.result)
             const { id, contact, created_at, custom } = data.result;
+            
             const message = `ID лида: ${id}\nИмя лида: ${contact.name}\nНомер телефона: ${contact.details.find(detail => detail.type === 'phone').data}\nДата и время выезда на заказ: ${custom.find(object => object.name == 'Дата выполнения сделки').value}\nАдрес заказа: ${custom.find(object => object.name == 'Адрес').value}\nПараметры заказа: ${custom.find(object => object.name == 'Важная информация').value}\nДата создания: ${created_at}`;
-            await ctx.reply(message).catch(err => console.log(err));
+            await ctx.reply(message, {
+                reply_markup: {
+                    inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]],
+                }
+            });
         } catch (error) {
             console.error('Ошибка при получении данных из LPTracker:', error);
         }
     });
 });
+
+
+
 
 
 bot.hears('Вывести список лидов', async (ctx) => {
@@ -60,17 +65,81 @@ bot.hears('Вывести список лидов', async (ctx) => {
     }
 });
 
-// bot.command('edit', async (ctx) => {
-//     try {
-//         const response = await fetch("https://direct.lptracker.ru/lead/79061902", { method: 'PUT', headers: { token: lpTrackerToken } });
-//         const data = await response.json();
-//         const { contact } = data.result;
-//         contact.name === 'Максим';
-//         await ctx.reply(contact.name).catch(err => console.log(err));
-//     } catch (error) {
-//         console.error('Ошибка при получении данных из LPTracker:', error);
-//     }
-// });
+
+bot.hears('Фильтрация по принятым заказам', async (ctx) => {
+    try {
+        const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+        const data = await response.json(); // Преобразование ответа в JSON 
+        console.log(data.result[0].custom.find(object => object.name == 'Заказ принят в работу?').value);
+
+
+        data.result.forEach(function (item) {
+            var idList = item.id.toString();
+            var address = item.custom.find(object => object.name == 'Адрес');
+            var phone = item.contact.details.find(detail => detail.type === 'phone').data;
+            var name = item.contact.name;
+            var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
+            var orderWork = item.custom.find(object => object.name == 'Заказ принят в работу?').value;
+
+            if (orderWork[0] === 'Да') {
+                var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs + '\nЗаказ принят в работу?: ' + orderWork;
+                ctx.reply(message).catch(err => console.log(err));
+            }
+        });
+    } catch (error) {
+        console.log("Ошибка при получении данных из LPTracker: " + error);
+    }
+});
+
+
+
+bot.hears('Фильтрация по непринятым заказам', async (ctx) => {
+    try {
+        const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+        const data = await response.json(); // Преобразование ответа в JSON 
+        console.log(data.result[0].custom.find(object => object.name == 'Заказ принят в работу?').value);
+
+
+        data.result.forEach(function (item) {
+            var idList = item.id.toString();
+            var address = item.custom.find(object => object.name == 'Адрес');
+            var phone = item.contact.details.find(detail => detail.type === 'phone').data;
+            var name = item.contact.name;
+            var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
+            var orderWork = item.custom.find(object => object.name == 'Заказ принят в работу?').value;
+
+            if (orderWork[0] === 'Нет') {
+                var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs + '\nЗаказ принят в работу?: ' + orderWork;
+                ctx.reply(message, {
+                reply_markup: {
+                    inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]],
+                }
+            });
+            }
+        });
+    } catch (error) {
+        console.log("Ошибка при получении данных из LPTracker: " + error);
+    }
+});
+
+
+
+
+
+
+
+// Для того чтобы добавить кнопку в меню нужно, для начала после инициализации подключения всех библиотек, .env, и прочего, через (async function () {
+// bot.launch(); подключить все кнопки
+// Например:
+// (async function () {
+//     bot.launch();
+//     await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }], [{ text: "Фильтрация по принятым заказам" }], [{ text: "Фильтрация по непринятым заказам" }]] } });
+// })();
+// После через bot.hears или bot.on она подключается при помощи функции
+// bot.hears('Вывести лид по ID', async (ctx) => { - начала должно быть таким, где 'Вывести лид по ID' - это название в переменной text, из вот этой строчки await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }], [{ text: "Фильтрация по принятым заказам" }], [{ text: "Фильтрация по непринятым заказам" }]] } });
+
+
+
 
 
 
