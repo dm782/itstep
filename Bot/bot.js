@@ -23,8 +23,7 @@ bot.hears('Вывести лид по ID', async (ctx) => {
 
         try {
             const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, { headers: { token: lpTrackerToken } });
-            const data = await response.json();
-            console.log(data.result)
+            const data = await response.json();           
             const { id, contact, created_at, custom } = data.result;
             
             const message = `ID лида: ${id}\nИмя лида: ${contact.name}\nНомер телефона: ${contact.details.find(detail => detail.type === 'phone').data}\nДата и время выезда на заказ: ${custom.find(object => object.name == 'Дата выполнения сделки').value}\nАдрес заказа: ${custom.find(object => object.name == 'Адрес').value}\nПараметры заказа: ${custom.find(object => object.name == 'Важная информация').value}\nДата создания: ${created_at}`;
@@ -39,6 +38,32 @@ bot.hears('Вывести лид по ID', async (ctx) => {
     });
 });
 
+bot.action('lnk', async (ctx) => { // Delete
+    async function sendRequest(leadId) {
+        try {
+            const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "token": "M0r1Xzd6eh7aSVDOt9eJcUmfnj55XzvX"
+                },
+                method: "PUT",
+                body: JSON.stringify({
+                    "custom": {
+                        "2105539": "Да"
+                    }
+                })
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Ошибка при отправке запроса:', error);
+        }
+    }
+
+
+    const leadId = ctx.callbackQuery.message.text.split('\n')[0].split(': ')[1];
+    await sendRequest(leadId);
+}); // Delete
 
 
 
@@ -122,7 +147,22 @@ bot.hears('Фильтрация по непринятым заказам', async
     }
 });
 
-
+// async function sendRequest(newValue) {
+//     var request = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, {
+//         headers: {
+//             "Content-Type": "application/json",
+//             "token": "M0r1Xzd6eh7aSVDOt9eJcUmfnj55XzvX"
+//         },
+//         method: "PUT",
+//         body: JSON.stringify({
+//             "custom": {
+//                 "2105539": "Да"
+//             }
+//         })
+//     })
+//     console.log(await request.json())
+// }
+// sendRequest()
 
 
 
@@ -150,12 +190,28 @@ bot.hears('Фильтрация по непринятым заказам', async
 
 
 
+// bot.hears('Вывести лид по ID', async (ctx) => {
+//     await ctx.reply('Введите ID лида');
 
+//     bot.on('text', async (ctx) => {
+//         const leadId = ctx.message.text;
 
+//         try {
+//             const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, { headers: { token: lpTrackerToken } });
+//             const data = await response.json();
+//             const { id, contact, created_at, custom } = data.result;
 
-
-
-
+//             const message = `ID лида: ${id}\nИмя лида: ${contact.name}\nНомер телефона: ${contact.details.find(detail => detail.type === 'phone').data}\nДата и время выезда на заказ: ${custom.find(object => object.name == 'Дата выполнения сделки').value}\nАдрес заказа: ${custom.find(object => object.name == 'Адрес').value}\nПараметры заказа: ${custom.find(object => object.name == 'Важная информация').value}\nДата создания: ${created_at}`;
+//             await ctx.reply(message, {
+//                 reply_markup: {
+//                     inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]],
+//                 }
+//             });
+//         } catch (error) {
+//             console.error('Ошибка при получении данных из LPTracker:', error);
+//         }
+//     });
+// });
 
 
 
