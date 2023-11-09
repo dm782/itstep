@@ -11,7 +11,7 @@ const bot = new Telegraf(telegramToken); // создает новый экзем
 (async function () {
     bot.launch();
     await bot.telegram.sendMessage(1013645358, { text: "Принять заказ", reply_markup: { inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]] } });
-    await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }], [{ text: "Фильтрация по принятым заказам" }], [{ text: "Фильтрация по непринятым заказам" }]] } });
+    await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }], [{ text: "Фильтрация по принятым заказам" }], [{ text: "Фильтрация по непринятым заказам" }], [{ text: "Фильтрация по сегодняшним заказам" }], [{ text: "Фильтрация по завтрашним заказам" }]] } });
 })();
 
 
@@ -38,8 +38,8 @@ bot.hears('Вывести лид по ID', async (ctx) => {
     });
 });
 
-bot.action('lnk', async (ctx) => { // Delete
-    async function sendRequest(leadId) {
+bot.action('lnk', async (ctx) => { // Вызов функции для inline кнопки
+    async function sendRequest(leadId) { // Создается асинхронная функция sendRequest с параметром leadId, который представляет идентификатор лида
         try {
             const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, {
                 headers: {
@@ -66,6 +66,43 @@ bot.action('lnk', async (ctx) => { // Delete
 }); // Delete
 
 
+bot.action('nolnk', async (ctx) => { // Вызов функции для inline кнопки
+    async function sendRequest(leadId) { // Создается асинхронная функция sendRequest с параметром leadId, который представляет идентификатор лида
+        try {
+            const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "token": "M0r1Xzd6eh7aSVDOt9eJcUmfnj55XzvX"
+                },
+                method: "PUT",
+                body: JSON.stringify({
+                    "custom": {
+                        "2105539": "Нет"
+                    }
+                })
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Ошибка при отправке запроса:', error);
+        }
+    }
+
+
+    const leadId = ctx.callbackQuery.message.text.split('\n')[0].split(': ')[1];
+    await sendRequest(leadId);
+}); 
+
+// ctx.callbackQuery представляет объект события обратного вызова (callback query) в Telegram Bot API.
+// Он содержит информацию о нажатой кнопке и связанном с ней сообщении.
+// ctx.callbackQuery.message представляет сообщение, на которое была нажата кнопка.
+// ctx.callbackQuery.message.text представляет текст этого сообщения.
+// .split('\n') разделяет текст сообщения на строки, используя символ новой строки в качестве разделителя.
+// [0] выбирает первую строку из полученного массива строк.
+// .split(': ') разделяет эту строку на две части, используя символ ': ' в качестве разделителя.
+// [1] выбирает вторую часть из полученного массива.
+// await sendRequest(leadId) вызывает функцию sendRequest с извлеченным leadId в качестве аргумента.
+// Это позволяет отправить запрос на сервер с использованием этого идентификатора.
 
 
 bot.hears('Вывести список лидов', async (ctx) => {
@@ -146,6 +183,84 @@ bot.hears('Фильтрация по непринятым заказам', async
         console.log("Ошибка при получении данных из LPTracker: " + error);
     }
 });
+
+
+
+
+bot.hears('Фильтрация по сегодняшним заказам', async (ctx) => {
+    try {
+        const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+        const data = await response.json();
+
+        data.result.forEach(function (item) {
+            var idList = item.id.toString();
+            var address = item.custom.find(object => object.name == 'Адрес');
+            var phone = item.contact.details.find(detail => detail.type === 'phone').data;
+            var name = item.contact.name;
+            var makeOrder = item.custom.find(object => object.name == 'Дата выполнения сделки').value;
+            var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
+            var orderWork = item.custom.find(object => object.name == 'Заказ принят в работу?').value;
+
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = currentDate.getMonth() + 1;
+            var day = currentDate.getDate();
+
+            var formattedDay = day < 10 ? '0' + day : day;
+            var formattedMonth = month < 10 ? '0' + month : month;
+            var formattedDate = formattedDay + "." + formattedMonth + "." + year;
+
+            if (orderWork[0] === 'Да' && makeOrder.includes(formattedDate)) {
+                var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nДата выполнения сделки: ' + makeOrder + '\nПараметры заказа: ' + parametrs + '\nЗаказ принят в работу?: ' + orderWork;
+                ctx.reply(message).catch(err => console.log(err));
+            }
+        });
+    } catch (error) {
+        console.log("Ошибка при получении данных из LPTracker: " + error);
+    }
+});
+
+
+
+
+
+
+
+bot.hears('Фильтрация по завтрашним заказам', async (ctx) => {
+    try {
+        const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+        const data = await response.json();
+
+        data.result.forEach(function (item) {
+            var idList = item.id.toString();
+            var address = item.custom.find(object => object.name == 'Адрес');
+            var phone = item.contact.details.find(detail => detail.type === 'phone').data;
+            var name = item.contact.name;
+            var makeOrder = item.custom.find(object => object.name == 'Дата выполнения сделки').value;
+            var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
+            var orderWork = item.custom.find(object => object.name == 'Заказ принят в работу?').value;
+
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = currentDate.getMonth() + 1;
+            var day = currentDate.getDate() + 1;
+
+            var formattedDay = day < 10 ? '0' + day : day;
+            var formattedMonth = month < 10 ? '0' + month : month;
+            var formattedDate = formattedDay + "." + formattedMonth + "." + year;
+
+            if (orderWork[0] === 'Да' && makeOrder.includes(formattedDate)) {
+                var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nДата выполнения сделки: ' + makeOrder + '\nПараметры заказа: ' + parametrs + '\nЗаказ принят в работу?: ' + orderWork;
+                ctx.reply(message).catch(err => console.log(err));
+            }
+        });
+    } catch (error) {
+        console.log("Ошибка при получении данных из LPTracker: " + error);
+    }
+});
+
+
+
 
 // async function sendRequest(newValue) {
 //     var request = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, {
