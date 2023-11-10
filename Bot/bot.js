@@ -11,7 +11,7 @@ const bot = new Telegraf(telegramToken); // создает новый экзем
 (async function () {
     bot.launch();
     await bot.telegram.sendMessage(1013645358, { text: "Принять заказ", reply_markup: { inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]] } });
-    await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }], [{ text: "Фильтрация по принятым заказам" }], [{ text: "Фильтрация по непринятым заказам" }], [{ text: "Фильтрация по сегодняшним заказам" }], [{ text: "Фильтрация по завтрашним заказам" }]] } });
+    await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }], [{ text: "Фильтрация по принятым заказам" }], [{ text: "Фильтрация по непринятым заказам" }], [{ text: "Фильтрация по сегодняшним заказам" }], [{ text: "Фильтрация по завтрашним заказам" }], [{ text: "Отправить фото чека" }]] } });
 })();
 
 
@@ -258,6 +258,268 @@ bot.hears('Фильтрация по завтрашним заказам', async
         console.log("Ошибка при получении данных из LPTracker: " + error);
     }
 });
+
+bot.hears('Отправить фото чека', async (ctx) => {
+    await ctx.reply('Введите ID лида');
+
+    bot.on('text', async (ctx) => {
+        try {
+            const leadId = ctx.message.text;
+            if (!leadId) {
+                throw new Error('ID лида не был получен');
+            }
+
+            bot.on('photo', async (ctx) => {
+                try {
+                    const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
+                    const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
+                    const fileResponse = await fetch(fileLink);
+                    const fileBuffer = await fileResponse.buffer();
+
+                    const base64Data = fileBuffer.toString('base64');
+
+                    const data = {
+                        name: 'file1.jpg',
+                        mime: 'image/jpeg',
+                        data: base64Data,
+                        custom_field_id: 2079688
+                    };
+
+                    const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/${leadId}/file`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'token': lpTrackerToken
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await uploadResponse.json();
+                    console.log('Результат:', result);
+                } catch (error) {
+                    console.error('Ошибка при отправке запроса:', error);
+                    ctx.reply('Произошла ошибка при отправке фото чека');
+                }
+            });
+        } catch (error) {
+            console.error('Ошибка при получении ID лида:', error);
+            ctx.reply('Произошла ошибка при получении ID лида');
+        }
+    });
+});
+
+// bot.hears('Отправить фото чека', async (ctx) => {
+//     await ctx.reply('Введите ID лида');
+
+//     bot.on('text', async (ctx) => {
+//         try {
+//             const leadId = ctx.message.text;
+//             if (!leadId) {
+//                 throw new Error('ID лида не был получен');
+//             }
+
+//             bot.on('photo', async (ctx) => {
+//                 try {
+//                     const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
+//                     const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
+//                     const fileResponse = await fetch(fileLink);
+//                     const fileBuffer = await fileResponse.buffer();
+
+//                     const base64Data = fileBuffer.toString('base64');
+
+//                     const data = {
+//                         name: 'file1.jpg',
+//                         mime: 'image/jpeg',
+//                         data: base64Data,
+//                         custom_field_id: 2079688
+//                     };
+
+//                     const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/${leadId}/file`, {
+//                         method: 'POST',
+//                         headers: {
+//                             'Content-Type': 'application/json',
+//                             'token': lpTrackerToken
+//                         },
+//                         body: JSON.stringify(data)
+//                     });
+
+//                     const result = await uploadResponse.json();
+//                     console.log('Результат:', result);
+//                 } catch (error) {
+//                     console.error('Ошибка при отправке запроса:', error);
+//                     ctx.reply('Произошла ошибка при отправке фото чека');
+//                 }
+//             });
+//         } catch (error) {
+//             console.error('Ошибка при получении ID лида:', error);
+//             ctx.reply('Произошла ошибка при получении ID лида');
+//         }
+//     });
+// });
+
+
+// bot.hears('Отправить фото чека', async (ctx) => { // Рабочая версия отправки
+//     bot.on('photo', async (ctx) => {
+//         try {
+//             const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
+//             const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
+//             const fileResponse = await fetch(fileLink);
+//             const fileBuffer = await fileResponse.buffer();
+
+//             const base64Data = fileBuffer.toString('base64');
+
+//             const data = {
+//                 name: 'file1.jpg',
+//                 mime: 'image/jpeg',
+//                 data: base64Data,
+//                 custom_field_id: 2079688
+//             };
+
+//             const uploadResponse = await fetch('https://direct.lptracker.ru/lead/78949142/file', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'token': lpTrackerToken
+//                 },
+//                 body: JSON.stringify(data)
+//             });
+
+//             const result = await uploadResponse.json();
+//             console.log('Результат:', result);
+//         } catch (error) {
+//             console.error('Ошибка:', error);
+//         }
+//     });
+// });
+
+// bot.hears('Отправить фото чека', async (ctx) => { // Рабочая версия отправки
+//     bot.on('photo', async (ctx) => {
+//         try {
+//             const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
+//             const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
+//             const fileResponse = await fetch(fileLink);
+//             const fileBuffer = await fileResponse.buffer();
+
+//             const base64Data = fileBuffer.toString('base64');
+
+//             const data = {
+//                 name: 'file1.jpg',
+//                 mime: 'image/jpeg',
+//                 data: base64Data,
+//                 custom_field_id: 2079688
+//             };
+
+//             const uploadResponse = await fetch('https://direct.lptracker.ru/lead/78949142/file', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'token': lpTrackerToken
+//                 },
+//                 body: JSON.stringify(data)
+//             });
+
+//             const result = await uploadResponse.json();
+//             console.log('Результат:', result);
+//         } catch (error) {
+//             console.error('Ошибка:', error);
+//         }
+//     });
+// });
+
+
+
+// bot.hears('Отправить фото чека', async (ctx) => {
+//     bot.on('photo', async (ctx) => {
+//         const data = await response.json();
+//         console.log(data.result)
+//         const { custom } = data.result;
+//         const photo = custom.find(object => object.name == 'Файлы').value;
+//         const fileId = photo.file_id;
+
+//         try {
+//             const fileLink = await bot.telegram.getFileLink(fileId);
+//             const fileResponse = await fetch(fileLink);
+//             const fileBuffer = await fileResponse.buffer();
+
+//             const base64Data = fileBuffer.toString('base64');
+
+//             const data = {
+//                 name: 'file1.jpg',
+//                 mime: 'image/jpeg',
+//                 data: base64Data,
+//                 custom_field_id: 2079688
+//             };
+
+//             const uploadResponse = await fetch('https://direct.lptracker.ru/lead/78949142/file1.jpg', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'token': lpTrackerToken
+//                 },
+//                 body: JSON.stringify(data)
+//             });
+
+//             const result = await uploadResponse.json();
+//             console.log('Результат:', result);
+//         } catch (error) {
+//             console.error('Ошибка:', error);
+//         }
+//     });
+// });
+
+
+// bot.hears('Отправить фото чека', async (ctx) => {
+//     await ctx.reply('Введите ID лида');
+
+//     bot.on('text', async (ctx) => {
+//         const leadId = ctx.message.text;
+
+//         try {
+//             const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, { headers: { token: lpTrackerToken } });
+//             const data = await response.json();
+//             console.log(data.result)
+//             const { id, contact, created_at, custom } = data.result;
+
+//             const message = `ID лида: ${id}\nИмя лида: ${contact.name}\nНомер телефона: ${contact.details.find(detail => detail.type === 'phone').data}\nДата и время выезда на заказ: ${custom.find(object => object.name == 'Дата выполнения сделки').value}\nАдрес заказа: ${custom.find(object => object.name == 'Адрес').value}\nПараметры заказа: ${custom.find(object => object.name == 'Важная информация').value}\nДата создания: ${created_at}`;
+//             await ctx.reply(message, {
+//                 reply_markup: {
+//                     inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]],
+//                 }
+//             });
+//         } catch (error) {
+//             console.error('Ошибка при получении данных из LPTracker:', error);
+//         }
+//     });
+// });
+
+
+
+
+
+
+
+
+// const data = {
+//     "name": "file1.jpg",
+//     "mime": "image/jpeg",
+//     "data": "somebase64data",
+//     "custom_field_id": 2079688
+// };
+
+// fetch("https://example.com/upload", {
+//     method: "POST",
+//     headers: {
+//         "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify(data)
+// })
+//     .then(response => response.json())
+//     .then(result => {
+//         console.log("Результат:", result);
+//     })
+//     .catch(error => {
+//         console.error("Ошибка:", error);
+//     });
 
 
 
