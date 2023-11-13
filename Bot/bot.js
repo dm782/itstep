@@ -23,9 +23,9 @@ bot.hears('Вывести лид по ID', async (ctx) => {
 
         try {
             const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, { headers: { token: lpTrackerToken } });
-            const data = await response.json();           
+            const data = await response.json();
             const { id, contact, created_at, custom } = data.result;
-            
+
             const message = `ID лида: ${id}\nИмя лида: ${contact.name}\nНомер телефона: ${contact.details.find(detail => detail.type === 'phone').data}\nДата и время выезда на заказ: ${custom.find(object => object.name == 'Дата выполнения сделки').value}\nАдрес заказа: ${custom.find(object => object.name == 'Адрес').value}\nПараметры заказа: ${custom.find(object => object.name == 'Важная информация').value}\nДата создания: ${created_at}`;
             await ctx.reply(message, {
                 reply_markup: {
@@ -44,7 +44,7 @@ bot.action('lnk', async (ctx) => { // Вызов функции для inline к
             const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, {
                 headers: {
                     "Content-Type": "application/json",
-                    "token": "M0r1Xzd6eh7aSVDOt9eJcUmfnj55XzvX"
+                    "token": "4f4nNkH2qetnZcSBJtTaExh1zMvXSVea"
                 },
                 method: "PUT",
                 body: JSON.stringify({
@@ -104,28 +104,56 @@ bot.action('nolnk', async (ctx) => { // Вызов функции для inline 
 // await sendRequest(leadId) вызывает функцию sendRequest с извлеченным leadId в качестве аргумента.
 // Это позволяет отправить запрос на сервер с использованием этого идентификатора.
 
-
-bot.hears('Вывести список лидов', async (ctx) => {
+bot.hears('Вывести список лидов', async (ctx) => { // является обработчиком события, который будет выполняться, когда пользователь отправит сообщение "Вывести список лидов".
     try {
         const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
-        const data = await response.json(); // Преобразование ответа в JSON 
-        // console.log(data.result);
-
-
-        data.result.forEach(function (item) {
-            var idList = item.id.toString();
-            var address = item.custom.find(object => object.name == 'Адрес');
-            var phone = item.contact.details.find(detail => detail.type === 'phone').data;
-            var name = item.contact.name;
-            var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
-            var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs;// объединяем id и адрес в одну строку
-            ctx.reply(message).catch(err => console.log(err));
-        });
-
+        const data = await response.json(); // Преобразование ответа в JSON
+        const buttons = data.result.map(item => ([{ // Это массив, из которого мы берем данные для создания кнопок
+            text: item.custom.find(object => object.name == 'Адрес').value //  свойство text, которое определяет текст, отображаемый на кнопке. В данном случае "text:" даёт кнопке называние 
+        }])); // Квадратные кнопки совместно с массивом map создают элементы кнопок
+        buttons.push([{ text: 'Назад' }]); // Добавить кнопку "Назад" ко всем остальным 
+        
+        const replyMarkup = { // Объект содержащий следующее...
+            keyboard: buttons, // Это поле определяет массив кнопок, которые будут отображаться в клавиатуре.
+            resize_keyboard: true, // Это поле указывает, должна ли клавиатура изменять размеры, чтобы соответствовать количеству кнопок.
+            one_time_keyboard: true // Это поле указывает, должна ли клавиатура исчезнуть после нажатия на кнопку
+        };
+        ctx.reply('Выберите адрес клиента:', { reply_markup: replyMarkup }); // reply_markup: replyMarkup - ключ : значение, reply_markup указывает на объект replyMarkup, который содержит настройки клавиатуры, такие как массив кнопок, параметры изменения размера и параметр one_time_keyboard
+         
     } catch (error) {
-        console.log("Ошибка при получении данных из LPTracker: " + error);
+        console.error(error);
     }
 });
+
+// 1.Создаю обработчик события по нажатию на кнопку
+// 2.Делаю запрос на сервер
+// 3.Преобразую ответ в JSON
+// 4.Создаю массив из которого беру данные для создания кнопок
+// 5.Создаю объект с определением массива кнопок, указанием того, должна ли клавиатура изменять размеры, а также должна ли клавиатура исчезнуть после нажатия на кнопку
+// 6.Вывод на экран Телеграма в качестве ключ : значение
+
+
+// bot.hears('Вывести список лидов', async (ctx) => {
+//     try {
+//         const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+//         const data = await response.json(); // Преобразование ответа в JSON 
+//         // console.log(data.result);
+
+
+//        data.result.forEach(function (item) {
+//             var idList = item.id.toString();
+//             var address = item.custom.find(object => object.name == 'Адрес');
+//             var phone = item.contact.details.find(detail => detail.type === 'phone').data;
+//             var name = item.contact.name;
+//             var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
+//             var message = 'ID лида: ' + idList + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs;// объединяем id и адрес в одну строку
+//             ctx.reply(message).catch(err => console.log(err));
+//         });
+
+//     } catch (error) {
+//         console.log("Ошибка при получении данных из LPTracker: " + error);
+//     }
+// }); 
 
 
 bot.hears('Фильтрация по принятым заказам', async (ctx) => {
@@ -308,193 +336,208 @@ bot.hears('Отправить фото чека', async (ctx) => {
     });
 });
 
-// bot.hears('Отправить фото чека', async (ctx) => {
-//     await ctx.reply('Введите ID лида');
+bot.hears('Отправить фото чека', async (ctx) => {
+    await ctx.reply('Введите ID лида');
 
-//     bot.on('text', async (ctx) => {
-//         try {
-//             const leadId = ctx.message.text;
-//             if (!leadId) {
-//                 throw new Error('ID лида не был получен');
-//             }
+    bot.on('text', async (ctx) => {
+        try {
+            const leadId = ctx.message.text;
+            if (!leadId) {
+                throw new Error('ID лида не был получен');
+            }
 
-//             bot.on('photo', async (ctx) => {
-//                 try {
-//                     const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
-//                     const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
-//                     const fileResponse = await fetch(fileLink);
-//                     const fileBuffer = await fileResponse.buffer();
+            bot.on('photo', async (ctx) => {
+                try {
+                    const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
+                    const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
+                    const fileResponse = await fetch(fileLink);
+                    const fileBuffer = await fileResponse.buffer();
 
-//                     const base64Data = fileBuffer.toString('base64');
+                    const base64Data = fileBuffer.toString('base64');
 
-//                     const data = {
-//                         name: 'file1.jpg',
-//                         mime: 'image/jpeg',
-//                         data: base64Data,
-//                         custom_field_id: 2079688
-//                     };
+                    const data = {
+                        name: 'file1.jpg',
+                        mime: 'image/jpeg',
+                        data: base64Data,
+                        custom_field_id: 2079688
+                    };
 
-//                     const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/${leadId}/file`, {
-//                         method: 'POST',
-//                         headers: {
-//                             'Content-Type': 'application/json',
-//                             'token': lpTrackerToken
-//                         },
-//                         body: JSON.stringify(data)
-//                     });
+                    const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/${leadId}/file`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'token': lpTrackerToken
+                        },
+                        body: JSON.stringify(data)
+                    });
 
-//                     const result = await uploadResponse.json();
-//                     console.log('Результат:', result);
-//                 } catch (error) {
-//                     console.error('Ошибка при отправке запроса:', error);
-//                     ctx.reply('Произошла ошибка при отправке фото чека');
-//                 }
-//             });
-//         } catch (error) {
-//             console.error('Ошибка при получении ID лида:', error);
-//             ctx.reply('Произошла ошибка при получении ID лида');
-//         }
+                    const result = await uploadResponse.json();
+                    console.log('Результат:', result);
+                } catch (error) {
+                    console.error('Ошибка при отправке запроса:', error);
+                    ctx.reply('Произошла ошибка при отправке фото чека');
+                }
+            });
+        } catch (error) {
+            console.error('Ошибка при получении ID лида:', error);
+            ctx.reply('Произошла ошибка при получении ID лида');
+        }
+    });
+});
+
+
+bot.hears('Отправить фото чека', async (ctx) => { // Рабочая версия отправки
+    bot.on('photo', async (ctx) => {
+        try {
+            const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
+            const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
+            const fileResponse = await fetch(fileLink);
+            const fileBuffer = await fileResponse.buffer();
+
+            const base64Data = fileBuffer.toString('base64');
+
+            const data = {
+                name: 'file1.jpg',
+                mime: 'image/jpeg',
+                data: base64Data,
+                custom_field_id: 2079688
+            };
+
+            const uploadResponse = await fetch('https://direct.lptracker.ru/lead/78949142/file', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': lpTrackerToken
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await uploadResponse.json();
+            console.log('Результат:', result);
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    });
+});
+
+bot.hears('Отправить фото чека', async (ctx) => { // Рабочая версия отправки
+    bot.on('photo', async (ctx) => {
+        try {
+            const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
+            const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
+            const fileResponse = await fetch(fileLink);
+            const fileBuffer = await fileResponse.buffer();
+
+            const base64Data = fileBuffer.toString('base64');
+
+            const data = {
+                name: 'file1.jpg',
+                mime: 'image/jpeg',
+                data: base64Data,
+                custom_field_id: 2079688
+            };
+
+            const uploadResponse = await fetch('https://direct.lptracker.ru/lead/78949142/file', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': lpTrackerToken
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await uploadResponse.json();
+            console.log('Результат:', result);
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    });
+});
+
+
+
+bot.hears('Отправить фото чека', async (ctx) => {
+    bot.on('photo', async (ctx) => {
+        const data = await response.json();
+        console.log(data.result)
+        const { custom } = data.result;
+        const photo = custom.find(object => object.name == 'Файлы').value;
+        const fileId = photo.file_id;
+
+        try {
+            const fileLink = await bot.telegram.getFileLink(fileId);
+            const fileResponse = await fetch(fileLink);
+            const fileBuffer = await fileResponse.buffer();
+
+            const base64Data = fileBuffer.toString('base64');
+
+            const data = {
+                name: 'file1.jpg',
+                mime: 'image/jpeg',
+                data: base64Data,
+                custom_field_id: 2079688
+            };
+
+            const uploadResponse = await fetch('https://direct.lptracker.ru/lead/78949142/file1.jpg', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': lpTrackerToken
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await uploadResponse.json();
+            console.log('Результат:', result);
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    });
+});
+
+
+bot.hears('Отправить фото чека', async (ctx) => {
+    await ctx.reply('Введите ID лида');
+
+    bot.on('text', async (ctx) => {
+        const leadId = ctx.message.text;
+
+        try {
+            const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, { headers: { token: lpTrackerToken } });
+            const data = await response.json();
+            console.log(data.result)
+            const { id, contact, created_at, custom } = data.result;
+
+            const message = `ID лида: ${id}\nИмя лида: ${contact.name}\nНомер телефона: ${contact.details.find(detail => detail.type === 'phone').data}\nДата и время выезда на заказ: ${custom.find(object => object.name == 'Дата выполнения сделки').value}\nАдрес заказа: ${custom.find(object => object.name == 'Адрес').value}\nПараметры заказа: ${custom.find(object => object.name == 'Важная информация').value}\nДата создания: ${created_at}`;
+            await ctx.reply(message, {
+                reply_markup: {
+                    inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]],
+                }
+            });
+        } catch (error) {
+            console.error('Ошибка при получении данных из LPTracker:', error);
+        }
+    });
+});
+
+
+
+// const axios = require('axios'); // Авторизация
+
+// const data = {
+//     login: 'dm93vtb@yahoo.com',
+//     password: 'qu62268500',
+//     service: "ServiceName",
+//     version: '1.0'
+// };
+
+// axios.post('https://direct.lptracker.ru/login', data)
+//     .then(response => {
+//         console.log(response.data);
+//     })
+//     .catch(error => {
+//         console.error(error);
 //     });
-// });
-
-
-// bot.hears('Отправить фото чека', async (ctx) => { // Рабочая версия отправки
-//     bot.on('photo', async (ctx) => {
-//         try {
-//             const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
-//             const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
-//             const fileResponse = await fetch(fileLink);
-//             const fileBuffer = await fileResponse.buffer();
-
-//             const base64Data = fileBuffer.toString('base64');
-
-//             const data = {
-//                 name: 'file1.jpg',
-//                 mime: 'image/jpeg',
-//                 data: base64Data,
-//                 custom_field_id: 2079688
-//             };
-
-//             const uploadResponse = await fetch('https://direct.lptracker.ru/lead/78949142/file', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     'token': lpTrackerToken
-//                 },
-//                 body: JSON.stringify(data)
-//             });
-
-//             const result = await uploadResponse.json();
-//             console.log('Результат:', result);
-//         } catch (error) {
-//             console.error('Ошибка:', error);
-//         }
-//     });
-// });
-
-// bot.hears('Отправить фото чека', async (ctx) => { // Рабочая версия отправки
-//     bot.on('photo', async (ctx) => {
-//         try {
-//             const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
-//             const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
-//             const fileResponse = await fetch(fileLink);
-//             const fileBuffer = await fileResponse.buffer();
-
-//             const base64Data = fileBuffer.toString('base64');
-
-//             const data = {
-//                 name: 'file1.jpg',
-//                 mime: 'image/jpeg',
-//                 data: base64Data,
-//                 custom_field_id: 2079688
-//             };
-
-//             const uploadResponse = await fetch('https://direct.lptracker.ru/lead/78949142/file', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     'token': lpTrackerToken
-//                 },
-//                 body: JSON.stringify(data)
-//             });
-
-//             const result = await uploadResponse.json();
-//             console.log('Результат:', result);
-//         } catch (error) {
-//             console.error('Ошибка:', error);
-//         }
-//     });
-// });
-
-
-
-// bot.hears('Отправить фото чека', async (ctx) => {
-//     bot.on('photo', async (ctx) => {
-//         const data = await response.json();
-//         console.log(data.result)
-//         const { custom } = data.result;
-//         const photo = custom.find(object => object.name == 'Файлы').value;
-//         const fileId = photo.file_id;
-
-//         try {
-//             const fileLink = await bot.telegram.getFileLink(fileId);
-//             const fileResponse = await fetch(fileLink);
-//             const fileBuffer = await fileResponse.buffer();
-
-//             const base64Data = fileBuffer.toString('base64');
-
-//             const data = {
-//                 name: 'file1.jpg',
-//                 mime: 'image/jpeg',
-//                 data: base64Data,
-//                 custom_field_id: 2079688
-//             };
-
-//             const uploadResponse = await fetch('https://direct.lptracker.ru/lead/78949142/file1.jpg', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     'token': lpTrackerToken
-//                 },
-//                 body: JSON.stringify(data)
-//             });
-
-//             const result = await uploadResponse.json();
-//             console.log('Результат:', result);
-//         } catch (error) {
-//             console.error('Ошибка:', error);
-//         }
-//     });
-// });
-
-
-// bot.hears('Отправить фото чека', async (ctx) => {
-//     await ctx.reply('Введите ID лида');
-
-//     bot.on('text', async (ctx) => {
-//         const leadId = ctx.message.text;
-
-//         try {
-//             const response = await fetch(`https://direct.lptracker.ru/lead/${leadId}`, { headers: { token: lpTrackerToken } });
-//             const data = await response.json();
-//             console.log(data.result)
-//             const { id, contact, created_at, custom } = data.result;
-
-//             const message = `ID лида: ${id}\nИмя лида: ${contact.name}\nНомер телефона: ${contact.details.find(detail => detail.type === 'phone').data}\nДата и время выезда на заказ: ${custom.find(object => object.name == 'Дата выполнения сделки').value}\nАдрес заказа: ${custom.find(object => object.name == 'Адрес').value}\nПараметры заказа: ${custom.find(object => object.name == 'Важная информация').value}\nДата создания: ${created_at}`;
-//             await ctx.reply(message, {
-//                 reply_markup: {
-//                     inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]],
-//                 }
-//             });
-//         } catch (error) {
-//             console.error('Ошибка при получении данных из LPTracker:', error);
-//         }
-//     });
-// });
-
-
-
-
 
 
 

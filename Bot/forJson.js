@@ -1,4 +1,4 @@
-let formattedDay = "09.11.2023 00:00";
+let makeOrder = "09.11.2023 00:00" = makeOrder.split;
 var time = formattedDay.split("").splice(11, 5).join("");
 var dey = formattedDay.split("").splice(0, 10).join("");
 console.log(dey);
