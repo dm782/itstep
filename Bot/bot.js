@@ -11,7 +11,7 @@ const bot = new Telegraf(telegramToken); // создает новый экзем
 (async function () {
     bot.launch();
     await bot.telegram.sendMessage(1013645358, { text: "Принять заказ", reply_markup: { inline_keyboard: [[{ text: "Принять заказ", callback_data: "lnk" }], [{ text: "Отклонить заказ", callback_data: "nolnk" }]] } });
-    await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }], [{ text: "Фильтрация по принятым заказам" }], [{ text: "Фильтрация по непринятым заказам" }], [{ text: "Фильтрация по сегодняшним заказам" }], [{ text: "Фильтрация по завтрашним заказам" }], [{ text: "Отправить фото чека" }]] } });
+    await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Вывести лид по ID" }], [{ text: "Вывести список лидов" }], [{ text: "Вывести список лидов Инлайн" }], [{ text: "Фильтрация по принятым заказам" }], [{ text: "Фильтрация по непринятым заказам" }], [{ text: "Фильтрация по сегодняшним заказам" }], [{ text: "Фильтрация по завтрашним заказам" }], [{ text: "Отправить фото чека" }]] } });
 })();
 
 
@@ -108,18 +108,47 @@ bot.hears('Вывести список лидов', async (ctx) => { // явля
     try {
         const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
         const data = await response.json(); // Преобразование ответа в JSON
-        const buttons = data.result.map(item => ([{ // Это массив, из которого мы берем данные для создания кнопок
-            text: item.custom.find(object => object.name == 'Адрес').value //  свойство text, которое определяет текст, отображаемый на кнопке. В данном случае "text:" даёт кнопке называние 
-        }])); // Квадратные кнопки совместно с массивом map создают элементы кнопок
-        buttons.push([{ text: 'Назад' }]); // Добавить кнопку "Назад" ко всем остальным 
+        
+        let keyboard = [];
+        data.result.forEach(lead => {
+            let adress = lead.custom.find(object => object.name == 'Адрес').value
+            let text = adress;
+            let button = {text}
+            let row = [button]
+            keyboard.push(row);
+        });
+
         
         const replyMarkup = { // Объект содержащий следующее...
-            keyboard: buttons, // Это поле определяет массив кнопок, которые будут отображаться в клавиатуре.
+            keyboard: keyboard, // Это поле определяет массив кнопок, которые будут отображаться в клавиатуре.
             resize_keyboard: true, // Это поле указывает, должна ли клавиатура изменять размеры, чтобы соответствовать количеству кнопок.
             one_time_keyboard: true // Это поле указывает, должна ли клавиатура исчезнуть после нажатия на кнопку
         };
         ctx.reply('Выберите адрес клиента:', { reply_markup: replyMarkup }); // reply_markup: replyMarkup - ключ : значение, reply_markup указывает на объект replyMarkup, который содержит настройки клавиатуры, такие как массив кнопок, параметры изменения размера и параметр one_time_keyboard
          
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+bot.hears('Вывести список лидов Инлайн', async (ctx) => {
+    try {
+        const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=10&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+        const data = await response.json();
+
+        let inlineKeyboard = [];
+        data.result.forEach(lead => {
+            let adress = lead.custom.find(object => object.name == 'Адрес').value
+            let text = adress;
+            let button = { text, callback_data: `lead_address_${adress}` };
+            inlineKeyboard.push([button]);
+        });
+
+        const replyMarkup = {
+            inline_keyboard: inlineKeyboard
+        };
+        ctx.reply('Выберите адрес клиента:', { reply_markup: replyMarkup });
+
     } catch (error) {
         console.error(error);
     }
