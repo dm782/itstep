@@ -11,28 +11,25 @@ const bot = new Telegraf(telegramToken); // создает новый экзем
 var ordersPath = path.join(__dirname, "orders.json");
 
 const payScene = require("./scenes/payScene");
-const stage = new Scenes.Stage([payScene])
+const lookScene = require("./scenes/lookScene");
+
+const stage = new Scenes.Stage([lookScene, payScene])
 bot.use(session())
 bot.use(stage.middleware())
 
-// bot.action('pay', async (ctx) =>{
-//     await ctx.reply('Фото чека');
-//     await ctx.scene.enter('payScene')
-// })
+bot.start(ctx => {
+    ctx.reply("Что хотите отправить?", { reply_markup: { inline_keyboard: [[{ text: "Фото чека", callback_data: "pay" }], [{ text: "Фото вн.вида", callback_data: "look" }]] } })
+})
 
-// bot.action('look', async (ctx) => {
-//     await ctx.reply('Фото чека');
-//     await ctx.scene.enter('lookScene')
-// })
-// bot.use(session())
-// bot.use(stagePay.middleware()) 
-// bot.use(stageLook.middleware()) 
-// bot.use(payScene);
+bot.action('pay', async (ctx) => {
+    await ctx.scene.enter('payScene')
+})
 
+bot.action('look', async (ctx) => {
+    await ctx.scene.enter('lookScene')
+})
 
 async function fetchDataAndSaveToFile() {
-
-
     const response = await fetch("https://direct.lptracker.ru/lead/103451/list?sort[created_at]=3", { headers: { token: lpTrackerToken } });
     const data = await response.json(); // Преобразование ответа в JSON
 
@@ -45,7 +42,7 @@ async function fetchDataAndSaveToFile() {
 
 function recivedNewOrder(newOrders) {
     var oldOrders = JSON.parse(fs.readFileSync(ordersPath, "utf-8"))
-    return newOrders[0].id != oldOrders[0].id
+    return newOrders[0]?.id != oldOrders[0]?.id
 }
 
 
@@ -107,7 +104,7 @@ function findNewOrders(newOrders) {
         })
 
         if (worker[i][0] === "Абсолют Новосибирск") {
-            bot.telegram.sendMessage(chatId, message, { reply_markup: keyboard });
+            bot.telegram.sendMessage(chatId, message, { reply_markup: keyboard }).catch(err => console.log(err));
         }
     }
 
@@ -124,7 +121,17 @@ function findNewOrders(newOrders) {
 }
 
 
-setInterval(fetchDataAndSaveToFile, 100000);
+
+var workers = require("./workers.json");
+
+(async function () {
+    var order = { name: "Дмитрий Митин", adres: "Ленина 38", info: "Ведро тряпка швабра" };
+    var chatId = workers.find(object => object.name == order.name).chatId;
+    bot.telegram.sendMessage(chatId, JSON.stringify(order));
+})();
+
+
+// setInterval(fetchDataAndSaveToFile, 100000);
 
 
 fetchDataAndSaveToFile()
