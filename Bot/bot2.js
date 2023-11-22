@@ -11,13 +11,23 @@ const bot = new Telegraf(telegramToken); // создает новый экзем
 var ordersPath = path.join(__dirname, "orders.json");
 
 const payScene = require("./scenes/payScene");
-const lookScene = require("./scenes/lookScene");
-const stagePay = new Scenes.Stage([payScene])
-const stageLook = new Scenes.Stage([lookScene])
-
+const stage = new Scenes.Stage([payScene])
 bot.use(session())
-bot.use(stagePay.middleware()) 
-bot.use(stageLook.middleware()) 
+bot.use(stage.middleware())
+
+// bot.action('pay', async (ctx) =>{
+//     await ctx.reply('Фото чека');
+//     await ctx.scene.enter('payScene')
+// })
+
+// bot.action('look', async (ctx) => {
+//     await ctx.reply('Фото чека');
+//     await ctx.scene.enter('lookScene')
+// })
+// bot.use(session())
+// bot.use(stagePay.middleware()) 
+// bot.use(stageLook.middleware()) 
+// bot.use(payScene);
 
 
 async function fetchDataAndSaveToFile() {
@@ -85,97 +95,20 @@ function findNewOrders(newOrders) {
                 [{ text: "Отправить чек для оплаты", callback_data: "pay" }]
             ]
         };
-        bot.use(stagePay.middleware())
-        bot.use(stageLook.middleware()) 
 
+        bot.action('pay', async (ctx) => {
+            await ctx.reply('Фото чека');
+            await ctx.scene.enter('payScene')
+        })
 
-//  это устанавливает бесконечный цикл обработки сообщений (bot.use) и передает ему функцию stage.middleware(). Функция stage.middleware() использует объект stage, который содержит все доступные сцены и функции для переключения между ними. Например, вы можете использовать stage.middleware() для вызова нужной сцены по команде пользователя или по условии.
-        // bot.action('pay', async (ctx) => {
-        //     // This function will be executed when the user clicks the "Отправить чек для оплаты" button
-        //     await ctx.reply('Пожалуйста, отправьте фотографию чека')
-        //     console.log(newOrderIds[0], "Нажатый id")
-        // })
+        bot.action('look', async (ctx) => {
+            await ctx.reply('Фото внешнего вида');
+            await ctx.scene.enter('lookScene')
+        })
 
-        // bot.on('photo', async (ctx) => {
-        //     // This function will be executed when the user sends a photo
-        //     try {
-        //         const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id)
-        //         const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id)
-        //         const fileResponse = await fetch(fileLink)
-        //         const fileBuffer = await fileResponse.buffer()
-
-        //         const base64Data = fileBuffer.toString('base64')
-
-        //         const data = {
-        //             name: 'file1.jpg',
-        //             mime: 'image/jpeg',
-        //             data: base64Data,
-        //             custom_field_id: 2079688
-        //         }
-
-        //         const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/${newOrderIds[i]}/file`, {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //                 'token': lpTrackerToken
-        //             },
-        //             body: JSON.stringify(data)
-        //         })
-
-        //         const result = await uploadResponse.json()
-        //         console.log('Результат:', result)
-        //     } catch (error) {
-        //         console.error('Ошибка при отправке запроса:', error)
-        //         ctx.reply('Произошла ошибка при отправке фото чека')
-        //     }
-        // })
-
-        // bot.action('look', async (ctx) => {
-        //     // This function will be executed when the user clicks the "Отправить чек для оплаты" button
-        //     await ctx.reply('Пожалуйста, пришлите фотографию внешнего вида')
-        //     console.log(newOrderIds[0], "Нажатый id")
-        // })
-
-        // bot.on('photo', async (ctx) => {
-        //     bot.action('look', async (ctx) => {
-        //     // This function will be executed when the user sends a photo
-        //     try {
-        //         const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id)
-        //         const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id)
-        //         const fileResponse = await fetch(fileLink)
-        //         const fileBuffer = await fileResponse.buffer()
-
-        //         const base64Data = fileBuffer.toString('base64')
-
-        //         const data = {
-        //             name: 'file2.jpg',
-        //             mime: 'image/jpeg',
-        //             data: base64Data,
-        //             custom_field_id: 2116594
-        //         }
-
-        //         const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/${newOrderIds[i]}/file`, {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //                 'token': lpTrackerToken
-        //             },
-        //             body: JSON.stringify(data)
-        //         })
-
-        //         const result = await uploadResponse.json()
-        //         console.log('Результат:', result)
-        //     } catch (error) {
-        //         console.error('Ошибка при отправке запроса:', error)
-        //         ctx.reply('Произошла ошибка при отправке фото чека')
-        //     }
-        // })
-        // })
-        
-
-        // if (worker[i][0] === "Абсолют Новосибирск") {
-        //     bot.telegram.sendMessage(chatId, message, { reply_markup: keyboard });
-        // }
+        if (worker[i][0] === "Абсолют Новосибирск") {
+            bot.telegram.sendMessage(chatId, message, { reply_markup: keyboard });
+        }
     }
 
 

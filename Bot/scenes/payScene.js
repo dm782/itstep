@@ -2,11 +2,19 @@ const { Scenes } = require("telegraf");
 
 const payScene = new Scenes.BaseScene("payScene")
 
-payScene.enter(ctx => {
-    ctx.reply("Отправьте фото чека!")
-})
+// payScene.enter(ctx => {
+//     ctx.reply("Отправьте фото чека")
+// })
+let keyboard = {
+    inline_keyboard: [
+        [{ text: "Отправить фотографию внешнего вида", callback_data: "look" }],
+        [{ text: "Отправить чек для оплаты", callback_data: "pay" }]
+    ]
+};
 
-payScene.action('pay', async (ctx) => {
+const chatId = '1013645358';
+
+payScene.on('photo', async (ctx) => {
 
     try {
         const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id)
@@ -39,10 +47,10 @@ payScene.action('pay', async (ctx) => {
         console.error('Ошибка при отправке запроса:', error)
         ctx.reply('Произошла ошибка при отправке фото чека')
     }
+    // const message = 'Your message content here';
+    // ctx.telegram.sendMessage(chatId, message, { reply_markup: keyboard });
+
 })
 
-if (worker[i][0] === "Абсолют Новосибирск") {
-    bot.telegram.sendMessage(chatId, message, { reply_markup: keyboard });
-}
 
 module.exports = payScene

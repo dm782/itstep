@@ -2,9 +2,7 @@ const { Scenes } = require("telegraf");
 
 const lookScene = new Scenes.BaseScene("lookScene")
 
-payScene.enter(ctx => {
-    ctx.reply("Отправьте фото чека!")
-})
+
 
 lookScene.action('look', async (ctx) => {
 
