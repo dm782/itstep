@@ -32,7 +32,7 @@ bot.action('look', async (ctx) => {
 async function fetchDataAndSaveToFile() {
     const response = await fetch("https://direct.lptracker.ru/lead/103451/list?sort[created_at]=3", { headers: { token: lpTrackerToken } });
     const data = await response.json(); // Преобразование ответа в JSON
-
+    // console.log(data.result.custom.find(object => object.name == 'Адрес').value)
     if (recivedNewOrder(data.result)) {
         var newIds = findNewOrders(data.result)
         newIds.forEach(newId => console.log(newId))
@@ -49,13 +49,15 @@ function recivedNewOrder(newOrders) {
 function findNewOrders(newOrders) {
     var newIds = []
     var oldOrders = JSON.parse(fs.readFileSync(ordersPath, "utf-8"))
+    
     var oldOrderIds = oldOrders.map(oldOrder => oldOrder.id)
     var newOrderIds = newOrders.map(newOrder => newOrder.id)
     var newOrderPhone = newOrders.map(newOrder => newOrder.contact?.details?.find(detail => detail.type === 'phone')?.data)
     var adress = newOrders.map(newOrder => newOrder.custom.find(object => object.name == 'Адрес').value)
+    var makeOrder = newOrders.map(newOrder => newOrder.custom.find(object => object.name == 'Дата выполнения сделки').value)
     var info = newOrders.map(newOrder => newOrder.custom.find(object => object.name == 'Важная информация').value);
     var worker = newOrders.map(newOrder => newOrder.custom.find(object => object.name == 'Исполнитель').value);
-    console.log(worker)
+    
     oldOrderIds = oldOrderIds.map(Number)
     firstElemOld = oldOrderIds[0]
 
@@ -71,6 +73,7 @@ function findNewOrders(newOrders) {
             id: newOrderIds[i],
             "Телефон клиента": '+' + newOrderPhone[i],
             "Адрес клиента": adress[i],
+            "Дата выполнения сделки": makeOrder[i],
             "Информация по заказа": info[i],
             "Исполнитель": worker[i]
         };
@@ -112,15 +115,30 @@ function findNewOrders(newOrders) {
             
             (async function () {
                 var workers = require("./workers.json");
-                var order = { name: "Anar" };
+                var order = { name: "Дмитрий Митин" };
                 var chatId = workers.find(object => object.name == order.name).chatId;
                 if (ord && ord["Телефон клиента"]) {
-                    bot.telegram.sendMessage(chatId, `Телефон: ${ord["Телефон клиента"]} \n Адрес клиента: ${ord["Адрес клиента"]}\n Информация по заказа: ${ord["Информация по заказа"]}`, { reply_markup: keyboard });
+                    if (worker[i][0] === "Абсолют Новосибирск") {
+                    bot.telegram.sendMessage(chatId, `Телефон: ${ord["Телефон клиента"]} \n Адрес клиента: ${ord["Адрес клиента"]} \n Дата лида: ${ord["Дата выполнения сделки"]}\n Информация по заказа: ${ord["Информация по заказа"]}`, { reply_markup: keyboard });
+                    }
                 } else {
                     console.error('Телефон клиента property not found in the JSON object.');
                 }
-
             })();
+
+            (async function () {
+                var workers = require("./workers.json");
+                var order = { name: "Мама" };
+                var chatId = workers.find(object => object.name == order.name).chatId;
+                if (ord && ord["Телефон клиента"]) {
+                    if (worker[i][0] === "Айдар Уфа") {
+                        bot.telegram.sendMessage(chatId, `Телефон: ${ord["Телефон клиента"]} \n Адрес клиента: ${ord["Адрес клиента"]} \n Дата лида: ${ord["Дата выполнения сделки"]}\n Информация по заказа: ${ord["Информация по заказа"]}`, { reply_markup: keyboard });
+                    }
+                } else {
+                    console.error('Телефон клиента property not found in the JSON object.');
+                }
+            })();
+
         } catch (error) {
             console.error('Error parsing message:', error);
         }
