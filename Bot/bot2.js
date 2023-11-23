@@ -85,6 +85,7 @@ function findNewOrders(newOrders) {
     for (let i = 0; i < arrayNewLeads.length; i++) {
         let message = JSON.stringify(arrayNewLeads[i]);
         message = message.replace(/^{/, '').replace(/}$/, '');
+
         let keyboard = {
             inline_keyboard: [
                 [{ text: "Отправить фотографию внешнего вида", callback_data: "look" }],
@@ -95,17 +96,37 @@ function findNewOrders(newOrders) {
         bot.action('pay', async (ctx) => {
             await ctx.reply('Фото чека');
             await ctx.scene.enter('payScene')
-        })
+        });
 
         bot.action('look', async (ctx) => {
             await ctx.reply('Фото внешнего вида');
             await ctx.scene.enter('lookScene')
-        })
+        });
 
         if (worker[i][0] === "Абсолют Новосибирск") {
             bot.telegram.sendMessage(chatId, message, { reply_markup: keyboard }).catch(err => console.log(err));
         }
+        
+        try {
+            const ord = JSON.parse(`{${message}}`); // Add missing curly braces to make it a valid JSON object
+            
+            (async function () {
+                var workers = require("./workers.json");
+                var order = { name: "Anar" };
+                var chatId = workers.find(object => object.name == order.name).chatId;
+                if (ord && ord["Телефон клиента"]) {
+                    bot.telegram.sendMessage(chatId, `Телефон: ${ord["Телефон клиента"]} \n Адрес клиента: ${ord["Адрес клиента"]}\n Информация по заказа: ${ord["Информация по заказа"]}`, { reply_markup: keyboard });
+                } else {
+                    console.error('Телефон клиента property not found in the JSON object.');
+                }
+
+            })();
+        } catch (error) {
+            console.error('Error parsing message:', error);
+        }
+
     }
+
 
 
     console.log(JSON.stringify(obj.id));
@@ -119,22 +140,15 @@ function findNewOrders(newOrders) {
     return newIds
 }
 
-var workers = require("./workers.json");
-
-(async function () {
-    var order = { name: "Мама", adres: "Ленина 38", info: "Ведро тряпка швабра" };
-    var chatId = workers.find(object => object.name == order.name).chatId;
-    bot.telegram.sendMessage(chatId, `Name: ${order.name}\nAdres: ${order.adres}\nInfo: ${order.info}`);
-})();
-
-
 // var workers = require("./workers.json");
 
 // (async function () {
-//     var order = { name: "Дмитрий Митин", adres: "Ленина 38", info: "Ведро тряпка швабра" };
+//     var order = { name: "Мама", adres: "Ленина 38", info: "Ведро тряпка швабра" };
 //     var chatId = workers.find(object => object.name == order.name).chatId;
 //     bot.telegram.sendMessage(chatId, `Name: ${order.name}\nAdres: ${order.adres}\nInfo: ${order.info}`);
 // })();
+
+
 
 
 // setInterval(fetchDataAndSaveToFile, 100000);
