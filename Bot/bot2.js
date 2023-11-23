@@ -82,7 +82,6 @@ function findNewOrders(newOrders) {
 
     const chatId = '1013645358';
 
-
     for (let i = 0; i < arrayNewLeads.length; i++) {
         let message = JSON.stringify(arrayNewLeads[i]);
         message = message.replace(/^{/, '').replace(/}$/, '');
@@ -120,15 +119,22 @@ function findNewOrders(newOrders) {
     return newIds
 }
 
-
-
 var workers = require("./workers.json");
 
 (async function () {
-    var order = { name: "Дмитрий Митин", adres: "Ленина 38", info: "Ведро тряпка швабра" };
+    var order = { name: "Мама", adres: "Ленина 38", info: "Ведро тряпка швабра" };
     var chatId = workers.find(object => object.name == order.name).chatId;
-    bot.telegram.sendMessage(chatId, JSON.stringify(order));
+    bot.telegram.sendMessage(chatId, `Name: ${order.name}\nAdres: ${order.adres}\nInfo: ${order.info}`);
 })();
+
+
+// var workers = require("./workers.json");
+
+// (async function () {
+//     var order = { name: "Дмитрий Митин", adres: "Ленина 38", info: "Ведро тряпка швабра" };
+//     var chatId = workers.find(object => object.name == order.name).chatId;
+//     bot.telegram.sendMessage(chatId, `Name: ${order.name}\nAdres: ${order.adres}\nInfo: ${order.info}`);
+// })();
 
 
 // setInterval(fetchDataAndSaveToFile, 100000);
