@@ -139,6 +139,19 @@ function findNewOrders(newOrders) {
                 }
             })();
 
+            (async function () {
+                var workers = require("./workers.json");
+                var order = { name: "Alex Blinkov" };
+                var chatId = workers.find(object => object.name == order.name).chatId;
+                if (ord && ord["Телефон клиента"]) {
+                    if (worker[i][0] === "Александр Краснодар") {
+                        bot.telegram.sendMessage(chatId, `Телефон: ${ord["Телефон клиента"]} \n Адрес клиента: ${ord["Адрес клиента"]} \n Дата лида: ${ord["Дата выполнения сделки"]}\n Информация по заказа: ${ord["Информация по заказа"]}`, { reply_markup: keyboard });
+                    }
+                } else {
+                    console.error('Телефон клиента property not found in the JSON object.');
+                }
+            })();
+
         } catch (error) {
             console.error('Error parsing message:', error);
         }
