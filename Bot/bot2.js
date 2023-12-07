@@ -96,9 +96,11 @@ function findNewOrders(newOrders) {
             ]
         };
 
-        bot.action('pay', async (ctx) => {
+        bot.action('pay', async (ctx) => { // Событие нажатия на кнопку
             await ctx.reply('Фото чека');
-            await ctx.scene.enter('payScene')
+            await ctx.scene.enter('payScene') // Вход в сцену
+            ctx.session.buttonPressed = true; // Устанавливаем флаг в true
+            console.log(ctx.session.buttonPressed); // Выводим флаг в консоль
         });
 
         bot.action('look', async (ctx) => {
@@ -131,6 +133,19 @@ function findNewOrders(newOrders) {
                 var order = { name: "Мама" };
                 var chatId = workers.find(object => object.name == order.name).chatId;
                 if (ord && ord["Телефон клиента"]) {
+                    if (worker[i][0] === "Айдар Уфа") {
+                        bot.telegram.sendMessage(chatId, `Телефон: ${ord["Телефон клиента"]} \n Адрес клиента: ${ord["Адрес клиента"]} \n Дата лида: ${ord["Дата выполнения сделки"]}\n Информация по заказа: ${ord["Информация по заказа"]}`, { reply_markup: keyboard });
+                    }
+                } else {
+                    console.error('Телефон клиента property not found in the JSON object.');
+                }
+            })();
+
+            (async function () {
+                var workers = require("./workers.json");
+                var order = { name: "Anar" };
+                var chatId = workers.find(object => object.name == order.name).chatId;
+                if (ord && ord["Алсу Казань"]) {
                     if (worker[i][0] === "Айдар Уфа") {
                         bot.telegram.sendMessage(chatId, `Телефон: ${ord["Телефон клиента"]} \n Адрес клиента: ${ord["Адрес клиента"]} \n Дата лида: ${ord["Дата выполнения сделки"]}\n Информация по заказа: ${ord["Информация по заказа"]}`, { reply_markup: keyboard });
                     }

@@ -12,7 +12,7 @@ const payScene = new Scenes.BaseScene("payScene")
 
 payScene.enter(ctx => ctx.reply("Отправьте фото чека"))
 
-payScene.on('photo', async (ctx) => {
+payScene.on('photo', async (ctx) => { // Отправка фото
     try {
         const fileId = ctx.message.photo[ctx.message.photo.length - 1].file_id
         const fileLink = await ctx.telegram.getFileLink(fileId)
@@ -26,7 +26,8 @@ payScene.on('photo', async (ctx) => {
             custom_field_id: 2079688
         }
 
-        const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/81066525/file`, {
+
+        const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/81066525/file`, { // На указанный адрес
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,6 +35,8 @@ payScene.on('photo', async (ctx) => {
             },
             body: JSON.stringify(data)
         })
+
+        console.log(uploadResponse)
 
         const result = await uploadResponse.json()
         console.log('Результат:', result)
