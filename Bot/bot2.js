@@ -9,6 +9,7 @@ const fetch = require('node-fetch'); // Подключаю библиотеку 
 const { Scenes, session, Telegraf } = require('telegraf'); // Подключаю библиотеку Telegraf
 const bot = new Telegraf(telegramToken); // создает новый экземпляр класса Telegraf и присваивает его переменной bot. В скобках (telegramToken) указывается аргумент, который передается в конструктор класса
 var ordersPath = path.join(__dirname, "orders.json");
+const cron = require('node-cron');
 
 const payScene = require("./scenes/payScene");
 const lookScene = require("./scenes/lookScene");

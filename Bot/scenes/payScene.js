@@ -27,7 +27,7 @@ payScene.on('photo', async (ctx) => { // Отправка фото
         }
 
 
-        const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/81066525/file`, { // На указанный адрес
+        const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/82902914/file`, { // На указанный адрес
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

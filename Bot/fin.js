@@ -1,14 +1,22 @@
+var fs = require("fs")
 const path = require("path"); // Подключаю библиотеку path
 var envPath = path.join(__dirname, ".env") // создает переменную envPath, которая содержит путь к файлу .env. __dirname - это глобальная переменная в Node.js, которая представляет путь к текущей директории, в которой находится исполняемый файл.
 require("dotenv").config({ path: envPath }) //  загружает содержимое файла .env и помещает его в переменные окружения. Модуль dotenv позволяет загружать переменные окружения из файла .env в процесс Node.js
 const { telegramToken, lpTrackerToken } = process.env // Деструктуризация telegramToken и lpTrackerToken изenv файла
 
-const fetch = require('node-fetch'); // Подключаю библиотеку запросов
 
-const { Telegraf } = require('telegraf'); // Подключаю библиотеку Telegraf
-const bot = new Telegraf(telegramToken);
+const fetch = require('node-fetch'); // Подключаю библиотеку запросов
+const { Scenes, session, Telegraf } = require('telegraf'); // Подключаю библиотеку Telegraf
+const bot = new Telegraf(telegramToken); // создает новый экземпляр класса Telegraf и присваивает его переменной bot. В скобках (telegramToken) указывается аргумент, который передается в конструктор класса
+var ordersPath = path.join(__dirname, "orders.json");
 const cron = require('node-cron');
-const fs = require('fs');
+const payScene = require("./scenes/payScene");
+const lookScene = require("./scenes/lookScene");
+
+const stage = new Scenes.Stage([payScene]);
+
+bot.use(payScene);
+bot.use(stage.middleware());
 
 
 (async function () {
@@ -27,85 +35,46 @@ bot.help( async (ctx) => {
 bot.hears('Неоплаченные заказы', async (ctx) => {
     try {
         const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=20&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
-        const data = await response.json(); // Преобразование ответа в JSON 
-        
-        if (data && data.length > 0) {
-            const createdAtList = [];
-        
-            // Использование forEach для обхода массива данных
-            data.forEach((lead) => {
-                const createdAt = lead.created_at; // Получение даты создания заказа
-                createdAtList.push(createdAt); // Добавление даты в список
+        const data = await response.json();
+
+        if (data.result && data.result.length > 0) {
+            data.result.forEach(({ custom, contact }) => {
+                const address = custom.find(object => object.name === 'Адрес');
+                const check = custom.find(object => object.name === 'Чек').value;
+                const phone = contact.details.find(detail => detail.type === 'phone').data;
+                const name = contact.name;
+                const parameters = custom.find(object => object.name === 'Важная информация').value;
+
+                let message = `\nИмя клиента: ${name}\nАдрес клиента: ${address.value}\nТелефон клиента: ${phone}\nПараметры заказа: ${parameters}`;
+
+                if (check === null) {
+                    message += '\nФото чека не добавлено'; // Add a message for when the check is null
+
+                    const inlineKeyboard = {
+                        inline_keyboard: [
+                            [{ text: 'Добавить фото чека', callback_data: 'add_photo_check_callback' }]
+                        ]
+                    };
+
+                    ctx.replyWithMarkdown(message, { reply_markup: inlineKeyboard }).catch(err => console.log(err));
+                }
             });
-        
-            console.log(createdAtList);
+
+            // Register the inline keyboard callback outside the loop
+            bot.action('add_photo_check_callback', async (ctx) => {
+                await ctx.reply('Фото чека');
+                await ctx.scene.enter('payScene'); // Entering the payScene
+            });
+            
+
         } else {
             console.log('Массив данных пуст или не содержит заказов.');
         }
-
-       data.result.forEach(function (item) {
-            // var idList = item.id.toString();
-            var address = item.custom.find(object => object.name == 'Адрес');
-            var check = (item.custom.find(object => object.name == 'Чек').value)
-            var phone = item.contact.details.find(detail => detail.type === 'phone').data;
-            var name = item.contact.name;
-            var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
-            if(check == null){
-            var message = '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs;// объединяем id и адрес в одну строку
-            }
-            
-            const inlineKeyboard = {
-                inline_keyboard: [
-                    [{ text: 'Добавить фото чека', callback_data: 'add_photo_check_callback' }]
-                ]
-            };
-
-            // Отправляем сообщение с инлайн кнопкой и текстом
-            ctx.replyWithMarkdown(message, { reply_markup: inlineKeyboard }).catch(err => console.log(err));
-        
-            bot.action('add_photo_check_callback', (ctx) => {
-                ctx.reply('Пришлите фото чека');
-                bot.on('photo', async (ctx) => {
-                    try {
-                        const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
-                        const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
-                        const fileResponse = await fetch(fileLink);
-                        const fileBuffer = await fileResponse.buffer();
-
-                        const base64Data = fileBuffer.toString('base64');
-
-                        const data = {
-                        name: 'file1.jpg',
-                        mime: 'image/jpeg',
-                        data: base64Data,
-                        custom_field_id: 2079688
-                    };
-
-                    const uploadResponse = await fetch('https://direct.lptracker.ru/lead/81709010/file', {
-                        method: 'POST',
-                        headers: {
-                        'Content-Type': 'application/json',
-                        'token': lpTrackerToken
-                        },
-                        body: JSON.stringify(data)
-                });
-
-                const result = await uploadResponse.json();
-                // console.log('Результат:', result);
-            }
-            
-            catch (error) {
-                console.error('Ошибка:', error);
-            }
-        });
-            });
-
-        });
-
     } catch (error) {
-        console.log("Ошибка при получении данных из LPTracker: " + error);
+        console.error("An error occurred:", error);
+        console.error(error.stack);
     }
-}); 
+});
 
 
 
