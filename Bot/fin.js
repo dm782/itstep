@@ -13,15 +13,17 @@ const cron = require('node-cron');
 const payScene = require("./scenes/payScene");
 const lookScene = require("./scenes/lookScene");
 
-const stage = new Scenes.Stage([payScene]);
+const stage = new Scenes.Stage([payScene, lookScene]);
 
-bot.use(payScene);
+bot.use(payScene, lookScene);
 bot.use(stage.middleware());
 
-
+var workers = require("./workers.json");
+const order = { name: "Дмитрий Митин", name: "Мама"};
+const chatId = workers.find(object => object.name === order.name).chatId;
 (async function () {
     bot.launch();
-    await bot.telegram.sendMessage(1013645358, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Неоплаченные заказы" }], [{ text: "Заказы на сегодня" }], [{ text: "Заказы на завтра" }], [{ text: "Архив заказов" }], [{ text: "Свободные заказы" }], [{ text: "Связаться с менеджером" }], [{ text: "Node-cron" }]] } });
+    await bot.telegram.sendMessage(chatId, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Неоплаченные заказы" }], [{ text: "Заказы на сегодня" }], [{ text: "Заказы на завтра" }], [{ text: "Архив заказов" }], [{ text: "Свободные заказы" }], [{ text: "Связаться с менеджером" }], [{ text: "Node-cron" }]] } });
 })();
 
 bot.start( async (ctx) => {
@@ -42,12 +44,13 @@ bot.hears('Неоплаченные заказы', async (ctx) => {
                 const address = custom.find(object => object.name === 'Адрес');
                 const check = custom.find(object => object.name === 'Чек').value;
                 const phone = contact.details.find(detail => detail.type === 'phone').data;
+                const executor = custom.find(object => object.name === 'Исполнитель').value;
                 const name = contact.name;
                 const parameters = custom.find(object => object.name === 'Важная информация').value;
 
-                let message = `\nИмя клиента: ${name}\nАдрес клиента: ${address.value}\nТелефон клиента: ${phone}\nПараметры заказа: ${parameters}`;
-
-                if (check === null) {
+                let message = `\nИмя клиента: ${name}\nАдрес клиента: ${address.value}\nТелефон клиента: ${phone}\nПараметры заказа: ${parameters} \nИсполнитель: ${executor}`;
+                
+                if (check === null && executor.includes('Абсолют Новосибирск')) {
                     message += '\nФото чека не добавлено'; // Add a message for when the check is null
 
                     const inlineKeyboard = {
@@ -56,17 +59,30 @@ bot.hears('Неоплаченные заказы', async (ctx) => {
                         ]
                     };
 
-                    ctx.replyWithMarkdown(message, { reply_markup: inlineKeyboard }).catch(err => console.log(err));
+                    var workers = require("./workers.json");
+                    const order = { name: "Мама" };
+                    const chatId = workers.find(object => object.name === order.name).chatId;
+
+                    // Отправка сообщения с использованием chatId
+                    ctx.telegram.sendMessage(chatId, message, { reply_markup: inlineKeyboard, parse_mode: 'Markdown' }).catch(err => console.log(err));
+                }
+                else if (check === null && executor.includes('Александр Краснодар')) {
+                    message += '\nФото чека не добавлено'; // Add a message for when the check is null
+
+                    const inlineKeyboard = {
+                        inline_keyboard: [
+                            [{ text: 'Добавить фото чека', callback_data: 'add_photo_check_callback' }]
+                        ]
+                    };
+
+                    var workers = require("./workers.json");
+                    const order = { name: "Дмитрий Митин" };
+                    const chatId = workers.find(object => object.name === order.name).chatId;
+
+                    // Отправка сообщения с использованием chatId
+                    ctx.telegram.sendMessage(chatId, message, { reply_markup: inlineKeyboard, parse_mode: 'Markdown' }).catch(err => console.log(err));
                 }
             });
-
-            // Register the inline keyboard callback outside the loop
-            bot.action('add_photo_check_callback', async (ctx) => {
-                await ctx.reply('Фото чека');
-                await ctx.scene.enter('payScene'); // Entering the payScene
-            });
-            
-
         } else {
             console.log('Массив данных пуст или не содержит заказов.');
         }
@@ -75,6 +91,8 @@ bot.hears('Неоплаченные заказы', async (ctx) => {
         console.error(error.stack);
     }
 });
+
+
 
 
 
@@ -382,6 +400,8 @@ async function scheduledFunction(ctx) { // Функция при старте з
         // Отправляем отформатированное время в чат
         // console.log(`${timeNow}`);
 
+ 
+
         const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=20&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
         const data = await response.json();
         // console.log(data.result[0])
@@ -397,14 +417,15 @@ async function scheduledFunction(ctx) { // Функция при старте з
         
                 const inlineKeyboard = {
                     inline_keyboard: [
-                        [{ text: 'Добавить фото внешнего вида', callback_data: 'send_outfit' }],
+                        [{ text: 'Добавить фото внешнего вида', callback_data: 'look' }],
                         [{ text: 'Не могу отправить фото внешнего вида', callback_data: 'not_send_outfit' }],
                         [{ text: 'Отправить фото чека', callback_data: 'add_photo_check_callback' }],
                         [{ text: 'Не могу отправить фото чека', callback_data: 'notSendCheck' }],
                         [{ text: 'Памятка', callback_data: 'remember' }]
                     ]
                 };
-        
+                
+                
                 // Use the bot.telegram.sendMessage method
                 bot.telegram.sendMessage(1013645358, message, { reply_markup: inlineKeyboard }).catch(err => console.log(err));
 
@@ -428,79 +449,50 @@ const cronSchedule = '*/1 * * * *'; // Каждую минуту
 // Запускаем cron по расписанию
 cron.schedule(cronSchedule, scheduledFunction);
 
+
+
 bot.action('add_photo_check_callback', (ctx) => {
     ctx.reply('Пришлите фото чека');
 
     // Внутри обработчика действия 'add_photo_check_callback'
-    bot.on('photo', async (ctx) => {
-        try {
-            // Обработка фотографии чека
-            const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
-            const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
-            const fileResponse = await fetch(fileLink);
-            const fileBuffer = await fileResponse.buffer();
+    // bot.on('photo', async (ctx) => {
+    //     try {
+    //         // Обработка фотографии чека
+    //         const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
+    //         const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
+    //         const fileResponse = await fetch(fileLink);
+    //         const fileBuffer = await fileResponse.buffer();
 
-            const base64Data = fileBuffer.toString('base64');
+    //         const base64Data = fileBuffer.toString('base64');
 
-            const data = {
-                name: 'file1.jpg',
-                mime: 'image/jpeg',
-                data: base64Data,
-                custom_field_id: 2079688 // Используйте другой custom_field_id для чеков
-            };
+    //         const data = {
+    //             name: 'file1.jpg',
+    //             mime: 'image/jpeg',
+    //             data: base64Data,
+    //             custom_field_id: 2079688 // Используйте другой custom_field_id для чеков
+    //         };
 
-            const uploadResponse = await fetch('https://direct.lptracker.ru/lead/81709010/file', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'token': lpTrackerToken
-                },
-                body: JSON.stringify(data)
-            });
+    //         const uploadResponse = await fetch('https://direct.lptracker.ru/lead/81709010/file', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'token': lpTrackerToken
+    //             },
+    //             body: JSON.stringify(data)
+    //         });
 
-            const result = await uploadResponse.json();
-            // console.log('Результат:', result);
-        } catch (error) {
-            console.error('Ошибка:', error);
-        }
-    });
+    //         const result = await uploadResponse.json();
+    //         // console.log('Результат:', result);
+    //     } catch (error) {
+    //         console.error('Ошибка:', error);
+    //     }
+    // });
 });
 
-bot.action('send_outfit', (ctx) => {
-    ctx.reply('Пришлите фото внешнего вида');
-
-    bot.on('photo', async (ctx) => {
-        try {
-            const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
-            const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
-            const fileResponse = await fetch(fileLink);
-            const fileBuffer = await fileResponse.buffer();
-
-            const base64Data = fileBuffer.toString('base64');
-
-            const data = {
-                name: 'file2.jpg',
-                mime: 'image/jpeg',
-                data: base64Data,
-                custom_field_id: 2116594 // Use a different custom_field_id for outfits
-            };
-
-            const uploadResponse = await fetch('https://direct.lptracker.ru/lead/81709010/file', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'token': lpTrackerToken
-                },
-                body: JSON.stringify(data)
-            });
-
-            const result = await uploadResponse.json();
-            // console.log('Результат:', result);
-        } catch (error) {
-            console.error('Ошибка:', error);
-        }
-    });
-});
+// bot.action('send_outfit', async (ctx) => {
+//     await ctx.reply('Фото внешнего вида');
+//     await ctx.scene.enter('lookScene'); // Entering the payScene
+// });
 
 bot.action('not_send_outfit', (ctx) => {
     ctx.reply('Почему не можете отправить фото внешнего вида?');
@@ -563,7 +555,7 @@ bot.action('notSendCheck', (ctx) => {
 });
 
 
-async function newLpFunction(ctx) { // Функция при старте заказа
+async function newLpFunction(ctx) { // Функция при добавлении в LPTracker
     try {
         var time = new Date();
 
@@ -602,11 +594,8 @@ async function newLpFunction(ctx) { // Функция при старте зак
 
                 const inlineKeyboard = {
                     inline_keyboard: [
-                        [{ text: 'Добавить фото внешнего вида', callback_data: 'send_outfit' }],
-                        [{ text: 'Не могу отправить фото внешнего вида', callback_data: 'not_send_outfit' }],
-                        [{ text: 'Отправить фото чека', callback_data: 'add_photo_check_callback' }],
-                        [{ text: 'Не могу отправить фото чека', callback_data: 'notSendCheck' }],
-                        [{ text: 'Памятка', callback_data: 'remember' }]
+                        [{ text: 'Отмена заказа', callback_data: 'cancelOrder' }],
+                        [{ text: 'Послушать запись первого звонка', callback_data: 'hearRecordFirstCall' }]
                     ]
                 };
         
