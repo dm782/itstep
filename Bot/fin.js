@@ -23,7 +23,7 @@ const order = { name: "Дмитрий Митин", name: "Мама"};
 const chatId = workers.find(object => object.name === order.name).chatId;
 (async function () {
     bot.launch();
-    await bot.telegram.sendMessage(chatId, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Неоплаченные заказы" }], [{ text: "Заказы на сегодня" }], [{ text: "Заказы на завтра" }], [{ text: "Архив заказов" }], [{ text: "Свободные заказы" }], [{ text: "Связаться с менеджером" }], [{ text: "Node-cron" }]] } });
+    await bot.telegram.sendMessage(chatId, { text: "Not inline button" }, { reply_markup: { keyboard: [[{ text: "Неоплаченные заказы" }], [{ text: "Заказы на сегодня" }], [{ text: "Заказы на завтра" }], [{ text: "Архив заказов" }], [{ text: "Свободные заказы" }], [{ text: "Связаться с менеджером" }]] } });
 })();
 
 bot.start( async (ctx) => {
@@ -35,6 +35,7 @@ bot.help( async (ctx) => {
 })
 
 bot.hears('Неоплаченные заказы', async (ctx) => {
+    
     try {
         const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=20&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
         const data = await response.json();
@@ -378,8 +379,9 @@ cron.schedule('58 15 * * *', async () => {
 
 
 
+let idLead; // Объявите переменную idLead в доступной области видимости
 
-async function scheduledFunction(ctx) { // Функция при старте заказа
+async function scheduledFunction(ctx) {
     try {
         var time = new Date();
 
@@ -397,24 +399,20 @@ async function scheduledFunction(ctx) { // Функция при старте з
 
         var timeNow = `${date}.${month}.${year} ${hour}:${minute}`;
 
-        // Отправляем отформатированное время в чат
-        // console.log(`${timeNow}`);
-
- 
-
         const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=20&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
         const data = await response.json();
-        // console.log(data.result[0])
+
         data.result.forEach(function (item) {
+            var idLead = item.id;
             var address = item.custom.find(object => object.name == 'Адрес');
             var dateOne = item.custom.find(object => object.name == 'Дата выполнения сделки').value;
             var phone = item.contact?.details?.find(detail => detail.type === 'phone').data;
             var name = item.contact.name;
             var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
-        
+
             if (String(dateOne) === String(timeNow)) {
-                var message = '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nДата и время заказа: ' + dateOne + '\nПараметры заказа: ' + parametrs;
-        
+                var message = 'ID: ' + idLead + '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nДата и время заказа: ' + dateOne + '\nПараметры заказа: ' + parametrs;
+                var message2 = idLead;
                 const inlineKeyboard = {
                     inline_keyboard: [
                         [{ text: 'Добавить фото внешнего вида', callback_data: 'look' }],
@@ -424,24 +422,16 @@ async function scheduledFunction(ctx) { // Функция при старте з
                         [{ text: 'Памятка', callback_data: 'remember' }]
                     ]
                 };
-                
-                
-                // Use the bot.telegram.sendMessage method
+
+                // Используйте метод bot.telegram.sendMessage
                 bot.telegram.sendMessage(1013645358, message, { reply_markup: inlineKeyboard }).catch(err => console.log(err));
-
-
+                bot.telegram.sendMessage(1013645358, message2, { reply_markup: inlineKeyboard }).catch(err => console.log(err));
             }
         });
-
-
-
-    } 
-    catch (error) {
+    } catch (error) {
         console.error('Ошибка:', error);
     }
 }
-
-
 
 // Создаем cron-расписание для выполнения каждую минуту
 const cronSchedule = '*/1 * * * *'; // Каждую минуту
@@ -449,50 +439,51 @@ const cronSchedule = '*/1 * * * *'; // Каждую минуту
 // Запускаем cron по расписанию
 cron.schedule(cronSchedule, scheduledFunction);
 
-
-
 bot.action('add_photo_check_callback', (ctx) => {
     ctx.reply('Пришлите фото чека');
 
-    // Внутри обработчика действия 'add_photo_check_callback'
-    // bot.on('photo', async (ctx) => {
-    //     try {
-    //         // Обработка фотографии чека
-    //         const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
-    //         const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
-    //         const fileResponse = await fetch(fileLink);
-    //         const fileBuffer = await fileResponse.buffer();
+    // Внутри функции обратного вызова bot.on('photo')
+    bot.on('photo', async (ctx) => {
+        try {
+            // Обработка фотографии чека
+            const dataTwo = await ctx.telegram.getFile(ctx.message.photo[0].file_id);
+            const fileLink = await ctx.telegram.getFileLink(dataTwo.file_id);
+            const fileResponse = await fetch(fileLink);
+            const fileBuffer = await fileResponse.buffer();
 
-    //         const base64Data = fileBuffer.toString('base64');
+            const base64Data = fileBuffer.toString('base64');
 
-    //         const data = {
-    //             name: 'file1.jpg',
-    //             mime: 'image/jpeg',
-    //             data: base64Data,
-    //             custom_field_id: 2079688 // Используйте другой custom_field_id для чеков
-    //         };
+            const data = {
+                name: 'file1.jpg',
+                mime: 'image/jpeg',
+                data: base64Data,
+                custom_field_id: 2079688 // Используйте другой custom_field_id для чеков
+            };
 
-    //         const uploadResponse = await fetch('https://direct.lptracker.ru/lead/81709010/file', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'token': lpTrackerToken
-    //             },
-    //             body: JSON.stringify(data)
-    //         });
+            console.log(idLead); // Теперь idLead должна быть доступна здесь
 
-    //         const result = await uploadResponse.json();
-    //         // console.log('Результат:', result);
-    //     } catch (error) {
-    //         console.error('Ошибка:', error);
-    //     }
-    // });
+            const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/${idLead}/file`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': lpTrackerToken
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await uploadResponse.json();
+            // console.log('Результат:', result);
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    });
 });
 
-// bot.action('send_outfit', async (ctx) => {
-//     await ctx.reply('Фото внешнего вида');
-//     await ctx.scene.enter('lookScene'); // Entering the payScene
-// });
+
+bot.action('send_outfit', async (ctx) => {
+    await ctx.reply('Фото внешнего вида');
+    await ctx.scene.enter('lookScene'); // Entering the payScene
+});
 
 bot.action('not_send_outfit', (ctx) => {
     ctx.reply('Почему не можете отправить фото внешнего вида?');
@@ -502,7 +493,7 @@ bot.action('not_send_outfit', (ctx) => {
             const textDescription = ctx.message.text;
 
 
-            const uploadResponse = await fetch('https://direct.lptracker.ru/lead/81709010', {
+            const uploadResponse = await fetch(`https://direct.lptracker.ru/lead/${idLead}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "token": lpTrackerToken
@@ -554,8 +545,8 @@ bot.action('notSendCheck', (ctx) => {
     });
 });
 
-
 async function newLpFunction(ctx) { // Функция при добавлении в LPTracker
+    ctx.scene.session.state
     try {
         var time = new Date();
 
@@ -613,19 +604,102 @@ const newLeadLp = '*/1 * * * *'; // Каждую минуту
 // Запускаем cron по расписанию
 cron.schedule(newLeadLp, newLpFunction);
 
-// const axios = require('axios'); // Авторизация
+// cron.schedule('58 15 * * *', async () => {
+//     try {
+//         // Создаем инлайн клавиатуру
+//         const inlineKeyboard = {
+//             inline_keyboard: [
+//                 [{ text: 'Посмотреть неоплаченные заказы', callback_data: 'noPayOrder' }]
+//             ]
+//         };
 
-// const data = {
-//     login: 'dm93vtb@yahoo.com',
-//     password: 'qu62268500',
-//     service: "ServiceName",
-//     version: '1.0'
-// };
+//         // Отправляем сообщение с инлайн кнопкой и текстом
+//         bot.telegram.sendMessage(1013645358, 'У вас есть неоплаченные заказы', {
+//             reply_markup: inlineKeyboard,
+//         }).catch(error => console.error('Ошибка при отправке уведомления:', error));
 
-// axios.post('https://direct.lptracker.ru/login', data)
-//     .then(response => {
-//         console.log(response.data);
-//     })
-//     .catch(error => {
-//         console.error(error);
-//     });
+//         bot.action('noPayOrder', async (ctx) => {
+//             try {
+//                 const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=20&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+//                 const data = await response.json(); // Преобразование ответа в JSON 
+
+//                 data.result.forEach(async function (item) {
+//                     var address = item.custom.find(object => object.name == 'Адрес');
+//                     var check = (item.custom.find(object => object.name == 'Чек').value)
+//                     var phone = item.contact?.details?.find(detail => detail.type === 'phone').data;
+//                     var name = item.contact?.name;
+//                     var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
+//                     if (check == null) {
+//                         var message = '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nПараметры заказа: ' + parametrs;
+
+//                         const inlineKeyboard = {
+//                             inline_keyboard: [
+//                                 [{ text: 'Добавить фото чека', callback_data: 'add_photo_check_callback' }]
+//                             ]
+//                         };
+
+//                         // Отправляем сообщение с инлайн кнопкой и текстом
+//                         ctx.replyWithMarkdown(message, { reply_markup: inlineKeyboard }).catch(err => console.log(err));
+//                     }
+//                 });
+//             } catch (error) {
+//                 console.error('Ошибка при отправке уведомления:', error);
+//             }
+//         });
+//     } catch (error) {
+//         console.error('Ошибка при отправке уведомления:', error);
+//     }
+// });
+
+
+async function forManagerFunction(ctx) { // manager
+    try {
+        var time = new Date();
+
+        var date = time.getDate();
+        if (date < 10) date = "0" + date;
+        var month = time.getMonth() + 1;
+        if (month == 13) month = 1;
+        if (month < 10) month = "0" + month;
+        var year = time.getFullYear();
+
+        var hour = time.getHours();
+        if (hour < 10) hour = "0" + hour;
+        var minute = time.getMinutes() - 1;
+        if (minute < 10) minute = "0" + minute;
+
+        var currentTime = `${date}.${month}.${year} ${hour}:${minute}`;
+
+        // Отправляем отформатированное время в чат
+        // console.log(`${timeNow}`);
+
+        const response = await fetch("https://direct.lptracker.ru/lead/103451/list?offset=0&limit=20&sort[updated_at]=3&filter[created_at_from]=1535529725", { headers: { token: lpTrackerToken } });
+        const data = await response.json();
+        console.log(data.result[0])
+        data.result.forEach(function (item) {
+            var address = item.custom.find(object => object.name == 'Адрес');
+            var dateOne = item.custom.find(object => object.name == 'Дата выполнения сделки').value;
+            var phone = item.contact?.details?.find(detail => detail.type === 'phone').data;
+            var name = item.contact.name;
+            var whyWasCancellationOrder = item.custom.find(object => object.name == 'Причина отмены заказа').value;
+            var needTake = item.custom.find(object => object.name == 'Обязательно взять').value;
+            var parametrs = item.custom.find(object => object.name == 'Важная информация').value;
+        
+                if(whyWasCancellationOrder != null){
+                    message += '\nИсполнитель отказался от задания!';
+                var message = '\nИмя клиента: ' + name + '\nАдрес клиента: ' + address.value + '\nТелефон клиента: ' + phone + '\nДата и время заказа: ' + dateOne + '\nПараметры заказа: ' + parametrs + '\nПричина отмены заказа: ' + whyWasCancellationOrder + '\nОбязательно взять: ' + needTake;
+                }
+        
+                // Use the bot.telegram.sendMessage method
+                bot.telegram.sendMessage(1013645358, message).catch(err => console.log(err));           
+        });
+    } 
+    catch (error) {
+        console.error('Ошибка:', error);
+    }
+}
+
+const forManager = '52 17 * * *'; // Каждую минуту
+
+// Запускаем cron по расписанию
+cron.schedule(forManager , forManagerFunction);
