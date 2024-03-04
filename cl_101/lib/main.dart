@@ -106,7 +106,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  
 
 
   void _login(BuildContext context) async {
@@ -167,22 +167,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: TextField(
                   controller: _emailController,
                   decoration: InputDecoration(
-                    labelText: 'E-mail',
+                    labelText: 'E-mail : Пароль',
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
-                child: TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Пароль',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
-                  ),
-                ),
-              ),
+
               SizedBox(height: 20),
               MaterialButton(
                 color: Color(0xFF639019),
@@ -333,63 +323,77 @@ class SpecialObjectsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Calculate the appropriate padding based on the total height and the number of buttons and spaces.
+    double padding = MediaQuery.of(context).size.height * 0.1; // Example padding, adjust based on layout needs
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Специальные объекты"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max, // Занимает всё доступное пространство
-        children: [
-          Spacer(),
-          _buildButton(
-            context,
-            Icons.house,
-            "Мои объекты",
-            () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => ObjectsListScreen(email: email),
-              ),
-            ),
-          ),
-          SizedBox(height: 16), // Отступ между кнопками
-          _buildButton(
-            context,
-            Icons.contacts,
-            "Общие контакты",
-            () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => CommonContactsScreen(),
-              ),
-            ),
-          ),
-          Spacer(),
-          Container(
-            width: double.infinity, // На всю ширину экрана
-            height: 50, // Высота кнопки
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xFF639019), // Цвет кнопки
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.zero, // Без закруглений
-                ),
-                padding: EdgeInsets.zero,
-                elevation: 0, // Убрать тень
-              ),
-              onPressed: () {
-                // Вот здесь реализация выхода из аккаунта с возвратом на предыдущую страницу
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                "Выйти из аккаунта",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: padding), // Use dynamic padding for even spacing
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly, // This will ensure even spacing between the widgets.
+          children: [
+            _buildButton(
+              context,
+              Icons.house,
+              "Мои объекты",
+              () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => ObjectsListScreen(email: email),
                 ),
               ),
             ),
+            SizedBox(height: 16), // Keep consistent spacing between buttons
+            _buildButton(
+              context,
+              Icons.contacts,
+              "Общие контакты",
+              () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => CommonContactsScreen(),
+                ),
+              ),
+            ),
+            SizedBox(height: 16), // Consistent spacing
+            _buildButton(
+              context,
+              Icons.report,
+              "Жалоба",
+              () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => ComplaintPage(email: email),
+                ),
+              ),
+            ),
+            SizedBox(height: padding / 2), // Adjust based on visual needs
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        width: double.infinity,
+        height: 50,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF639019),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero,
+            ),
+            padding: EdgeInsets.zero,
+            elevation: 0,
           ),
-        ],
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            "Выйти из аккаунта",
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -401,7 +405,7 @@ class SpecialObjectsScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Color(0xFF639019),
+          backgroundColor: Color(0xFF639019),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -426,6 +430,108 @@ class SpecialObjectsScreen extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ComplaintPage extends StatefulWidget {
+  final String email;
+
+  ComplaintPage({required this.email});
+
+  @override
+  _ComplaintPageState createState() => _ComplaintPageState();
+}
+
+class _ComplaintPageState extends State<ComplaintPage> {
+  late TextEditingController _textController;
+
+  @override
+  void initState() {
+    super.initState();
+    _textController = TextEditingController();
+  }
+
+  Future<void> _sendComplaint() async {
+    final url = "https://script.google.com/macros/s/AKfycbx_5efPv2hBFK0YChKTpUYrXxixL1VP98sNX9zOLJQGGke2ih5XRyok9bcgK8WOXa8znA/exec";
+    final response = await http.post(
+      Uri.parse(url),
+      body: {
+        'email': widget.email,
+        'text': _textController.text,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      Navigator.of(context).pop();
+    } else {
+      print("Error sending complaint: ${response.body}");
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF639019),
+        title: Text("Жалоба"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _textController,
+              decoration: InputDecoration(
+                labelText: "Введите текст жалобы...", // Updated to labelText
+                contentPadding: EdgeInsets.symmetric(horizontal: 16),
+              ),
+              maxLines: 5,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _sendComplaint,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF639019),
+                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+              ),
+              child: Text(
+                "Отправить",
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        width: double.infinity,
+        height: 60.0,
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF639019),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero, // Ensures button is full width with no rounding
+            ),
+          ),
+          child: Text(
+            "Назад",
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
             ),
           ),
         ),
@@ -493,7 +599,7 @@ class _CommonContactsScreenState extends State<CommonContactsScreen> {
             height: 50, // Высота кнопки
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFF639019), // Цвет кнопки
+                backgroundColor: Color(0xFF639019), // Цвет кнопки
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.zero, // Без закруглений
                 ),
@@ -553,8 +659,8 @@ class ContactButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Color(0xFF639019), // Цвет кнопки
-          onPrimary: Colors.white, // Цвет текста
+          backgroundColor: Color(0xFF639019), // Цвет кнопки
+          foregroundColor: Colors.white, // Цвет текста
           minimumSize: Size(double.infinity, 50), // Минимальный размер
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Отступы
           shape: RoundedRectangleBorder(
@@ -665,7 +771,7 @@ class _ObjectsListScreenState extends State<ObjectsListScreen> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFF639019), // Цвет фона кнопки
+                backgroundColor: Color(0xFF639019), // Цвет фона кнопки
                 minimumSize: Size(double.infinity, 50), // Минимальный размер кнопки
                 padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0), // Отступы внутри кнопки
                 shape: RoundedRectangleBorder(
